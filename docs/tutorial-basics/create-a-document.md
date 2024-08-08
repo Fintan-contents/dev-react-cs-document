@@ -2,9 +2,17 @@
 sidebar_position: 2
 ---
 
-# Create a Document
+# プロジェクトの作成
 
-Documents are **groups of pages** connected through:
+### ベースリポジトリのクローン
+
+- git clone URL
+
+### パッケージのインストール
+
+- npm install
+
+<!-- Documents are **groups of pages** connected through:
 
 - a **sidebar**
 - **previous/next navigation**
@@ -40,8 +48,8 @@ This is my **first Docusaurus document**!
 ```
 
 It is also possible to create your sidebar explicitly in `sidebars.js`:
-
-```js title="sidebars.js"
+ -->
+<!-- ```js title="sidebars.js"
 export default {
   tutorialSidebar: [
     'intro',
@@ -54,4 +62,4 @@ export default {
     },
   ],
 };
-```
+``` -->

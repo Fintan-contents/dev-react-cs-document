@@ -1,8 +1,8 @@
 ---
-sidebar_position: 1
+sidebar_position: 3
 ---
 
-# ディレクトリ構成
+# 論理情報に対応したコンポーネント
 
 <!-- Docusaurus can manage multiple versions of your docs.
 

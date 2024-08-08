@@ -2,9 +2,15 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# はじめに
 
-Let's discover **Docusaurus in less than 5 minutes**.
+- 対象読者
+  - React を使って開発を行っている人
+- 目的
+  - 省力化コンポーネントの概要および有用性(=実装が簡潔になること)を知ってもらうこと
+- 内容
+
+<!-- Let's discover **Docusaurus in less than 5 minutes**.
 
 ## Getting Started
 
@@ -44,4 +50,4 @@ The `cd` command changes the directory you're working with. In order to work wit
 
 The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes. -->
