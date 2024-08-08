@@ -12,6 +12,19 @@ sidebar_position: 1
   - 省力化コンポーネントの概要および有用性(=実装が簡潔になること)を知ってもらうこと
 - 内容
 
+# 前提知識
+
+- JavaScript
+- TypeScript
+- React
+- TanStack Query
+- Ant Design
+- OpenAPI Specification
+
+メモ
+
+- WEMEX の pre-requisites.md を参考にする
+
 # 省力化コンポーネントを知る
 
 ## 概要
@@ -61,19 +74,6 @@ sidebar_position: 1
 - #### 画面項目全体の定義と管理
 
 - #### スマートなコンポーネント
-
-# 前提知識
-
-- JavaScript
-- TypeScript
-- React
-- TanStack Query
-- Ant Design
-- OpenAPI Specification
-
-メモ
-
-- WEMEX の pre-requisites.md を参考にする
 
 # 省力化コンポーネントを触ってみる
 
