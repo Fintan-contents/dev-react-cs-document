@@ -11,10 +11,6 @@ sidebar_position: 5
 - useCsView の段階でセレクトボックスの選択肢をAPIから取るような場合
 - コード例＋説明文
 
-## viewの編集状態を管理する
-- view.isDirtyとview.resetDirty()についての説明
-- コード例＋説明文
-
 ## コンポーネントのカスタマイズ
 - 数値入力を左寄せにする、cssを追加する
 - コード例＋説明文
