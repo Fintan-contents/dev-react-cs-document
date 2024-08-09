@@ -22,6 +22,8 @@ sidebar_position: 2
 ## バリデーションのタイミング
 説明文＋コード例
 
+拡張ガイドのLinkを載せる
+
 
 ### メモ
 WEMEXのRead.mdやdanmachiの内容を参考に記載していく
