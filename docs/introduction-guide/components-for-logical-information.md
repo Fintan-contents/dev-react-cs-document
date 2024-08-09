@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # 論理情報に対応したコンポーネント
@@ -15,5 +15,5 @@ sidebar_position: 3
 
 なお、CsValidationEventは、useCsViewの内部で作られるバリデーション処理を司るクラスです。利用者が直接作ることはほぼありえません。バリデーション処理を呼び出したい場合に使うことはあります。
 
-メモ
+### メモ
 danmachiリポジトリの内容をコピー、内容は修正する可能性あり
