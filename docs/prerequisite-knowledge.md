@@ -13,7 +13,8 @@ React を用いてアプリを実装するには、JavaScript、TypeScript、Rea
 | React                 | コンポーネントベースのアプローチで、ウェブアプリ開発に用いられる JavaScript ライブラリです。                                                                                                             |
 | TanStack Query        | バックエンドの API を呼び出すために使用するライブラリです。                                                                                                                                              |
 | Ant Design            | 省力化コンポーネントの内部で使用している UI コンポーネントライブラリです。                                                                                                                               |
-| OpenAPI Specification | API の仕様を記述するための標準規格です。<br/>                                                                                                                                                            |
+| OpenAPI Specification | API の仕様を記述するための標準規格です。　                                                                                                                                                               |
+| Orval                 | OpenAPI 仕様から TypeScript の型定義と API クライアントコードを自動生成するツールです。 <br/>                                                                                                            |
 
 実装例や解説を理解するために参考となるサイトを紹介します。
 用語やコード例でわからないことがあるときは参照してください。
@@ -74,6 +75,10 @@ OpenAPI Specification の詳細については[公式ドキュメント(英語�
 API 仕様の内容を[Swagger Editor](https://editor.swagger.io/)のエディターに貼るとプレビューにその内容が表示されます。
 
 その他の Swagger 機能については[What Is Swagger?](https://swagger.io/docs/specification/about/)を参照してください。
+
+### Orval
+
+Orval の詳細については[公式ドキュメント](https://orval.dev/)を参考にしてください。
 
 - TODO
   - 内容の校正
