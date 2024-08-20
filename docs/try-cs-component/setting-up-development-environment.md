@@ -8,7 +8,7 @@ sidebar_position: 1
 
 - Node.js
 - Git
-- IDE(VisualStudioCode/InteliJ)
+- Visual Studio Code
 
 ## 1. リポジトリの作成
 
