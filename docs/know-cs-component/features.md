@@ -21,7 +21,7 @@ title: 特徴
 
 ![省力化コンポーネントの例](/img/無題.png)
 
-画面には 2 種類の入力項目があります。省力化コンポーネントを用いるとこれらの項目をたった 1-2 行で定義することができます。
+画面には 2 種類の入力項目があります。省力化コンポーネントを用いるとこれらの項目をそれぞれ 1-2 行で定義することができます。
 userName や password が画面の各項目と対応しています。
 
 ```typescript
@@ -31,16 +31,10 @@ export const ConceptApplyedPane: React.FC = () => {
     userName: useCsInputTextItem("ユーザー名", useInit(""), stringRule(true, 3, 30)),
     password: useCsInputPasswordItem("パスワード", useInit(""), stringRule(true, 8, 16)),
   })
-  return (
-    <>
-      <AxTableLayout
-        view={view}
-        colSize={2}
-      />
-  )}
+}
 ```
 
-仮に入力項目を増やしたい場合でも、1 項目につき 1-2 行コードを増やすだけで簡単に実装できます。
+仮に入力項目を増やしたい場合でも、1 項目につき 1-2 行コードを増やすだけで実装できます。
 より詳しい実装方法については[View と Item の基本](http://localhost:3000/dev-react-cs-document/docs/implementation-guide/basic-of-view-and-item)を参考にしてください。
 
 ```typescript
@@ -55,22 +49,27 @@ export const ConceptApplyedPane: React.FC = () => {
       selectOptionStrings(["男性", "女性", "回答しない"])),
     birthDay: useCsInputDateItem("生年月日", useInit("2023-01-01"), stringRule(true)),
   })
-  return (
-    <>
-      <AxTableLayout
-        view={view}
-        colSize={2}
-      />
-  )}
+}
 ```
 
 ![省力化コンポーネントの例](/img/image.png)
 
 ## バリデーション定義が簡潔に書ける
 
-省力化コンポーネントを使用することでバリデーション定義が簡潔に書けます。
+省力化コンポーネントを使用することでバリデーション定義が簡潔に書けます。これにより、開発者は複雑なバリデーションロジックを手動で記述する必要がなく、コードの保守性が向上します。
+具体的には、Item定義の第3引数に実施したいバリデーションルールを記載する形でバリデーションを設定します。例えば、userNameという入力項目に対しては、以下のようなバリデーションを定義することが可能です。
 
-Item 定義の第 3 引数に、実施したいバリデーションルール（必須、最小文字数、最大文字数）を記載することでバリデーションを定義することができます。
+文字列型で必須
+最小文字数3文字
+最大文字数30文字
+
+このように、標準的なバリデーションルールを簡潔に指定できるため、入力項目のバリデーション設定が効率的に行えます。
+
+さらに、カスタムバリデーションを用いると「半角数字」や「全角カナ」など、より詳細なバリデーションを定義することも可能です。これにより、アプリケーション固有の要件に合わせた柔軟なバリデーションが実現できます。
+
+例として、userNameのバリデーションで「半角数字のみ許可」や「全角カナのみ許可」といったカスタムバリデーションを追加することができ、入力データの品質を高めることができます。
+
+以上のように、画面項目定義を適切に行うことで、開発効率の向上と入力データの品質向上が期待できます。
 
 ```typescript
 // View 定義
@@ -79,23 +78,33 @@ export const ConceptApplyedPane: React.FC = () => {
     userName: useCsInputTextItem("ユーザー名", useInit(""), stringRule(true, 3, 30)),
     password: useCsInputPasswordItem("パスワード", useInit(""), stringRule(true, 8, 16)),
   })
-  return (
-    <>
-      <AxTableLayout
-        view={view}
-        colSize={2}
-      />
-  )}
+}
 ```
 
-カスタムバリデーションを用いると「半角数字」、「全角カナ」などより詳細なバリデーションを定義することも可能です。
 より詳しい実装方法については[バリデーション](http://localhost:3000/dev-react-cs-document/docs/implementation-guide/validation)を参考にしてください。
 
 ## 高機能なボタン
 
+高機能なボタンは、アプリケーションのユーザビリティと開発効率を大幅に向上させるための重要なコンポーネントです。以下に、その特徴を詳述します。
+- API呼び出し
+
+CRUD（Create, Read, Update, Delete）機能に対応したAPI呼び出しがシンプルに実装できます。これにより、データの操作が直感的に行えるため、開発の手間が大幅に削減されます。
+- バリデーションの実行
+
+ボタンをクリックする前に必要なバリデーションを自動的に実行することができるため、ユーザーからの入力データの整合性を確保することができます。
+- スピナー（Spinner）の表示
+
+API呼び出しの結果やバリデーションエラーなどの情報をユーザーにわかりやすく伝えることができます。これにより、ユーザーは次に何をすべきかを直感的に理解できます。
+- メッセージの表示機能
+
+API呼び出しの結果やバリデーションエラーなどの情報をユーザーにわかりやすく伝えることができます。これにより、ユーザーは次に何をすべきかを直感的に理解できます。
+
+
+
+以上のように、高機能なボタンは、API呼び出しの簡便化、バリデーションの実行、スピナーの表示、メッセージの表示といった多機能を備えており、開発効率を上げることができます。
+
 高機能なボタンを利用することで API 呼び出しやバリデーション実行など多様な機能を使用することができます。
 View 定義に Item とボタンを定義し、ボタンコンポーネントに必要なパラメータを渡すだけで API 呼び出しやバリデーションを実装できます。
-より詳しい実装方法については[ボタンとイベント](http://localhost:3000/dev-react-cs-document/docs/implementation-guide/button-and-event)を参考にしてください。
 
 ```typescript
 type TodosPostView = CsView & {
@@ -136,3 +145,5 @@ export const useTodosPostView = (): TodosPostView => {
   post
 </AxMutateButton>
 ```
+
+より詳しい実装方法については[ボタンとイベント](http://localhost:3000/dev-react-cs-document/docs/implementation-guide/button-and-event)を参考にしてください。
