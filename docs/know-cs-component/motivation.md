@@ -7,7 +7,9 @@ title: モチベーション
 
 ## 従来の React 開発の冗長さ
 
-React は、Web 画面開発において UI を宣言的に記述できる強力なフレームワークです。React を使用することで複雑なインタラクティブ UI の構築が容易になり、コンポーネントベースの設計によって再利用性や保守性が向上します。その一方で、従来の React 開発では、状態変数やイベントハンドラ、バリデーションスキーマなどが重複して記述される傾向があり、コードの冗長さが目立ちます。以下に挙げる 4 つのポイントは、 React 開発で見られる典型的なコードの冗長さを示しています。
+React は、Web 画面開発において UI を宣言的に記述できる強力なフレームワークです。React を使用することで複雑なインタラクティブ UI の構築が容易になり、コンポーネントベースの設計によって再利用性や保守性が向上します。その一方で、従来の React 開発では、状態変数やイベントハンドラ、バリデーションスキーマなどが重複して記述される傾向があり、コードの冗長さが目立ちます。
+
+以下に挙げる 4 つのポイントは、 React 開発で見られる典型的なコードの冗長さを示しています。
 
 <strong>
 - 分散して記述される入力項目の定義
@@ -21,7 +23,7 @@ React は、Web 画面開発において UI を宣言的に記述できる強力
 1 つの入力項目に対して、状態変数、イベントハンドラ、バリデーション、コンポーネントなどをそれぞれ個別に定義する必要があります。また、それに伴って項目を表す変数名やラベル名を何度も書くことになります。
 
 ```tsx
-export const OldFashionededPane: React.FC = () => {
+export const OldFashionedPane: React.FC = () => {
 
   // 1つの入力項目(ユーザー名)に関連する定義が分散している
 
@@ -115,38 +117,76 @@ React 開発においては、入力部品やボタンといった画面項目�
 
 - 入力部品の場合
 
-一般的な入力項目には、ラベルやバリデーションメッセージの表示領域が必要です。しかし、これらを毎回実装者が個別に記述するのは手間がかかり、コードの冗長さを引き起こします。
+一般的な入力項目には、ラベルやバリデーションメッセージの表示領域が必要になります。しかし、これらを毎回実装者が個別に記述するのは手間がかかり、コードの冗長さを引き起こします。さらに、項目ごとにラベル位置やメッセージ位置を適切に配置し、画面内でスタイルが統一されるように実装者が意識する必要もあります。
 
 ```tsx
-// ラベル
-<div>
-  <Typography.Text>ユーザー名</Typography.Text>
+// ユーザー名フォーム
+<div className={styles.formStyle}>
+  // ラベル
+  <div className={styles.labelStyle}>
+    <Typography.Text>ユーザー名</Typography.Text>
+  </div>
+  // 入力部品
+  <div className={styles.inputStyle}>
+    <Input value="{userName}" onChange="{onChangeUserName}" />
+  </div>
+  // バリデーションメッセージ領域
+  <div className={validationStyle}>
+    <ValidationError message="{error.userName}" />
+  </div>
 </div>
-// 入力部品
-<Input value="{userName}" onChange="{onChangeUserName}" />
-// バリデーションメッセージ領域
-<ValidationError message="{error.userName}" />
 ```
 
 - ボタンの場合
 
-ボタンを押下したときに実行したい処理(バリデーション実行処理や API 呼び出し処理など)は、コールバック関数として定義し、ボタンコンポーネントに渡す必要があります。ボタン押下時に実施したい処理はある程度決まっているため、これらを毎回実装者が個別に記述するのは手間がかかり、コードの冗長さを引き起こします。
+API 呼び出しやバリデーション実行など、ボタンを押下したときに実行したい処理は、コールバック関数として定義した上でボタンコンポーネントに渡す必要があります。また、ローディング中のスピナー表示やボタン押下後のメッセージ表示などもコンポーネントの外部に記述する必要があります。これらの処理を毎回実装者が個別に記述するのは手間がかかり、コードの冗長さを引き起こします。
 
 ```tsx
+// 送信ボタンを実装するために必要なコード
+
+//ローディング判定用の状態変数
+const [loading, setLoading] = useState(false);
+// ボタン押下後に表示するメッセージを格納する状態変数
+const [message, setMessage] = useState("");
+
 // ボタン押下時に実行されるコールバック関数
-const handleClick = () => {
-  // バリデーション実行処理の実装
-  // ...
-  // API呼び出しの実装
-  // ...
-  // 成功/失敗のメッセージ表示の実装
-  // ...
+const handleClick = async () => {
+  // ローディング開始
+  setLoading(true);
+  setMessage("");
+
+  // バリデーション実行処理
+  executeValidation();
+
+  try {
+    // API呼び出し処理
+    const response = callApi();
+    const result = await response.json();
+
+    // 成功メッセージの表示
+    setMessage(`成功: ${result.message}`);
+  } catch (error) {
+    // 失敗メッセージの表示
+    setMessage(`エラー: ${error.message}`);
+  } finally {
+    // ローディング終了
+    setLoading(false);
+  }
 };
 
+// コンポーネント
 // (...省略...)
 
-// コンポーネント
-<Button onClick={handleClick}>送信</Button>;
+// 送信ボタン
+<div className="buttonStyle">
+  // 送信後のメッセージを表示する領域
+  {message && <div className="messageStyle">{message}</div>}
+  // ボタン
+  <Button onClick={handleClick} disabled={loading}>
+    // ローディング中はスピナーを表示
+    {loading ? <Spinner /> : "送信"}
+  </Button>
+</div>;
 ```
 
 <hr/>
