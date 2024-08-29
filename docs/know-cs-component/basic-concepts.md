@@ -97,8 +97,7 @@ const view: RegisterUserView = useCsView({
 
 ### コンポーネントの高機能化
 
-コンポーネントを高機能化することで、実装者の記述量を削減することができます。  
-　※高機能化=主要な処理や定義を内部にあらかじめ記述しておくこと
+コンポーネントの内部に主要な処理や定義をあらかじめ記述しておくことで、実装者の記述量を減らすようにします。
 
 :::note 解消できる冗長さ
 
@@ -107,19 +106,7 @@ const view: RegisterUserView = useCsView({
 
 - 入力部品の場合
 
-  入力項目に必要なラベルやバリデーションメッセージの表示領域、イベントハンドラなどを入力部品コンポーネントの内部に組み込みます。それによって、実装者はコンポーネントに item を渡すだけで必要な機能を実現することができます。
-
-![入力部品](/img/input-form.PNG)
-
-こちらの入力部品を配置するために実装者が記述する必要があるのは以下のコード 1 行になります。
-
-```tsx
-<AxInputText item={view.userName} />
-```
-
-:::note 参考情報
-
-省力化コンポーネントが提供する入力部品の内部実装は次のようになっています。ラベル表示やバリデーション表示、イベントハンドラが内部に組み込まれています。
+  入力項目に必要なラベルやバリデーションメッセージの表示領域、イベントハンドラなどを入力部品コンポーネントの内部に組み込みます。
 
 ```tsx
 const AxInputText = (props: AxInputTextProps) => {
@@ -142,25 +129,9 @@ const AxInputText = (props: AxInputTextProps) => {
 }
 ```
 
-:::
-
 - ボタンの場合
-  従来はボタンの外部やハンドラ内で実装していた処理がコンポーネントの内部に組み込まれており、実装者はパラメータを渡すだけでその処理を簡単に実現することができます。
 
-```tsx
-<AxMutateButton
-  event={view.createButton} // 上記のViewで定義したcreateButtonイベントを渡します。
-  validationViews={[view]} // バリデーションしたいViewを渡します。
-  successMessage="Todoを追加しました"
-  errorMessage="Todoの追加に失敗しました"
->
-  追加
-</AxMutateButton>
-```
-
-:::note 参考情報
-
-省力化コンポーネントが提供するボタンの内部実装は次のようになっています。
+  API 呼び出し処理とバリデーション実行処理を定義したコールバック関数、ローディング中のスピナー表示、ボタン押下後のメッセージ表示をボタンコンポーネントの内部に組み込みます。
 
 ```tsx
 export const AxMutateButton = (props: AxMutateButtonProps<TApiRequest, TApiResponse>) => {
@@ -210,4 +181,5 @@ export const AxMutateButton = (props: AxMutateButtonProps<TApiRequest, TApiRespo
 };
 ```
 
-:::
+<hr/>
+次節で紹介する<strong>省力化コンポーネントの特徴</strong>では、3つのコンセプトを適用した結果、実装者が得られるメリットについて説明します。
