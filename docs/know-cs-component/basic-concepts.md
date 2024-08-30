@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## 冗長さを解消するための 3 つのコンセプト
 
-[前章](./motivation.md)で述べた従来の React 開発における冗長さを解消するため、省力化コンポーネントは次の 3 つのコンセプトに基づいて作成されています。
+[前節](./motivation.md)で述べた従来の React 開発における冗長さを解消するため、省力化コンポーネントは次の 3 つのコンセプトに基づいて作成されています。
 
 <strong>
 - 入力項目に必要なパラメータの集約
@@ -16,33 +16,32 @@ sidebar_position: 2
 
 ### 入力項目に必要なパラメータの集約
 
-1 つの入力項目に関する情報（状態変数、イベントハンドラ、バリデーションルール）を、<strong> Item </strong>と呼ばれるクラスに集約することで、冗長なコードを排除します。
+1 つの入力項目に関連する定義を<strong> Item </strong>と呼ばれるクラスに集約することで、冗長なコードを排除します。
 
 :::note 解消できる冗長さ
 
 - 分散して記述される入力項目の定義
-- 類似したイベントハンドラの重複
   :::
 
-Item が保持するパラメータには以下のものがあります。なお、これらの情報は、従来の React 開発では定義箇所が分散していたものになります。
+Item クラスは以下に示すパラメータを保持します。
 
-- ラベル
+- ラベル名
 - 状態変数
 - 状態更新関数
-- 選択肢(セレクトボックスやラジオボタンの場合)
-- バリデーション定義
+- 選択肢(セレクトボックス、チェックボックス、ラジオボタンの場合)
+- バリデーションルール
 
-例えば、「ユーザ名」というテキスト入力項目は、以下の形で定義されることになります。
+例として、「ユーザー名」を入力するためのテキストフォームに関連する定義は、以下のようにまとめて記述されます。
 
 ```Typescript
 userName : CsInputTextItem {
     key: "userName"
-    label: "ユーザー名"
+    label: "ユーザー名" // ラベル名
     parentView: { userName: CsInputTextItem, ...}
     readonly: false
-    value: ""
-    setValue: Dispatch<SetStateAction<string | undefined>>
-    validationRule:
+    value: "" // 状態変数
+    setValue: Dispatch<SetStateAction<string | undefined>>　// 状態更新関数
+    validationRule: // バリデーションルール
     {
         required: true,
         min: 3,
@@ -51,27 +50,34 @@ userName : CsInputTextItem {
 }
 ```
 
-実際には、 Hooks と呼ばれるヘルパ関数を使うため、実装者はパラメータをその関数に渡すだけで、上記のクラス定義が記述できることになります。
+:::note フックを使った定義
+
+実装者は、「フック」と呼ばれる便利な関数を使って、上記のような Item 定義を記述していくことになります。
+フックを使った場合、次のように記述することで上記の定義を再現することができます。
 
 ```Typescript
+// フックを使用することで簡潔にItem定義を記述することができる
 userName: useCsInputTextItem("ユーザー名", useInit(""), stringRule(true, 3, 30))
 ```
 
+:::
+
 ### 画面単位での操作と自動化
 
-<strong>View</strong>と呼ばれる 画面の単位で Item(画面項目)を管理することで、バリデーションスキーマやレイアウトを自動生成できるようにします。
+画面内の Item(画面項目)を<strong>View</strong>と呼ばれるクラスに集約することで、バリデーションスキーマやレイアウトを自動生成できるようにします。
 
 :::note 解消できる冗長さ
 
 - 画面全体のバリデーションスキーマの定義
   :::
 
-1 画面内に含まれる Item を、View と呼ばれるクラスでまとめて管理します。
-
-以下に示すのは、5 つの入力項目(ユーザー名、パスワード、メールアドレス、性別、生年月日)を持つ画面に対応する View 定義です。
+1 つの View 定義は、単数もしくは複数の画面項目を持つ 1 つの画面に対応しています。  
+以下に示すのは、5 つの入力項目(ユーザー名、パスワード、メールアドレス、性別、生年月日)を持つ画面に対応した View 定義です。
 
 ```Typescript
+// Viewは1つの画面に対応する
 const view: RegisterUserView = useCsView({
+    // 単数もしくは複数のItem(画面項目)を保持する
     userName: useCsInputTextItem("ユーザー名", useInit(""), stringRule(true, 3, 30)),
     password: useCsInputPasswordItem("パスワード", useInit(""), stringRule(true, 8, 16)),
     mailAddress: useCsInputTextItem("メールアドレス", useInit(""), stringRule(true, 8, 20)),
@@ -81,15 +87,15 @@ const view: RegisterUserView = useCsView({
   })
 ```
 
-[入力項目に必要なパラメータの集約](#入力項目に必要なパラメータの集約)で述べたように、Item は入力項目に関連する情報を集約して保持しています。つまり、View には画面を構成する入力項目の情報が全て集約されていることになります。これによって、以下に示す 3 つの操作が可能となります。
+[入力項目に必要なパラメータの集約](#入力項目に必要なパラメータの集約)で述べたように、Item は 1 つの入力項目に関連する定義を集約して保持しています。そして、View は画面内の Item を集約して保持しています。言い換えると、View は 1 つの画面に関連する定義を集約して保持していることになります。1 つの画面に関連する定義を集約することで、以下に示す 3 つの操作が可能となります。
 
 #### バリデーションスキーマの自動生成
 
-- 各 Item に設定されたバリデーションルールを基に、必要なバリデーションスキーマを内部で自動生成します。
+- View 内の各 Item に設定されたバリデーションルールを基に、画面単位のバリデーションスキーマを内部で自動生成します。
 
 #### レイアウトの自動生成
 
-- シンプルな並びであれば、View をレイアウト用のコンポーネントに渡すことで項目配置を自動化することができます。
+- View をレイアウト用のコンポーネントに渡すことで、シンプルな並びであれば項目配置を自動化することができます。
 
 #### 画面単位で設定する項目の一元管理
 
@@ -97,47 +103,53 @@ const view: RegisterUserView = useCsView({
 
 ### コンポーネントの高機能化
 
-コンポーネントの内部に主要な処理や定義をあらかじめ記述しておくことで、実装者の記述量を減らすようにします。
+画面項目コンポーネントの内部に主要な処理や定義をあらかじめ記述しておくことで、実装者の記述量を減らせるようにします。
 
 :::note 解消できる冗長さ
 
+- 類似したイベントハンドラの重複
 - 画面項目コンポーネントの外部に記述される処理や定義
   :::
 
-- 入力部品の場合
+- <strong>入力部品の場合</strong>
 
-  入力項目に必要なラベルやバリデーションメッセージの表示領域、イベントハンドラなどを入力部品コンポーネントの内部に組み込みます。
+  入力項目に必要なラベルやバリデーションメッセージの表示機能、イベントハンドラなどを入力部品コンポーネントの内部に組み込みます。
 
 ```tsx
+// 高機能なテキスト入力部品
 const AxInputText = (props: AxInputTextProps) => {
-  (...省略)
+  // (...省略...)
   return (
       <div>
+          {/* ラベルの表示 */}
           <AxLabel label={getLabel(item, showRequiredTag)}></AxLabel>
           <Input
               className={getClassName(props)}
               value={item.value}
               readOnly={item.isReadonly()}
-              onChange={(e) => {
+              {/* イベントハンドラの実装 */}
+              onChange={(e) => {　
                   item.setValue(e.target.value)
               }}
-               (...省略)
+              {/* ...省略... */}
           />
+          {/* バリデーションメッセージの表示 */}
           <ValidationError key={"validation-error-" + item.key} message={item.validationErrorMessage} />
       </div>
   );
 }
 ```
 
-- ボタンの場合
+- <strong>ボタンの場合</strong>
 
-  API 呼び出し処理とバリデーション実行処理を定義したコールバック関数、ローディング中のスピナー表示、ボタン押下後のメッセージ表示をボタンコンポーネントの内部に組み込みます。
+  API 呼び出し処理とバリデーション実行処理を定義したコールバック関数、ローディング中のスピナー表示機能、ボタン押下後のメッセージ表示機能をボタンコンポーネントの内部に組み込みます。
 
 ```tsx
+// 高機能なボタン
 export const AxMutateButton = (props: AxMutateButtonProps<TApiRequest, TApiResponse>) => {
   const { event, validationViews, antdProps } = props;
 
-  // Spinnerの表示
+  // スピナーの表示機能
   useEffect(() => {
     if (!event.isLoading) {
       if (event.isSuccess) {
@@ -148,31 +160,31 @@ export const AxMutateButton = (props: AxMutateButtonProps<TApiRequest, TApiRespo
     }
   }, [event]);
 
-  // ボタン押下時の処理
+  // ボタン押下時に実行されるコールバック関数
   const onClick = useCallback(async () => {
 
-    // バリデーション実行
+    // バリデーション実行処理
     const validationOk = executeValidation(validationViews);
 
-    (...省略)
+    // (...省略...)
 
-    // APIの呼び出し
+    // API呼び出し処理
     await event.onClick();
   }, [event, validationViews]);
 
   return (
     <div className={getClassName(props, "button-area")}>
-    　// メッセージ表示
+      {/* ボタン押下後のメッセージ */}
       {event.result.isSuccess && props.successMessage && (
         <Alert message={props.successMessage} ... />
       )}
-      (...省略)
+      {/* ...省略... */}
 
-      // ボタン
+      {/* ボタン */}
       <Button
         loading={event.isLoading}
         onClick={() => onClick()}
-        ...
+        {/* ...省略... */}
       >
         {props.children}
       </Button>
@@ -182,4 +194,4 @@ export const AxMutateButton = (props: AxMutateButtonProps<TApiRequest, TApiRespo
 ```
 
 <hr/>
-次節で紹介する<strong>省力化コンポーネントの特徴</strong>では、3つのコンセプトを適用した結果、実装者が得られるメリットについて説明します。
+次節で紹介する<strong>省力化コンポーネントの特徴</strong>では、3つのコンセプトを適用した結果、実装者にどのようなメリットがあるのかを説明します。
