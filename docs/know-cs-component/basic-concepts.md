@@ -87,7 +87,7 @@ const view: RegisterUserView = useCsView({
   })
 ```
 
-[入力項目に必要なパラメータの集約](#入力項目に必要なパラメータの集約)で述べたように、Item は 1 つの入力項目に関連する定義を集約して保持しています。そして、View は画面内の Item を集約して保持しています。言い換えると、View は 1 つの画面に関連する定義を集約して保持していることになります。1 つの画面に関連する定義を集約することで、以下に示す 3 つの操作が可能となります。
+[入力項目に必要なパラメータの集約](#入力項目に必要なパラメータの集約)で述べたように、Item は 1 つの入力項目に関連する定義を集約して保持しています。そして、View は画面内の Item を集約して保持しています。言い換えると、View は画面に関連する定義を集約して保持していることになります。これにより、以下に示す 3 つの操作が可能となります。
 
 #### バリデーションスキーマの自動生成
 
@@ -144,6 +144,11 @@ const AxInputText = (props: AxInputTextProps) => {
 
   API 呼び出し処理とバリデーション実行処理を定義したコールバック関数、ローディング中のスピナー表示機能、ボタン押下後のメッセージ表示機能をボタンコンポーネントの内部に組み込みます。
 
+:::note 高機能なボタンの内部実装
+
+<details>
+  <summary>コードを見る</summary>
+
 ```tsx
 // 高機能なボタン
 export const AxMutateButton = (props: AxMutateButtonProps<TApiRequest, TApiResponse>) => {
@@ -192,6 +197,9 @@ export const AxMutateButton = (props: AxMutateButtonProps<TApiRequest, TApiRespo
   );
 };
 ```
+
+</details>
+:::
 
 <hr/>
 次節で紹介する<strong>省力化コンポーネントの特徴</strong>では、3つのコンセプトを適用した結果、実装者にどのようなメリットがあるのかを説明します。
