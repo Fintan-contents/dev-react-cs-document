@@ -122,7 +122,7 @@ const view: RegisterUserView = useCsView({
 
 入力項目に必要なラベルの配置やバリデーションメッセージの表示領域、イベントハンドラなどを入力部品コンポーネントの内部に組み込みます。それによって、実装者は入力項目のパラメータが集約された Item をコンポーネントに渡すだけで必要な機能を実現することができます。
 
-![入力部品](/img/input-form.PNG)
+![入力部品](/img/input-form.png)
 
 上記の入力部品を配置するために実装者が記述する必要があるのは次のコード 1 行になります。
 
@@ -170,30 +170,30 @@ const AxInputText = (props: AxInputTextProps) => {
 </details>
 :::
 
-<br/>
-<strong>ボタンの場合</strong>
+#### <strong>ボタンの場合</strong>
 
-API 呼び出し処理とバリデーション実行処理を定義したコールバック関数、ローディング中のスピナー表示機能、ボタン押下後のメッセージ表示機能をボタンコンポーネントの内部に組み込みます。それによって、実装者は振る舞いをパラメータとしてコンポーネントに渡すだけで必要な機能を実現することができます。
+API 呼び出し処理とバリデーション実行処理を定義したコールバック関数、ローディング中のスピナー表示機能、ボタン押下後のメッセージ表示機能をボタンコンポーネントの内部に組み込みます。それによって、実装者はイベントと振る舞いをパラメータとしてコンポーネントに渡すだけで必要な機能を実現することができます。
 
-![入力部品](/img/tmp1.PNG)
+![ボタンデモ](/img/button_demo.gif)
 
 上記の機能を備えたボタンを配置するために実装者が記述する必要があるのは次のコード 1 行になります。
 
 ```tsx
 <AxMutateButton
-  type="primary"
-  validationViews={[searchView]} // バリデーションを行いたいView(画面)を指定
-  event={searchView.searchButton} // イベントを指定
-  addClassNames={["left", "bottom"]}
-  successMessage="6割くらいの確率で成功しました" // バリデーションが成功したときに表示したいメッセージを指定
-  errorMessage="4割くらいの確率で失敗しました" // バリデーションが失敗したときに表示したいメッセージを指定
+  type="primary"
+  addClassNames={["right", "bottom"]}
+  validationViews={[view]} // バリデーション対象のViewを指定
+  validateErrorMessage="入力内容に誤りがあります" // バリデーションエラー時のメッセージを指定
+  event={view.postButton} // ボタンを押下した時に実行されるイベントを指定
+  successMessage="送信に成功しました" // イベント成功時のメッセージを指定
+  errorMessage="送信に失敗しました" // イベント失敗時のメッセージを指定
 >
-  送信
-</AxQueryButton>
+  送信
+</AxMutateButton>
 ```
 
 :::note イベントについて
-TODO: イベントの説明を軽くする。
+ボタンコンポーネントのパラメータとして登場している`event`とは、ユーザーの操作(ボタンクリックなど)に応じて実行される処理を定義したものです。主なイベント処理としては API リクエストがあります。
 イベントの詳細については、[実装ガイド](../implementation-guide/basic-of-view-and-item.md)をご確認ください。
 :::
 
