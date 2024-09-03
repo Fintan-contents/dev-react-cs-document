@@ -1,32 +1,83 @@
 ---
 sidebar_position: 2
-title: "前提知識(Fintan-Mobile)"
+title: "前提知識（1表まとめ）"
 ---
 
 # 前提知識
 
-React を用いてアプリを実装するには、JavaScript、TypeScript、React の知識が必要です。使用する技術の概要は以下のとおりです。
+省力化コンポーネントを用いてアプリケーションを開発するにあたって、以下に示す技術知識が前提として必要になります。
 
-| 技術                  | 説明                                                                                                                                                                                                     |
-| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| JavaScript            | ウェブアプリ開発に用いられるスクリプト言語です。                                                                                                                                                         |
-| TypeScript            | JavaScript に静的型付けを追加したプログラミング言語です。JavaScript と上位互換性があり、静的型付けによりコード実行前にエラーを検出できます。その性質から、開発規模が大きくなるほどその効果を発揮します。 |
-| React                 | コンポーネントベースのアプローチで、ウェブアプリ開発に用いられる JavaScript ライブラリです。                                                                                                             |
-| TanStack Query        | バックエンドの API を呼び出すために使用するライブラリです。                                                                                                                                              |
-| Ant Design            | 省力化コンポーネントの内部で使用している UI コンポーネントライブラリです。                                                                                                                               |
-| OpenAPI Specification | API の仕様を記述するための標準規格です。　                                                                                                                                                               |
-| Orval                 | OpenAPI 仕様から TypeScript の型定義と API クライアントコードを自動生成するツールです。 <br/>                                                                                                            |
+  <table>
+      <thead>
+          <tr>
+              <th>カテゴリー</th>
+              <th>技術</th>
+              <th>説明</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td rowspan="2">プログラミング言語</td>
+              <td>JavaScript</td>
+              <td>ウェブアプリ開発に用いられるスクリプト言語です。</td>
+          </tr>
+          <tr>
+              <td>TypeScript</td>
+              <td>JavaScript に静的型付けを追加したプログラミング言語です。JavaScript と上位互換性があり、静的型付けによりコード実行前にエラーを検出できます。その性質から、開発規模が大きくなるほどその効果を発揮します。</td>
+          </tr>
+          <tr>
+              <td>フロントエンドライブラリ</td>
+              <td>React</td>
+              <td>コンポーネントベースのアプローチで、ウェブアプリ開発に用いられる JavaScript ライブラリです。</td>
+          </tr>
+          <tr>
+              <td rowspan="3">UI コンポーネントライブラリ(※1)</td>
+              <td>Ant Design</td>
+              <td>エンタープライズ向けの高品質な React コンポーネントライブラリです。</td>
+          </tr>
+          <tr>
+              <td>Material UI</td>
+              <td>Google の Material Design に基づいた React コンポーネントライブラリです。</td>
+          </tr>
+          <tr>
+              <td>React Bootstrap</td>
+              <td>Bootstrap フレームワークに基づいた React コンポーネントライブラリです。</td>
+          </tr>
+          <tr>
+              <td rowspan="2">バリデーションライブラリ(※2)</td>
+              <td>Yup</td>
+              <td>JavaScript のオブジェクトスキーマバリデーションライブラリです。 柔軟で使いやすいという特徴を持ちます。</td>
+          </tr>
+          <tr>
+              <td>Zod</td>
+              <td>TypeScript のオブジェクトスキーマバリデーションライブラリです。型安全性が高く、軽量であるという特徴を持ちます。</td>
+          </tr>
+          <tr>
+              <td rowspan="3">API 関連(※3)</td>
+              <td>TanStack Query</td>
+              <td>バックエンドの API を呼び出すために使用するライブラリです。</td>
+          </tr>
+          <tr>
+              <td>OpenAPI Specification</td>
+              <td>API の仕様を記述するための標準規格です。</td>
+          </tr>
+          <tr>
+              <td>Orval</td>
+              <td>OpenAPI 仕様から TypeScript の型定義と API クライアントコードを自動生成するツールです。</td>
+          </tr>
+      </tbody>
+  </table>
+
+(※1) UI コンポーネントライブラリについては、プロジェクトで使用するライブラリ 1 つの知識があればよいです。  
+(※2) バリデーションライブラリについては、プロジェクトで使用するライブラリ 1 つの知識があればよいです。  
+(※3) API 関連については、手動生成方式(TanStack Query)か自動生成方式(OpenAPI Specification, Orval)いずれかの知識があればよいです。
+
+## 参考サイト
 
 実装例や解説を理解するために参考となるサイトを紹介します。
 用語やコード例でわからないことがあるときは参照してください。
 
-JavaScript や React の知識がない方はまず参考サイトで学習することから始めてください。
-
-## 参考サイト
-
 ### JavaScript Primer
-
-React を学ぶには JavaScript の言語知識が必須です。 JavaScript を触れたことがない人は、まずは JavaScript の知識習得からお願いします。
 
 [JavaScript Primer](https://jsprimer.net/)は、JavaScript の文法や機能を一から学べるサイトです。「第一部：基本文法」までの知識があれば、ひとまず充分です。[基本文法の目次](https://jsprimer.net/basic/)を見てわからないことがあれば学習してください。
 
