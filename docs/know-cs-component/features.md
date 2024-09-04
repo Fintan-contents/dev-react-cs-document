@@ -9,8 +9,8 @@ title: 特徴
 
 - <strong>画面項目定義が 1-2 行で書ける</strong>
 - <strong>バリデーション定義が簡潔に書ける</strong>
-- <strong>高機能なボタンを提供する</strong>
-- <strong>自動レイアウト機能</strong>
+- <strong>高機能なボタンが使える</strong>
+- <strong>自動レイアウト機能が使える</strong>
 
 これらの特徴についてそれぞれ説明をします。
 
@@ -25,6 +25,9 @@ title: 特徴
 画面には 2 種類の画面項目があります。省力化コンポーネントを用いることで、これらの画面項目をそれぞれ 1-2 行で定義することができます。
 
 ```tsx
+// ＝＝＝＝＝＝＝＝
+// 画面項目の定義
+// ＝＝＝＝＝＝＝＝
 // View 定義
 export type RegisterUserView = CsView & {
   userName: CsInputTextItem;
@@ -38,9 +41,19 @@ export const RegisterUserComponent: React.FC = () => {
     password: useCsInputPasswordItem("パスワード", useInit(""), stringRule(true, 8, 16)),
   });
 
-  return <AxLayout colSize={2} view={view} />;
+  // ＝＝＝＝＝＝＝＝
+  // 画面項目の配置
+  // ＝＝＝＝＝＝＝＝
+  return (
+    <>
+      <AxInputText item={view.userName} />
+      <AxInputPassword item={view.password} />
+    </>
+  );
 };
 ```
+
+このように入力項目を Item で定義し、コンポーネントに Item 情報を渡すことで、ラベル、バリデーションメッセージ表示領域、イベントハンドラなどを持った高機能な入力項目を配置できます。
 
 仮に画面項目を増やしたい場合でも、1 項目につき 1-2 行コードを増やすだけで実装することが可能です。
 
@@ -66,7 +79,16 @@ export const RegisterUserComponent: React.FC = () => {
     birthDay: useCsInputDateItem("生年月日", useInit("2000-01-01"), stringRule(true)),
   });
 
-  return <AxLayout colSize={2} view={view} />;
+  return (
+    <>
+      <AxInputText item={view.userName} />
+      <AxInputPassword item={view.password} />
+      <AxInputText item={view.mailAddress} />
+      <AxInputNumber item={view.age} />
+      <AxRadioBox item={view.gender} />
+      <AxInputDate item={view.birthDay} />
+    </>
+  );
 };
 ```
 
@@ -133,7 +155,7 @@ export const RegisterUserComponent: React.FC = () => {
 
 より詳しい実装方法については[バリデーション](../implementation-guide/validation.md)を参照してください。
 
-## 高機能なボタンを提供する
+## 高機能なボタンが使える
 
 高機能なボタンは、アプリケーションのユーザビリティと開発効率を大幅に向上させる重要なコンポーネントです。
 
@@ -204,7 +226,7 @@ export const PostTodoComponent = () => {
 
 より詳しい実装方法については[ボタンとイベント](../implementation-guide/button-and-event.md)を参照してください。
 
-## 自動レイアウト機能
+## 自動レイアウト機能が使える
 
 省力化コンポーネントは画面項目の自動レイアウトに対応しています。以下に示す画面は、画面項目を横に 2 個ずつ並べた時の画面です。
 
