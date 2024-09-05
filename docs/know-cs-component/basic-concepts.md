@@ -53,7 +53,7 @@ userName : CsInputTextItem {
 :::note Item クラスの種類
 
 Item クラスは入力部品の種類ごとに用意されています。例で示したテキスト入力部品に対応する Item クラスは`CsInputTextItem`でしたが、ラジオボタンには`CsRadioBoxItem`、セレクトボックスには`CsSelectBoxItem`など、入力部品の種類ごとに対応する Item クラスが用意されています。  
-省力化コンポーネントが提供する Item クラスの詳細については、[実装ガイド](../implementation-guide/item-and-component.md)をご確認ください。
+省力化コンポーネントが提供する Item クラスの詳細については、[実装ガイド](../implementation-guide/item-and-component.md)を参照してください。
 
 :::
 
@@ -78,13 +78,13 @@ userName: useCsInputTextItem("ユーザー名", useInit(""), stringRule(true, 3,
 - 画面全体のバリデーションスキーマの定義
   :::
 
-1 つの View 定義は、単数もしくは複数の画面項目を持つ 1 つの画面に対応しています。  
+1 つの View 定義は、単数もしくは複数の入力項目を持つ 1 つの画面に対応しています。  
 以下に示すのは、5 つの入力項目(ユーザー名、パスワード、メールアドレス、性別、生年月日)を持つ画面に対応した View 定義です。
 
 ```Typescript
 // Viewは1つの画面に対応する
 const view: RegisterUserView = useCsView({
-    // 単数もしくは複数のItem(画面項目)を保持する
+    // 単数もしくは複数のItem(入力項目)を保持する
     userName: useCsInputTextItem("ユーザー名", useInit(""), stringRule(true, 3, 30)),
     password: useCsInputPasswordItem("パスワード", useInit(""), stringRule(true, 8, 16)),
     mailAddress: useCsInputTextItem("メールアドレス", useInit(""), stringRule(true, 8, 20)),
@@ -110,7 +110,7 @@ const view: RegisterUserView = useCsView({
 
 ### コンポーネントの高機能化
 
-コンポーネントの内部に主要な処理や定義をあらかじめ記述しておくことで、実装者の記述量を減らせるようにします。
+入力部品やボタンといった画面項目コンポーネントの内部に主要な処理や定義をあらかじめ記述しておくことで、実装者の記述量を減らせるようにします。
 
 :::note 解消できる冗長さ
 
@@ -133,12 +133,12 @@ const view: RegisterUserView = useCsView({
 :::note 入力部品コンポーネントの種類
 入力部品コンポーネントは、入力部品（Item クラス）の種類ごとに用意されています。例で示したテキスト入力部品に対応するコンポーネントは`AxInputText`でしたが、ラジオボタンには`AxRadioBox`、セレクトボックスには`AxSelectBox`など、入力部品の種類ごとに対応するコンポーネントが用意されています。  
 なお、各入力部品コンポーネントに渡すことのできる Item クラスは、その入力部品の種類に対応する Item クラスのみになっており、型チェックの対象となります。(例：AxInputText コンポーネントには、 CsInputTextItem クラスの Item のみ渡すことが可能です。)  
-省力化コンポーネントが提供する入力部品コンポーネントの詳細については、[実装ガイド](../implementation-guide/item-and-component.md)をご確認ください。
+省力化コンポーネントが提供する入力部品コンポーネントの詳細については、[実装ガイド](../implementation-guide/item-and-component.md)を参照してください。
 
 :::
 
 :::note 参考情報：高機能な入力部品の内部実装
-入力部品の中に、ラベルやバリデーションメッセージ、イベントハンドラが実装されており、実装者が記述する必要がありません。
+入力部品の中に、ラベルやバリデーションメッセージ、イベントハンドラが実装されているため、実装者が記述する必要がありません。
 
 <details>
   <summary>コードを見る</summary>
@@ -195,11 +195,11 @@ API 呼び出し処理とバリデーション実行処理を定義したコー�
 
 :::note イベントについて
 ボタンコンポーネントのパラメータとして登場している`event`とは、ユーザーの操作(ボタンクリックなど)に応じて実行される処理を定義したものです。主なイベント処理としては API 呼び出しがあります。
-イベントの詳細については、[実装ガイド](../implementation-guide/basic-of-view-and-item.md)をご確認ください。
+イベントの詳細については、[実装ガイド](../implementation-guide/basic-of-view-and-item.md)を参照してください。
 :::
 
 :::note 参考情報：高機能なボタンの内部実装
-ボタンの内部にスピナーの表示、バリデーションの実行、API の呼び出し、メッセージの表示が実装されているため、利用者はパラメータを渡すだけで実行できます。
+ボタンの内部にスピナー表示、バリデーションの実行、API の呼び出し、メッセージ表示の機能が実装されているため、利用者はパラメータを渡すだけでそれらの機能を実現できます。
 
 <details>
   <summary>コードを見る</summary>
