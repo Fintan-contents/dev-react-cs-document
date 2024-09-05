@@ -110,9 +110,10 @@ Item 定義の第 3 引数に実施したいバリデーションルールを定
 export const RegisterUserComponent: React.FC = () => {
   // Viewの作成
   const view: RegisterUserView = useCsView({
-    userName: useCsInputTextItem("ユーザー名", useInit(""), stringRule(true, 3, 30)), // stringRuleでバリデーションを定義
-    // 中略
-    age: useCsInputNumberItem("年齢", useInit(), numberRule(true, 0)), // numberRuleでバリデーションを定義
+    // stringRuleでバリデーションを定義
+    userName: useCsInputTextItem("ユーザー名", useInit(""), stringRule(true, 3, 30)), 
+    // numberRuleでバリデーションを定義
+    age: useCsInputNumberItem("年齢", useInit(), numberRule(true, 0)), 
   });
   return <AxLayout colSize={2} view={view} />;
 };
@@ -189,10 +190,13 @@ export const usePostTodoView = (): TodosPostView => {
   return useCsView({
     title: useCsInputTextItem("タイトル", useInit(""), stringRule(true, 1, 100), RW.Editable, "タイトル"),
     description: useCsInputTextItem("説明", useInit(""), stringRule(true, 1, 100), RW.Editable, "説明"),
-    createButton: useCsRqMutateButtonClickEvent(usePostTodo()), // ボタンイベントにAPI（usePostTodo）を渡すだけ
+    // ボタンイベントにAPI（usePostTodo）を渡すだけ
+    createButton: useCsRqMutateButtonClickEvent(usePostTodo()), 
   });
 };
 ```
+
+上記のコードの`usePostTodo`はTanStack QueryまたはOrvalで自動生成されるコードです。
 
 ```tsx
 export const PostTodoComponent = () => {
