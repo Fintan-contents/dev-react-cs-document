@@ -71,13 +71,10 @@ export const RegisterUserComponent: React.FC = () => {
   const view: RegisterUserView = useCsView({
     userName: useCsInputTextItem("ユーザー名", useInit(""), stringRule(true, 3, 30)),
     password: useCsInputPasswordItem("パスワード", useInit(""), stringRule(true, 8, 16)),
-    // メールアドレス項目の追加
+    // 以下の4項目を追加
     mailAddress: useCsInputTextItem("メールアドレス", useInit(""), stringRule(true, 8, 20)),
-    // 年齢項目の追加
     age: useCsInputNumberItem("年齢", useInit(), numberRule(true, 0)),
-    // 性別項目の追加
     gender: useCsRadioBoxItem("性別", useInit(""), stringRule(true), selectOptionStrings(["男性", "女性", "回答しない"])),
-    // 生年月日項目の追加
     birthDay: useCsInputDateItem("生年月日", useInit("2000-01-01"), stringRule(true)),
   });
 
@@ -85,6 +82,7 @@ export const RegisterUserComponent: React.FC = () => {
     <>
       <AxInputText item={view.userName} />
       <AxInputPassword item={view.password} />
+      {/* 以下の4項目を追加 */}
       <AxInputText item={view.mailAddress} />
       <AxInputNumber item={view.age} />
       <AxRadioBox item={view.gender} />
