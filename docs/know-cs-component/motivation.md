@@ -150,7 +150,7 @@ React 開発においては、入力部品やボタンといった画面項目�
 ```tsx
 // 送信ボタンを実装するために必要なコード
 
-//ローディング判定用の状態変数
+// ローディング判定用の状態変数
 const [loading, setLoading] = useState(false);
 // ボタン押下後に表示するメッセージを格納する状態変数
 const [message, setMessage] = useState("");
