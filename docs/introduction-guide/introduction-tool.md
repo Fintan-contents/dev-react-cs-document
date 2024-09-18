@@ -96,12 +96,12 @@ API生成方式を選択してください。
 
 ```bash title="Terminal"
 components/frameworkフォルダをコピーするディレクトリを選択してください。
-  ↓ C:\Users\tie308841\project\cs-component\cli-demo-sample
-    → C:\Users\tie308841\project\cs-component\cli-demo-sample\.git
-    → C:\Users\tie308841\project\cs-component\cli-demo-sample\.next
-    → C:\Users\tie308841\project\cs-component\cli-demo-sample\node_modules
-    → C:\Users\tie308841\project\cs-component\cli-demo-sample\openapi
-    → C:\Users\tie308841\project\cs-component\cli-demo-sample\src
+  ↓ C:\your\projects\
+    → C:\your\projects\
+    → C:\your\projects\
+    → C:\your\projects\
+    → C:\your\projects\
+    → C:\your\projects\
 ```
 
 省力化コンポーネントに必要な資材をコピーするディレクトリ先を指定します。
