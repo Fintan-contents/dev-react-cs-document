@@ -34,7 +34,9 @@ installer-for-next.bat ＜導入したいプロジェクトの絶対パス＞
 ## パッケージマネージャの選択
 
 ```bash title="Terminal"
-パッケージマネージャを選択してください。npm or yarn
+パッケージマネージャを選択してください。
+> npm
+> yarn
 ```
 
 パッケージマネージャの選択では現在使用しているパッケージマネージャを選択してください。
@@ -42,7 +44,10 @@ installer-for-next.bat ＜導入したいプロジェクトの絶対パス＞
 ## UI コンポーネントの選択
 
 ```bash title="Terminal"
-UIコンポーネントライブラリを選択してください。Ant Design or Material UI or React Bootstrap
+UIコンポーネントライブラリを選択してください。
+> Ant Design
+> Material UI
+> React Bootstrap
 ```
 
 省力化コンポーネントでは以下の 3 つの UI コンポーネントに対応しています。
@@ -54,7 +59,9 @@ UIコンポーネントライブラリを選択してください。Ant Design o
 ## バリデーションライブラリの選択
 
 ```bash title="Terminal"
-バリデーションライブラリを選択してください。Yup or Zod
+バリデーションライブラリを選択してください
+> Yup
+> Zod
 ```
 
 省力化コンポーネントでは以下の 2 つのバリデーションライブラリをサポートしています。
@@ -65,7 +72,9 @@ UIコンポーネントライブラリを選択してください。Ant Design o
 ## API 生成方式の選択
 
 ```bash title="Terminal"
-API生成方式を選択してください。Orval or TanStack Query
+API生成方式を選択してください。
+> Orval
+> TanStack Query
 ```
 
 省力化コンポーネントでは以下の 2 つの API 生成方式ライブラリをサポートしています。
@@ -76,7 +85,9 @@ API生成方式を選択してください。Orval or TanStack Query
 ## デモ画面を含めるかの選択
 
 ```bash title="Terminal"
-デモ画面をインストールしますか？はい or いいえ
+デモ画面をインストールしますか？
+> はい
+> いいえ
 ```
 
 導入資材にデモ画面を含めるかどうかの選択ができます。
@@ -85,6 +96,12 @@ API生成方式を選択してください。Orval or TanStack Query
 
 ```bash title="Terminal"
 components/frameworkフォルダをコピーするディレクトリを選択してください。
+  ↓ C:\Users\tie308841\project\cs-component\cli-demo-sample
+    → C:\Users\tie308841\project\cs-component\cli-demo-sample\.git
+    → C:\Users\tie308841\project\cs-component\cli-demo-sample\.next
+    → C:\Users\tie308841\project\cs-component\cli-demo-sample\node_modules
+    → C:\Users\tie308841\project\cs-component\cli-demo-sample\openapi
+    → C:\Users\tie308841\project\cs-component\cli-demo-sample\src
 ```
 
 省力化コンポーネントに必要な資材をコピーするディレクトリ先を指定します。
