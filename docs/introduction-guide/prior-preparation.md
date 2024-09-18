@@ -6,37 +6,38 @@ title: 事前準備
 # 事前準備
 
 :::warning 導入ガイドを読む前に
-[導入指標](../know-cs-component/introduction-index.md)を読んでいない人は、まずそちらを読んでください。
-導入指標と自身のシステムを照らし合わせた結果、導入を決めた場合にのみこの先を読んでください。
+[導入指標](../know-cs-component/introduction-index.md)をまだ読んでいない方は、まずそちらをご覧ください。
+導入指標と自身のシステムを比較検討し、導入を決めた場合にのみ、以下の内容をお読みください。
 :::
 
-本章では省力化コンポーネントをご自身のプロジェクトに導入するための手順を解説していきます。まず事前準備として、Next.Js プロジェクトの作成と、導入ツールのダウンロードを行ってください。
+本章では、省力化コンポーネントをプロジェクトに導入するための手順を解説します。  
+まず初めに、事前準備として必要な Next.js プロジェクトの作成と導入ツールのダウンロードについて解説します。
 
 ## Next.js プロジェクトの作成
 
-:::warning Next.js プロジェクトがある場合
-既に Next.js プロジェクトがある場合は、 ##導入ツールのダウンロードに進んでください。
+:::warning プロジェクトが既にある場合
+既に Next.js プロジェクトを作成済みの方は、[導入ツールのダウンロード](#導入ツールのダウンロード)に進んでください。
 :::
-本ドキュメントでは、省力化コンポーネントを使用するアプリケーション基盤として Next.js を使用するケースについて解説します。Next.js は、React をベースにしたフレームワークであり、サーバーサイドレンダリングや静的サイト生成を簡単に実現するための強力なツールを提供します。
 
-:::info Next.js について知らない場合
-Next.js を初めて使う方には、以下の学習リソースをお勧めします。
+:::info Next.js が初めての方
+Next.js を初めて使用する方には、以下の学習リソースをお勧めします。
 
 - Next.js 公式ドキュメント：公式のドキュメントは、Next.js の基本から応用までをカバーしています。
 - Next.js チュートリアル：公式サイトにあるインタラクティブなチュートリアルで、実際にコードを書きながら学ぶことができます。
-- YouTube - Next.js Crash Course：YouTube には多くの Next.js のチュートリアル動画があり、視覚的に学びたい方に最適です。
 
 :::
 
+本ドキュメントでは、省力化コンポーネントを使用するアプリケーション基盤として Next.js を採用しています。Next.js は、React をベースにしたフレームワークであり、サーバーサイドレンダリングや静的サイト生成を簡単に実現するための強力なツールを提供します。
+
 Next.js プロジェクトを新規に作るには、ターミナルで次のコマンドを実行してください。
 
-```Terminal:Terminal
+```bash title="Terminal"
 npx create-next-app@latest
 ```
 
-コマンド実行後、各設定を聞かれますので Yes か No を選択していってください。以下に示すのは、本ドキュメントが推奨する各設定です。
+コマンドを実行するとプロンプトが表示されますので、各設定に対して Yes か No を選択してください。以下に示すのは、本ドキュメントが推奨する各設定です。
 
-```Terminal:Terminal
+```bash title="Terminal"
 √ Would you like to use TypeScript? ... Yes
 √ Would you like to use ESLint? ... Yes
 √ Would you like to use Tailwind CSS? ... Yes
@@ -47,7 +48,7 @@ npx create-next-app@latest
 
 プロジェクトの作成が完了したら、作成されたディレクトリに移動し、次のコマンドを実行してください。
 
-```Terminal:Terminal
+```bash title="Terminal"
 npm run dev
 ```
 
@@ -57,13 +58,13 @@ http://localhost:3000 にアクセスをし、以下のような画面が表示�
 
 ## 導入ツールのダウンロード
 
-省力化コンポーネントの資材をインストールするためのツールが、GitHub の dev-react-cs-component リポジトリに格納されています。
+省力化コンポーネントの資材をインストールするためのツールが、GitHub の [dev-react-cs-component](https://github.com/Fintan-contents/dev-react-cs-component) リポジトリに格納されています。
 
-Git をインストールしている場合は、以下のコマンドでリポジトリをクローンしてください。
+`Git` をインストールしている場合は、以下のコマンドでリポジトリをクローンしてください。
 
-```Terminal:Terminal
+```bash title="Terminal"
 $ git clone https://github.com/Fintan-contents/dev-react-cs-component.git
 ```
 
-Git をインストールしていない、もしくは使わない場合は、以下のリンクから zip ファイルをダウンロードし、任意の場所に解凍してください。  
-[GitHub から zip ファイルをダウンロード](../intro.md)
+`Git` をインストールしていない、もしくは使わない場合は、以下のリンクから zip ファイルをダウンロードし、任意の場所に解凍してください。  
+[GitHub から zip ファイルをダウンロード](https://github.com/Fintan-contents/dev-react-cs-component)
