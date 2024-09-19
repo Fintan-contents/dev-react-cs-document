@@ -46,8 +46,8 @@ title: インストール資材
 ```
 app
 　　|- demo
-　　　　|- DemoXxxView.tsx (Xxx は選択した UI コンポーネントライブラリ名)
-　　　　|- DemoHeader.tsx
+　　　　|- DemoXxxHeader.tsx (Xxx は選択した UI コンポーネントライブラリ名)
+　　　　|- DemoXxxMain.tsx
 　　　　|- page.tsx
 ```
 
