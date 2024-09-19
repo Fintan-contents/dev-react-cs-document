@@ -15,7 +15,7 @@ title: 導入後の作業
 :::warning 本項の対象読者
 
 本項の対象読者は、デモ画面を含めるかの選択で「はい」を選択した方です。  
-「いいえ」を選択した方は本項の作業は実施する必要がありません。
+「いいえ」を選択した方は本項の作業を実施する必要がありません。
 :::
 
 プロジェクトのルートディレクトリに移動し、次のコマンドを実行してください。
@@ -44,7 +44,7 @@ http://localhost:3000/demo にアクセスし、以下のような画面が表�
 :::warning 本項の対象読者
 
 本項の対象読者は、API 生成方式の選択で「Orval」を選択した方です。  
-「TanStack Query」を選択した方は本項の作業は実施する必要がありません。
+「TanStack Query」を選択した方は本項の作業を実施する必要がありません。
 :::
 
 本項では、Orval を用いて OpenAPI 仕様からコードを自動生成するための設定手順について解説をします。  
@@ -105,7 +105,7 @@ Orval に設定するための Axios のカスタムインスタンスを作成�
 
 - [input](https://orval.dev/reference/configuration/input)：参照元の OpenAPI 仕様
 - [output](https://orval.dev/reference/configuration/output)：自動生成されるコードに関する設定  
-  ※ `mutator` には、手順 2 で作成したカスタムインスタンスを設定してください
+  ※ `mutator` には、手順 2 で作成したカスタムインスタンスを設定してください。
 
 :::info 設定ファイルのサンプル
 省力化コンポーネントのサンプルアプリで使用している設定ファイルは[こちら](https://github.com/Fintan-contents/dev-react-cs-component)。
@@ -132,3 +132,6 @@ Orval に設定するための Axios のカスタムインスタンスを作成�
 ```bash title="Terminal"
 npm run code-gen
 ```
+
+以上で、Orval の設定は完了です。  
+自動生成されたコードを用いて実際にAPI を呼び出す方法については、[CRUD 機能の実装](../implementation-guide/crud-function-implementation.md)を参照してください。
