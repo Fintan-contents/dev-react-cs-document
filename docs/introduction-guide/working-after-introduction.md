@@ -35,8 +35,8 @@ http://localhost:3000/demo にアクセスし、以下のような画面が表�
 :::warning エラーが発生する場合
 デモ画面の中で使用している省力化コンポーネント部品の import 元が正しく設定されていない可能性があります。以下のファイルの import 文を確認し、エラーが出ている場合は正しいパスに設定し直してください。
 
-- `app/demo/DemoHeader.tsx`
-- `app/demo/DemoXxxView.tsx` (Xxx は選択した UI コンポーネントライブラリ名)
+- `app/demo/DemoXxxHeader.tsx` (Xxx は選択した UI コンポーネントライブラリ名)
+- `app/demo/DemoXxxMain.tsx`
   :::
 
 ## Orval の設定
