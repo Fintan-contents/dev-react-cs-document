@@ -39,7 +39,7 @@ title: 事前準備
 - [アプリの起動](https://nextjs.org/docs/getting-started/installation#run-the-development-server)
 
 :::warning ルーティング方式の選択
-ルーティング方式は従来の Pages Router ではなく、 <u><strong>App Router</strong></u> を選択してください。
+ルーティング方式は Pages Router ではなく、 <u><strong>App Router</strong></u> を選択してください。（Pages Router は現在非推奨となっています。）  
 次節で登場する省力化コンポーネントの導入ツールは、 App Router の使用を前提に作成されています。
 :::
 
