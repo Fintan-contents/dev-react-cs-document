@@ -14,8 +14,7 @@ title: 導入後の作業
 
 :::warning 本項の対象読者
 
-本項の対象読者は、デモ画面を含めるかの選択で「はい」を選択した方です。  
-「いいえ」を選択した方は本項の作業を実施する必要がありません。
+デモ画面を含めるかの選択で「いいえ」を選択した方はこの作業を実施する必要がありません。
 :::
 
 プロジェクトのルートディレクトリに移動し、次のコマンドを実行してください。
@@ -29,7 +28,7 @@ http://localhost:3000/demo にアクセスし、以下のような画面が表�
 ![デモ画面](../../static/img/demo-screen.png)
 
 :::info
-上記のデモ画面は、UI コンポーネントライブラリに Ant Design を選択した場合のイメージ図です。
+上記のデモ画面は、UI コンポーネントライブラリに 「Ant Design」 を選択した場合のイメージ図です。
 :::
 
 :::warning エラーが発生する場合
@@ -43,8 +42,7 @@ http://localhost:3000/demo にアクセスし、以下のような画面が表�
 
 :::warning 本項の対象読者
 
-本項の対象読者は、API 生成方式の選択で「Orval」を選択した方です。  
-「TanStack Query」を選択した方は本項の作業を実施する必要がありません。
+API 生成方式の選択で「TanStack Query」を選択した方はこの作業を実施する必要がありません
 :::
 
 本項では、Orval を用いて OpenAPI 仕様からコードを自動生成するための設定手順について解説をします。  
@@ -57,12 +55,12 @@ http://localhost:3000/demo にアクセスし、以下のような画面が表�
 
 ### 1. OpenAPI の定義ファイルを配置する
 
-OpenAPI 仕様が定義された `oepnapi.yml` をルート配下に配置します。
+OpenAPI 仕様が定義された `oepnapi.yml` を配置します。
 
 ```
 プロジェクトのルート
 　　|- openapi
-　　　　|- openapi.yml
+　　　　|- openapi.yml　※配置場所はあくまで一例です
 　　|- ...
 ```
 
@@ -92,7 +90,7 @@ Orval に設定するための Axios のカスタムインスタンスを作成�
 
 ### 3. orval.config.ts を作成する
 
-`orval.config.ts` という Orval の設定ファイルをルート配下に作成します。
+`orval.config.ts` という Orval の設定ファイルをルート直下に作成します。
 
 ```
 プロジェクトのルート
@@ -134,4 +132,4 @@ npm run code-gen
 ```
 
 以上で、Orval の設定は完了です。  
-自動生成されたコードを用いて実際にAPI を呼び出す方法については、[CRUD 機能の実装](../implementation-guide/crud-function-implementation.md)を参照してください。
+自動生成されたコードを用いて実際に API を呼び出す方法については、[CRUD 機能の実装](../implementation-guide/crud-function-implementation.md)を参照してください。
