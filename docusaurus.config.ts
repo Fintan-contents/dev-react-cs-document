@@ -1,10 +1,10 @@
-import { themes as prismThemes } from "prism-react-renderer";
-import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
+import type { Config } from "@docusaurus/types";
+import { themes as prismThemes } from "prism-react-renderer";
 
 const config: Config = {
-  title: "My Site",
-  tagline: "Dinosaurs are cool",
+  title: "react-cs-document",
+  tagline: "省力化コンポーネントのドキュメント",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
@@ -56,19 +56,20 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: "img/docusaurus-social-card.jpg",
+    image: "img/fintan-logo.jpg",
     navbar: {
-      title: "My Site",
+      title: "",
       logo: {
-        alt: "My Site Logo",
-        src: "img/logo.svg",
+        alt: "Fintan Logo",
+        src: "img/fintan-logo.jpg",
+        href: "https://fintan.jp",
       },
       items: [
         {
-          type: "docSidebar",
-          sidebarId: "tutorialSidebar",
+          type: "doc",
+          docId: "intro",
           position: "left",
-          label: "Tutorial",
+          label: "Docs",
         },
         // { to: "/blog", label: "Blog", position: "left" },
         // {
