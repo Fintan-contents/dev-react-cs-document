@@ -50,7 +50,7 @@ installer-for-next.bat ＜プロジェクトのルートディレクトリの絶
 - React Bootstrap
 
 :::info
-Ant Design は、他の UI コンポーネントライブラリと比べて提供されているコンポーネントが多いです。また現時点ではAnt Design を使用した省力化コンポーネントの開発実績も豊富です。そのため、特に指定がなければ「Ant Design」を推奨します。
+Ant Design は、他の UI コンポーネントライブラリと比べて提供されているコンポーネントが多いです。また現時点では Ant Design を使用した省力化コンポーネントの開発実績も豊富です。そのため、特に指定がなければ「Ant Design」を推奨します。
 :::
 
 ## バリデーションライブラリの選択
@@ -82,17 +82,21 @@ Orval は OpenAPI 仕様からソースコードを自動生成するツール�
 
 省力化コンポーネントの資材をコピーする先のディレクトリを選択してください。
 
-```html title="ディレクトリの選択方法"
-frameworkフォルダをコピーするディレクトリを選択してください。 ↓
-C:\Users\next-project\ → C:\Users\next-project\public ↓
-C:\Users\next-project\src → C:\Users\next-project\src\app →
-C:\Users\next-project\src\components *→
-C:\Users\next-project\src\copy-destination*
------------------------------------------------------ ＊
-リスト内を移動するには矢印キーを使用します。 ＊ [↑]
-[↓]ではリスト内を上下に移動することができます。 ＊
-[→]では選択されているディレクトリ内に入ることができます。 ＊
-ディレクトリを選択する際には[Enter]ボタンを押下してください。
+```bash title="ディレクトリの選択方法"
+frameworkフォルダをコピーするディレクトリを選択してください。
+  ↓ C:\Users\next-project\
+    → C:\Users\next-project\public
+    ↓ C:\Users\next-project\src
+      → C:\Users\next-project\src\app
+      → C:\Users\next-project\src\components
+      → C:\Users\next-project\src\copy-destination
+
+-----------------------------------------------------
+
+＊ リスト内を移動するには矢印キーを使用します。
+＊ [↑] [↓]ではリスト内を上下に移動することができます。
+＊ [→]では選択されているディレクトリ内に入ることができます。
+＊ ディレクトリを選択する際には[Enter]ボタンを押下してください。
 ```
 
 :::warning
