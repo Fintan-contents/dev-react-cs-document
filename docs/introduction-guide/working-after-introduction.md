@@ -13,7 +13,6 @@ title: 導入後の作業
 ## デモ画面の表示
 
 :::warning
-
 デモ画面を含めるかの選択で「いいえ」を選択した方はこの作業を実施する必要がありません。
 :::
 
@@ -31,7 +30,7 @@ http://localhost:3000/demo にアクセスし、以下のような画面が表�
 上記のデモ画面は、UI コンポーネントライブラリに 「Ant Design」 を選択した場合のイメージ図です。
 :::
 
-:::warning エラーが発生する場合
+:::warning 
 デモ画面の中で、省力化コンポーネント部品の import 元が正しく設定されていない可能性があります。以下のファイルの import 文を確認し、エラーが出ている場合は正しいパスに設定し直してください。
 
 - `app/demo/DemoXxxHeader.tsx` (Xxx は選択した UI コンポーネントライブラリ名)
@@ -42,7 +41,7 @@ http://localhost:3000/demo にアクセスし、以下のような画面が表�
 
 :::warning
 
-API 生成方式の選択で「TanStack Query」を選択した方はこの作業を実施する必要がありません
+API 呼び出し方式の選択で「TanStack Query」を選択した方はこの作業を実施する必要がありません
 :::
 
 Orval を用いて OpenAPI 仕様からコードを自動生成するための設定手順について解説をします。  
@@ -64,7 +63,7 @@ OpenAPI 仕様が定義された `oepnapi.yml` を配置します。
 　　|- ...
 ```
 
-:::info OpenAPI のサンプル
+:::info 
 省力化コンポーネントのサンプルアプリで使用している OpenAPI 仕様は[こちら](https://github.com/Fintan-contents/dev-react-cs-component)。  
 :::
 
@@ -83,7 +82,7 @@ Orval に設定するための Axios のカスタムインスタンスを作成�
 
 カスタムインスタンスの作成方法は[Custom instance(公式サイト)](https://orval.dev/guides/custom-axios#custom-instance)を参考にしてください。
 
-:::info Axios カスタムインスタンスのサンプル
+:::info 
 省力化コンポーネントのサンプルアプリで使用しているカスタムインスタンスは[こちら](https://github.com/Fintan-contents/dev-react-cs-component)。  
 :::
 
@@ -104,7 +103,7 @@ Orval に設定するための Axios のカスタムインスタンスを作成�
 - [output](https://orval.dev/reference/configuration/output)：自動生成されるコードに関する設定  
   ※ `mutator` には、手順 2 で作成したカスタムインスタンスを設定してください。
 
-:::info 設定ファイルのサンプル
+:::info 
 省力化コンポーネントのサンプルアプリで使用している設定ファイルは[こちら](https://github.com/Fintan-contents/dev-react-cs-component)。
 :::
 
