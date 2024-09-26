@@ -4,7 +4,6 @@ import { themes as prismThemes } from "prism-react-renderer";
 
 const config: Config = {
   title: "react-cs-document",
-  tagline: "省力化コンポーネントのドキュメント",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
