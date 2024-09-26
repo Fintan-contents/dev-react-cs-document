@@ -69,7 +69,7 @@ installer-cli\installer-for-next.bat ＜プロジェクトのルートディレ�
 - TanStack Query
 
 :::info
-Orval は OpenAPI 仕様からソースコードを自動生成するツールです。「Orval」を選択すると、導入ツールは自動生成されるコードに対応する部品をインストールします。自動生成を行わずに TanStack Query を直接使用する場合は、「TanStack Query」を選択肢してください。自動生成の方が開発効率が上がるため、 Orval を推奨しています。
+Orval は OpenAPI 仕様からソースコードを自動生成するツールです。「Orval」を選択すると、導入ツールは自動生成されるコードに対応する部品をインストールします。自動生成を行わずに TanStack Query を直接使用する場合は、「TanStack Query」を選択してください。自動生成の方が開発効率が上がるため、 Orval を推奨しています。
 :::
 
 ## デモ画面を含めるかの選択
