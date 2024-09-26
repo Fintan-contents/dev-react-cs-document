@@ -41,7 +41,7 @@ http://localhost:3000/demo にアクセスし、以下のような画面が表�
 
 :::warning
 
-API 呼び出し方式の選択で「TanStack Query」を選択した方はこの作業を実施する必要がありません
+API 呼び出し方式の選択で「TanStack Query」を選択した方はこの作業を実施する必要がありません。
 :::
 
 Orval を用いて OpenAPI 仕様からコードを自動生成するための設定手順について解説をします。  
@@ -54,7 +54,7 @@ Orval を用いて OpenAPI 仕様からコードを自動生成するための�
 
 ### 1. OpenAPI の定義ファイルを配置する
 
-OpenAPI 仕様が定義された `oepnapi.yml` を配置します。
+OpenAPI 仕様が定義された `openapi.yml` を配置します。
 
 ```
 プロジェクトのルート
