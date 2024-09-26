@@ -10,11 +10,11 @@ title: 導入ツールの実行
 ## 導入ツールのコマンド実行
 
 ターミナルを起動し、[前節](./prior-preparation.md)でダウンロードした導入ツールのルートディレクトリに移動してください。  
-次に、コマンドラインで `installer-for-next.bat` コマンドを実行してください。引数には省力化コンポーネントを導入したいプロジェクトのルートディレクトリの絶対パスを指定してください。
+次に、コマンドラインで `installer-cli\installer-for-next.bat` コマンドを実行してください。引数には省力化コンポーネントを導入したいプロジェクトのルートディレクトリの絶対パスを指定してください。
 
 ```bash title="terminal"
 cd <導入ツールのルートディレクトリ>
-installer-for-next.bat ＜プロジェクトのルートディレクトリの絶対パス＞
+installer-cli\installer-for-next.bat ＜プロジェクトのルートディレクトリの絶対パス＞
 ```
 
 :::info
@@ -76,8 +76,10 @@ Orval は OpenAPI 仕様からソースコードを自動生成するツール�
 
 デモ画面を含めるかどうかを選択してください。
 
+:::info
 デモ画面自身も省力化コンポーネントを使用して作成されているため、実装方法や動作イメージなどを確認することができます。
-初めて省力化コンポーネントを使用する方にはデモ画面を含めることをお勧めします。
+初めて省力化コンポーネントを使用する方にはデモ画面を含めることを推奨します。
+:::
 
 ## コピー先ディレクトリの選択
 
@@ -90,7 +92,7 @@ frameworkフォルダをコピーするディレクトリを選択してくだ�
     ↓ C:\Users\next-project\src
       → C:\Users\next-project\src\app
       → C:\Users\next-project\src\components
-      → C:\Users\next-project\src\copy-destination
+      → C:\Users\next-project\src\[copy-destination] ※指定したいディレクトリを選択する
 
 -----------------------------------------------------
 
