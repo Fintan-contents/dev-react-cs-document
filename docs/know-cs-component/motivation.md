@@ -113,7 +113,7 @@ const validationSchema = yup.object().shape({
 });
 ```
 
-:::note information
+:::warning
 上記に示したバリデーションスキーマは画面ごとに定義する必要があるため、例えば画面が 50 個ある場合、実装者は上記の定義を 50 画面分記述することになります。
 :::
 

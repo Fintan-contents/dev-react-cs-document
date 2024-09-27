@@ -5,7 +5,7 @@ title: 事前準備
 
 # 事前準備
 
-:::warning 導入ガイドを読む前に
+:::warning
 [導入指標](../know-cs-component/introduction-index.md)をまだ読んでいない方は、まずそちらをご覧ください。
 導入指標と自身のシステムを比較検討し、省力化コンポーネントの導入を決めた場合にのみ、以下の内容をお読みください。
 :::
@@ -19,7 +19,7 @@ title: 事前準備
 
 ## Node.js のインストール
 
-:::warning Node.js が既にインストールされている場合
+:::warning
 既に Node.js がインストールされている方は、[Next.js プロジェクトの作成](#nextjs-プロジェクトの作成)に進んでください。
 :::
 
@@ -27,7 +27,7 @@ title: 事前準備
 
 ## Next.js プロジェクトの作成
 
-:::warning プロジェクトが既にある場合
+:::warning
 既に Next.js プロジェクトを作成済みの方は、[導入ツールのダウンロード](#導入ツールのダウンロード)に進んでください。
 :::
 
@@ -38,7 +38,7 @@ title: 事前準備
 - [Next.js プロジェクトの作成](https://nextjs.org/docs/getting-started/installation#automatic-installation)
 - [アプリの起動](https://nextjs.org/docs/getting-started/installation#run-the-development-server)
 
-:::warning ルーティング方式の選択
+:::warning
 ルーティング方式は Pages Router ではなく、 <u><strong>App Router</strong></u> を選択してください。（Pages Router は現在非推奨となっています。）  
 次節で登場する省力化コンポーネントの導入ツールは、 App Router の使用を前提に作成されています。
 :::
