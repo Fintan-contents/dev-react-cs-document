@@ -35,8 +35,16 @@ export type RegisterUserView = CsView & {
 export const RegisterUserComponent: React.FC = () => {
   // Viewの作成
   const view: RegisterUserView = useCsView({
-    userName: useCsInputTextItem("ユーザー名", useInit(""), stringRule(true, 3, 30)),
-    password: useCsInputPasswordItem("パスワード", useInit(""), stringRule(true, 8, 16)),
+    userName: useCsInputTextItem(
+      "ユーザー名",
+      useInit(""),
+      stringRule(true, 3, 30)
+    ),
+    password: useCsInputPasswordItem(
+      "パスワード",
+      useInit(""),
+      stringRule(true, 8, 16)
+    ),
   });
 
   // ＝＝＝＝＝＝＝＝
@@ -69,13 +77,34 @@ export type RegisterUserView = CsView & {
 export const RegisterUserComponent: React.FC = () => {
   // Viewの作成
   const view: RegisterUserView = useCsView({
-    userName: useCsInputTextItem("ユーザー名", useInit(""), stringRule(true, 3, 30)),
-    password: useCsInputPasswordItem("パスワード", useInit(""), stringRule(true, 8, 16)),
+    userName: useCsInputTextItem(
+      "ユーザー名",
+      useInit(""),
+      stringRule(true, 3, 30)
+    ),
+    password: useCsInputPasswordItem(
+      "パスワード",
+      useInit(""),
+      stringRule(true, 8, 16)
+    ),
     // 以下の4項目を追加
-    mailAddress: useCsInputTextItem("メールアドレス", useInit(""), stringRule(true, 8, 20)),
+    mailAddress: useCsInputTextItem(
+      "メールアドレス",
+      useInit(""),
+      stringRule(true, 8, 20)
+    ),
     age: useCsInputNumberItem("年齢", useInit(), numberRule(true, 0)),
-    gender: useCsRadioBoxItem("性別", useInit(""), stringRule(true), selectOptionStrings(["男性", "女性", "回答しない"])),
-    birthDay: useCsInputDateItem("生年月日", useInit("2000-01-01"), stringRule(true)),
+    gender: useCsRadioBoxItem(
+      "性別",
+      useInit(""),
+      stringRule(true),
+      selectOptionStrings(["男性", "女性", "回答しない"])
+    ),
+    birthDay: useCsInputDateItem(
+      "生年月日",
+      useInit("2000-01-01"),
+      stringRule(true)
+    ),
   });
 
   return (
@@ -117,7 +146,11 @@ export const RegisterUserComponent: React.FC = () => {
   // Viewの作成
   const view: RegisterUserView = useCsView({
     // stringRuleでバリデーションを定義
-    userName: useCsInputTextItem("ユーザー名", useInit(""), stringRule(true, 3, 30)),
+    userName: useCsInputTextItem(
+      "ユーザー名",
+      useInit(""),
+      stringRule(true, 3, 30)
+    ),
     // numberRuleでバリデーションを定義
     age: useCsInputNumberItem("年齢", useInit(), numberRule(true, 0)),
   });
@@ -143,7 +176,7 @@ export const RegisterUserComponent: React.FC = () => {
 - 最大文字数 30 文字
 
 このように、標準的なバリデーションルールを簡潔に指定できるため、入力項目のバリデーションの定義が効率的に行えます。
-また、文字列型以外にも、数値型のバリデーションを定義する`numberRule`や、配列型のバリデーションを定義する`stringArrayRule`を使用することができます。
+また、文字列型以外にも、数値型のバリデーションを定義する `numberRule` や、配列型のバリデーションを定義する `stringArrayRule` を使用することができます。
 
 さらに、カスタムバリデーションルールを用いると「半角数字」や「全角文字」など、より詳細なバリデーションを定義することも可能です。これにより、アプリケーション固有の要件に合わせた柔軟なバリデーションが実現できます。
 
@@ -159,7 +192,11 @@ export const RegisterUserComponent: React.FC = () => {
   const view: RegisterUserView = useCsView(
     {
       // stringRuleの第4引数にカスタムバリデーションルール名を指定
-      userName: useCsInputTextItem("ユーザー名", useInit(""), stringRule(true, 3, 30, "全角文字")),
+      userName: useCsInputTextItem(
+        "ユーザー名",
+        useInit(""),
+        stringRule(true, 3, 30, "全角文字")
+      ),
       age: useCsInputNumberItem("年齢", useInit(), numberRule(true, 0)),
     },
     {
@@ -175,7 +212,7 @@ export const RegisterUserComponent: React.FC = () => {
 };
 ```
 
-この例のように、stringRule や他のルール関数の省略可能な 4 番目の引数としてカスタムバリデーションルールの名前を指定します。
+この例のように、`stringRule` や他のルール関数の省略可能な 4 番目の引数としてカスタムバリデーションルールの名前を指定します。
 
 より詳しい実装方法については[バリデーション](../implementation-guide/validation.md)を参照してください。
 
@@ -209,15 +246,27 @@ export type TodosPostView = CsView & {
 // View の初期化
 export const usePostTodoView = (): TodosPostView => {
   return useCsView({
-    title: useCsInputTextItem("タイトル", useInit(""), stringRule(true, 1, 100), RW.Editable, "タイトル"),
-    description: useCsInputTextItem("説明", useInit(""), stringRule(true, 1, 100), RW.Editable, "説明"),
+    title: useCsInputTextItem(
+      "タイトル",
+      useInit(""),
+      stringRule(true, 1, 100),
+      RW.Editable,
+      "タイトル"
+    ),
+    description: useCsInputTextItem(
+      "説明",
+      useInit(""),
+      stringRule(true, 1, 100),
+      RW.Editable,
+      "説明"
+    ),
     // ボタンイベントにAPI（usePostTodo）を渡す
     createButton: useCsRqMutateButtonClickEvent(usePostTodo()),
   });
 };
 ```
 
-上記のコードの`usePostTodo`は[TanStack Query](../prerequisite-knowledge.md#tanstack-query-公式サイト-tanstackquery) または [Orval](../prerequisite-knowledge.md#orval-公式サイト-orval) で自動生成されるコードです。
+上記のコードの `usePostTodo` は[TanStack Query](../prerequisite-knowledge.md#tanstack-query-公式サイト-tanstackquery) または [Orval](../prerequisite-knowledge.md#orval-公式サイト-orval) で自動生成されるコードです。
 
 ```tsx
 export const PostTodoComponent = () => {
@@ -263,8 +312,8 @@ export const PostTodoComponent = () => {
 <AxTableLayout view={view} colSize={2} />
 ```
 
-- `view`にレイアウトに並べたい入力項目を含む`view`定義を指定します。
-- `colSize`に数値型を指定することで、指定した数値列ごとに入力項目を並べることができます。
+- `view` にレイアウトに並べたい入力項目を含む View 定義を指定します。
+- `colSize` に数値型を指定することで、指定した数値列ごとに入力項目を並べることができます。
 
 入力項目の並びが単純で機械的なレイアウトでよい場合は自動レイアウト機能が利用できます。入力項目の並びが複雑な場合やデザインを重視する場合は手動でレイアウトします。
 
