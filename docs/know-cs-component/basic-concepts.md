@@ -257,4 +257,4 @@ export const AxMutateButton = (props: AxMutateButtonProps<TApiRequest, TApiRespo
 :::
 
 <hr/>
-次節で紹介する<strong>省力化コンポーネントの特徴</strong>では、3つのコンセプトを適用した結果、実装者にどのようなメリットがあるのかを説明します。
+次節で紹介する<strong>省力化コンポーネントの特徴</strong>では、3つのコンセプトを適用した結果、実装者にどのようなメリットがあるのかを説明をします。

@@ -57,7 +57,7 @@ title: "前提知識"
 
 :::warning
 以下に示す API 関連知識の全てを持っている必要はありません。
-プロジェクトで採用する API 生成方式/呼び出し方式に対する知識があれば十分です。
+プロジェクトで採用する API 仕様に対する知識があれば十分です。
 :::
 
 | 技術                  | 説明                                                                                    |
@@ -109,7 +109,7 @@ Yup の学習は[公式サイト](https://yup-docs.vercel.app/)を参考にし�
 
 Zod の学習は[公式サイト](https://zod.dev/#:~:text=zod-to-ts:%20Generate%20TypeScript)を参考にしてください。
 
-### TanStack Query 公式サイト (TanStackQuery)
+### TanStack Query 公式サイト (TanStack Query)
 
 TanStack Query の学習は[公式サイト](https://tanstack.com/query/latest)を参考にしてください。  
 特に [useQuery](https://tanstack.com/query/v4/docs/framework/react/reference/useQuery)、[useMutation](https://tanstack.com/query/v4/docs/framework/react/reference/useMutation) は頻繁に使用するため、目を通しておくことをお勧めします。
