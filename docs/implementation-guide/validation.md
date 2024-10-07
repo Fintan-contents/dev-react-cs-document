@@ -109,7 +109,7 @@ AntDesign の場合は AxButton, AxMutateButton, AxQueryButton の 3 種類が�
 </AxButton>
 ```
 
-### フォーカスアウトでバリデーションを実施する
+### フォーカスが外れたタイミングでバリデーションを実施する
 
 View を作るときに使用した useCsView の第二引数に validationTrigger を設定する
 
