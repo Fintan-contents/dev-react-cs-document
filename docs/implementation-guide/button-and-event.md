@@ -1,14 +1,6 @@
 ---
-sidebar_position: 5
-title: ボタンとイベント
+sidebar_position: 3
+title: APIを呼び出す
 ---
 
-# ボタンとイベント
-
-## ボタンの基本
-
-## AxMutateButton
-
-## AxQueryButton
-
-## AxButton
+# API を呼び出す

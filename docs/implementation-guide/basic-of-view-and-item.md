@@ -9,9 +9,11 @@ title: 基本的な画面を作る
 
 本節を通して、以下に示すような入力項目が複数並んだ画面を作ることができるようになります。
 
-![入力項目の定義6個](/img/screen-item-6.png)
+![入力項目の定義5個](/img/screen-item-6.png)
 
 ## 画面を定義する
+
+### View の型を定義する
 
 まず初めに View の型を定義します。 View は複数の入力項目を含んだ 1 つの画面に相当する概念です。View の役割については[コンセプト](../know-cs-component/basic-concepts.md)を参照してください。
 
@@ -25,52 +27,47 @@ type RegisterUserView = CsView & {
 };
 ```
 
-View の定義では、画面に含める入力項目の変数名と Item クラスの型をそれぞれ定義していきます。
+View の定義では、画面に配置する入力項目数分、変数名と Item クラスの型のセットを記述します。
 
 ```tsx
 type View = CsView & {
-  1つ目の項目の変数名: 1つ目の項目の入力形態に対応するItemクラスの型;
-  2つ目の項目の変数名: 2つ目の項目の入力形態に対応するItemクラスの型;
+  項目の変数名: Itemクラスの型;
   ...
 }
 ```
 
-Item は 1 つの入力項目に関する情報を集約したオブジェクトです。入力項目に関する情報の集約に関しては[コンセプト](../know-cs-component/basic-concepts.md)を参照してください。
+Item は 1 つの入力項目に対応する概念で、入力項目に関する情報を Item の中に集約します。入力項目に関する情報の集約については[コンセプト](../know-cs-component/basic-concepts.md)を参照してください。
 省力化コンポーネントでは、入力形態に対応する Item クラスが用意されています。使用可能な Item クラス一覧については、リファレンスを参照してください。
 
-<br />
-次にViewを初期化するフックを作成します。Viewの初期化は`useCsView`というメソッドを使用します。
-`useCsView`メソッドの引数には、初期化によって必要なパラメータを設定した`item`を渡す必要があります。
-Itemの初期化は`useCsXxxItem`というメソッドを使用します。
+### View を初期化するフックを作成する
+
+次に View を初期化するフックを作成します。View を初期化するためには、 `useCsView` というメソッドを使用します。  
+`useCsView` の引数には、`useCsXxxItem` というメソッドによって必要なパラメータを設定した Item を渡します。
 
 ```tsx title="Viewを初期化するフックを作成する"
 const useRegisterUserView = (): RegisterUserView => {
   return useCsView({
-    userName: useCsInputTextItem(
-      "ユーザー名",
-      useInit(""),
-      stringRule(true, 3, 30, "nameRule")
-    ),
+    userName: useCsInputTextItem("ユーザー名", useInit(""), stringRule(false)),
     password: useCsInputPasswordItem(
       "パスワード",
       useInit(""),
-      stringRule(true, 8, 16, "passwordRule")
+      stringRule(false)
     ),
     mailAddress: useCsInputTextItem(
       "メールアドレス",
       useInit(""),
-      stringRule(true, 8, 20)
+      stringRule(false)
     ),
     gender: useCsRadioBoxItem(
       "性別",
       useInit(""),
-      stringRule(true),
+      stringRule(false),
       selectOptionStrings(["男性", "女性", "回答しない"])
     ),
     birthDay: useCsInputDateItem(
       "生年月日",
       useInit("2000-01-01"),
-      stringRule(true)
+      stringRule(false)
     ),
   });
 };
@@ -79,7 +76,7 @@ const useRegisterUserView = (): RegisterUserView => {
 Item の初期化は、入力項目に関する情報をパラメータとしてメソッドに渡すことで実現できます。
 
 ```tsx
-useCsXxxItem(ラベル名, 初期値, バリデーションルール, 選択肢);
+項目の変数名: useCsXxxItem(ラベル名, 初期値, バリデーションルール, 選択肢);
 ```
 
 :::info
@@ -111,11 +108,14 @@ return (
 :::info
 手動配置のメリット
 
-- aaa
+- 複雑なレイアウトにも対応できる
+- 画面コンポーネントに item 以外の Props を渡すことができる
 
 手動配置のデメリット
 
-- bbb
+- 項目数に伴ってコードの記述量が多くなる
+- レイアウトの変更に手間がかかる
+
   :::
 
 ### 自動で配置をする
@@ -130,9 +130,11 @@ return <AxTableLayout view={view} colSize={1} />;
 :::info
 自動配置のメリット
 
-- aaa
+- 項目数が多くても、コードの記述量が多くならない
+- `colSize` を変更することでレイアウトが簡単に変えられる
 
 自動配置のデメリット
 
-- bbb
+- 画面コンポーネントに `item` 以外の Props を渡すことができない
+- 適用できる場面がシンプルなレイアウトに限定される
   :::
