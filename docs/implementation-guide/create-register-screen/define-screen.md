@@ -47,12 +47,12 @@ const useRegisterUserView = (): RegisterUserView => {
     userName: useCsInputTextItem(
       "ユーザー名",
       useInit(""),
-      stringRule(true, 3, 30, "nameRule")
+      stringRule(true, 3, 30)
     ),
     password: useCsInputPasswordItem(
       "パスワード",
       useInit(""),
-      stringRule(true, 8, 16, "passwordRule")
+      stringRule(true, 8, 16)
     ),
     gender: useCsRadioBoxItem(
       "性別",

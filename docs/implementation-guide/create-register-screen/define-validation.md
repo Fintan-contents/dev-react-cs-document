@@ -33,10 +33,10 @@ xxxRule(必須指定、最小値(※1)、最大値(※1)、カスタムバリデ
 ※2 カスタムバリデーションルール名については次節で解説します。
 ```
 
-前節で作成した画面項目に対して、バリデーションルールを設定すると以下のようになります。
+前節で定義した画面項目に対して設定されたバリデーションルールは以下の表の通りです。
 
-```tsx title="各項目にバリデーションルールを設定する"
-ronst useRegisterUserView = (): RegisterUserView => {
+```tsx title="前節で定義した画面項目"
+const useRegisterUserView = (): RegisterUserView => {
   return useCsView({
     userName: useCsInputTextItem(
       "ユーザー名",
@@ -47,11 +47,6 @@ ronst useRegisterUserView = (): RegisterUserView => {
       "パスワード",
       useInit(""),
       stringRule(true, 8, 16)
-    ),
-    mailAddress: useCsInputTextItem(
-      "メールアドレス",
-      useInit(""),
-      stringRule(true, 8, 20)
     ),
     gender: useCsRadioBoxItem(
       "性別",
@@ -64,85 +59,96 @@ ronst useRegisterUserView = (): RegisterUserView => {
       useInit("2000-01-01"),
       stringRule(true)
     ),
+    terminalNum: useCsInputNumberItem(
+      "利用端末数",
+      useInit(),
+      numberRule(false, 1, 10)
+    ),
   });
 };
 ```
 
-上の例では、「ユーザ名」に対して `stringRule(true, 3, 30)` が設定されているため、必須入力でかつ文字数は 3 文字以上 30 文字以下でなければならない、というバリデーションルールが適用されます。
+| 項目名     | バリデーションルール                    |
+| ---------- | --------------------------------------- |
+| ユーザー名 | 入力必須、3 文字以上 30 文字以下        |
+| パスワード | 入力必須、8 文字以上 16 文字以下        |
+| 性別       | 入力必須                                |
+| 生年月日   | 入力必須                                |
+| 利用端末数 | 入力任意、入力する場合は 1 以上 10 以下 |
 
-## カスタムのバリデーションルールを使う
+## カスタムルールを使ってバリデーションを定義する
 
 省力化コンポーネントでは、標準のバリデーションルールに加えて、独自のカスタムバリデーションルールを定義して使用することができます。これにより、特定のビジネスロジックや要件に応じた柔軟なバリデーションを実現できます。
 
-この節では、カスタムバリデーションルールの定義方法と、それを入力項目に適用する方法について詳しく解説します。具体的な例を通して、カスタムバリデーションルールの作成と使用方法を理解できます。
+:::info
+新しくカスタムバリデーションルールを作る方法については、拡張ガイドを参照してください。  
+ここでは既に作成済みのカスタムバリデーションルールを使用する方法についてのみ解説します。
+:::
+
+省力化コンポーネントでは、使用頻度の高いカスタムバリデーションルールを`buildInCustomValidationRules`として提供しています。`buildInCustomValidationRules` が提供するカスタムバリデーションルールの一覧はリファレンスを参照してください。
+
+カスタムバリデーションルールを使用するためには、`useCsView` の第二引数にカスタムバリデーションルールオブジェクトを指定する必要があります。
 
 ```tsx
-return useCsView({
-  userName: useCsInputTextItem(
-    "ユーザー名",
-    useInit(""),
-    stringRule(true, 3, 30, "nameRule")
-  ),
-  password: useCsInputPasswordItem(
-    "パスワード",
-    useInit(""),
-    stringRule(true, 8, 16, "passwordRule")
-  ),
-});
+import { buildInCustomValidationRules } from "//FIXME";
+
+return useCsView(
+  {
+    userName: useCsInputTextItem(
+      "ユーザー名",
+      useInit(""),
+      stringRule(true, 3, 30)
+    ),
+    // (...他の画面項目定義...)
+  },
+  {
+    customValidationRules: buildInCustomValidationRules,
+  }
+);
 ```
 
+カスタムバリデーションルールは、以下のようにキー(ルール名)とバリュー(ルール)のセットで定義されています。
+
 ```tsx
-// カスタムバリデーションルールの定義
-const customValidationRules: CustomValidationRules = {
-  // シンプルなルール
-  nameRule: customValidationRule<string>(
-    createRegExpValidator(/^[A-Za-z ]*$/),
-    (label) => `${label}は、アルファベットと空白のみ使用可能です。`
+export const buildInCustomValidationRules = {
+  半角数字: stringRule(
+    createRegExpValidator(/^\d*$/),
+    (label: string, _: string) => "半角数字で入力してください。"
   ),
-  // 複雑なルール
-  passwordRule: customValidationRule<string>(
-    (newValue, item) => {
-      if (!newValue) {
-        return true;
-      }
-      let count = 0;
-      if (/[A-Z]/.test(newValue)) {
-        count++;
-      }
-      if (/[a-z]/.test(newValue)) {
-        count++;
-      }
-      if (/[0-9]/.test(newValue)) {
-        count++;
-      }
-      if (/[!-)+-/:-@[-`{-~]/.test(newValue)) {
-        count++;
-      }
-      return count >= 4;
-    },
-    (label, newValue, item) => {
-      let requireds = ["大文字", "小文字", "数字", "記号"];
-      if (/[A-Z]/.test(newValue)) {
-        requireds = requireds.filter((e) => "大文字" !== e);
-      }
-      if (/[a-z]/.test(newValue)) {
-        requireds = requireds.filter((e) => "小文字" !== e);
-      }
-      if (/[0-9]/.test(newValue)) {
-        requireds = requireds.filter((e) => "数字" !== e);
-      }
-      if (/[!-)+-/:-@[-`{-~]/.test(newValue)) {
-        requireds = requireds.filter((e) => "記号" !== e);
-      }
-      return `${label}は、${requireds.join("、")}を含めてください`;
-    }
+  半角英字: stringRule(
+    createRegExpValidator(/^[a-zA-Z]*$/),
+    (label: string, _: string) => "半角英字で入力してください。"
   ),
+  半角英数字: stringRule(
+    createRegExpValidator(/^[a-zA-Z0-9]*$/),
+    (label: string, _: string) => "半角英数字で入力してください。"
+  ),
+  // (...省略...)
 };
 ```
 
-# バリデーションを実施する
+カスタムバリデーションルールを使用する場合は、使用したいルールのキーを、`useCsXxxItem` の中で使用している標準バリデーションルールメソッドの第四引数に指定してください。
 
-## ボタン押下でバリデーションを実施する
+```tsx
+return useCsView(
+  {
+    userName: useCsInputTextItem(
+      "ユーザー名",
+      useInit(""),
+      stringRule(true, 3, 30),
+      "半角英数字" // 第四引数にカスタムバリデーションルールのキーを指定
+    ),
+    // (...他の画面項目定義...)
+  },
+  {
+    customValidationRules: buildInCustomValidationRules,
+  }
+);
+```
+
+## バリデーションの実施方法
+
+### ボタン押下でバリデーションを実施する
 
 引数として vIEW を受け取るボタンコンポーネントを使用する
 AntDesign の場合は AxButton, AxMutateButton, AxQueryButton の 3 種類がそれにあたる。
@@ -155,24 +161,24 @@ AntDesign の場合は AxButton, AxMutateButton, AxQueryButton の 3 種類が�
 </AxButton>
 ```
 
-## フォーカスが外れたタイミングでバリデーションを実施する
+### フォーカスが外れたタイミングでバリデーションを実施する
 
-View を作るときに使用した useCsView の第二引数に validationTrigger を設定する
+`useCsView` の第二引数に `validationTrigger: "onBlur"` を指定することで、各入力フォームのフォーカスが外れたタイミングでバリデーションを実施することができるようになります。
 
 ```tsx
-useCsView(
-    {
-      title: useCsInputTextItem(
-        "タイトル",
-        useInit(""),
-        stringRule(true, 1, 10),
-        RW.Editable
-      ),
-      ...
-    },
-    {
-      validationTrigger: "onBlur",
-    }
-)
+return useCsView(
+  {
+    userName: useCsInputTextItem(
+      "ユーザー名",
+      useInit(""),
+      stringRule(true, 3, 30)
+    ),
+    // (...他の画面項目定義...)
+  },
+  {
+    validationTrigger: "onBlur",
+  }
+);
 
+// GIFを入れる //
 ```
