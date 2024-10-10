@@ -1,9 +1,9 @@
 ---
 sidebar_position: 4
-title: CRUD機能の実装
+title: Todoアプリを作る
 ---
 
-# CRUD 機能の実装
+# Todo アプリを作る
 
 ## 登録機能
 

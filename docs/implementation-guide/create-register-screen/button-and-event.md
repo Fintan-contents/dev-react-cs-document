@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: 登録処理を実施する
+title: APIを呼び出す
 ---
 
-# 登録処理を実施する
+# API を呼び出す
