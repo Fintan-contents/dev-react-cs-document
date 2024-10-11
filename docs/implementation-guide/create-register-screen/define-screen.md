@@ -20,7 +20,7 @@ type XxxView = CsView & {
 ```
 
 Item とは、 1 つの入力項目に対応する概念です。ラベルや React の状態変数、バリデーションルールなどの入力項目に関する情報を Item の中に集約します。  
-省力化コンポーネントでは、テキストボックスやラジオボタン、チェックボックスなどの様々な入力形態に対応する Item クラスを提供しています。使用可能な Item クラス一覧については、[リファレンス](../reference/_category_.json)を参照してください。
+省力化コンポーネントでは、テキストボックスやラジオボタン、チェックボックスなどの様々な入力形態に対応する Item クラスを提供しています。使用可能な Item クラス一覧については、[リファレンス](../../category/リファレンス)を参照してください。
 
 以下に示すコードでは、[本節のゴール](goal.md)で示した画面を作るための View の型を、 `RegisterUserView` という名前で定義しています。
 
@@ -83,7 +83,7 @@ const useRegisterUserView = (): RegisterUserView => {
 ```
 
 :::info
-View の初期化に使用する `useCsView` 、Item の初期化に使用する `useCsXxxItem` 、および `useCsXxxItem` の内部で使用するヘルパ関数( `useInit` や `selectOptionStrings` など)のシグネチャについては[リファレンス](../reference/_category_.json)を参照してください。
+View の初期化に使用する `useCsView` 、Item の初期化に使用する `useCsXxxItem` 、および `useCsXxxItem` の内部で使用するヘルパ関数( `useInit` や `selectOptionStrings` など)のシグネチャについては[リファレンス](../../category/リファレンス)を参照してください。
 :::
 
 :::info
