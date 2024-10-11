@@ -162,7 +162,7 @@ return useCsView(
 `validationViews` という Props に、バリデーション対象の View の変数を指定します。
 
 ```tsx title="ボタン押下でバリデーションを実施する"
-// 対象画面の View を生成する
+// 対象画面の View を初期化する
 const view = useRegisterUserView();
 
 return (
