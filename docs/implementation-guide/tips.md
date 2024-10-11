@@ -1,9 +1,11 @@
 ---
-sidebar_position: 7
+sidebar_position: 5
 title: Tips
 ---
 
-# Tips
+:::warning
+本節は執筆の途中です。
+:::
 
 ## View を定義する単位
 

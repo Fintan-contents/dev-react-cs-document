@@ -1,9 +1,11 @@
 ---
-sidebar_position: 6
-title: CRUD機能の実装
+sidebar_position: 4
+title: Todoアプリを作る
 ---
 
-# CRUD 機能の実装
+:::warning
+本節は執筆の途中です。
+:::
 
 ## 登録機能
 
