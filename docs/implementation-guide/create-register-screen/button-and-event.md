@@ -15,8 +15,10 @@ API を呼び出す際にはモックサーバーを起動する必要があり�
 ```tsx
 npm run mockoon
 ```
+
 ## イベントについて
-省力化コンポーネントで API 通信を行う際には「イベント」という概念を定義する必要があります。イベントに必要な情報を定義しボタンに渡すことで、ボタン押下時に行いたい API 処理を実装することができます。
+
+省力化コンポーネントで API 通信を行う際には「イベント」を定義する必要があります。イベントに必要な情報を定義しボタンに渡すことで、ボタン押下時に行いたい API 処理を実装することができます。
 
 更新系の API を呼び出すのか、参照系の API を呼び出すのかで使用する型、フック、ボタンが異なります。下記にそれぞれの対応表について載せています。
 | | 更新系＊2 | 参照系＊2 |
@@ -37,15 +39,19 @@ npm run mockoon
 
 ## イベントの型を定義する
 
-更新系の API 処理を行いたい場合は、イベントに`CsXxMutateButtonClickEvent`を指定します。
-
 :::info
 本ドキュメントでは Orval を推奨しているため、以降では 「Ov」 を使用した実装例を提供します。
 :::
 
-以下の例では [View の型を定義する](./define-screen.md#view-の型を定義する)で定義した View にイベントの型定義を追加しています。
+以下の例では [View の型を定義する](./define-screen.md#view-の型を定義する)で定義した View の型定義 にイベントの型定義を追加しています。
+登録 API では、イベントに`CsOvMutateButtonClickEvent`を指定します。
 
 ```tsx title="Viewにイベントの型を追加する"
+// UserRegistration型を定義
+type UserRegistration = {
+  // UserRegistration型の詳細を記述
+};
+
 type RegisterUserView = CsView & {
   userName: CsInputTextItem;
   password: CsInputPasswordItem;
@@ -53,7 +59,7 @@ type RegisterUserView = CsView & {
   birthDay: CsInputDateItem;
   terminalNum: CsInputNumberItem;
   // イベントの型定義を追加
-  createButton: CsRqMutateButtonClickEvent<
+  createButton: CsOvMutateButtonClickEvent<
     {
       data: UserRegistration; // APIのリクエストデータ型を定義
     },
@@ -70,17 +76,18 @@ type RegisterUserView = CsView & {
 ```
 
 :::info
-エラー型、コンテキスト型にはデフォルトで`unknown`型が指定されているため、省略が可能です。
+エラー型、コンテキスト型にはデフォルトで`unknown`型が指定されているため省略が可能です。
 :::
 
 ## イベントを View に定義する
 
 イベントはフックを使用することで定義することができます。
-更新系の API 処理を行いたい場合は、`useCsXxMutateButtonClickEvent`を指定します。
 
-以下の例では、[View の型を定義する](./define-screen.md#view-の型を定義する)で定義した View にイベントの初期化を追加しています。
+以下の例では、[View の型を定義する](./define-screen.md#view-の型を定義する)で定義した View にイベントの初期化処理を追加しています。登録 API では、`CsOvMutateButtonClickEvent`を指定します。
 
 ```tsx title="Viewを初期化するフックを作成する"
+// Orvalで自動生成されたAPIフック（usePostTodo）をimport
+
 const useRegisterUserView = (): RegisterUserView => {
   return useCsView({
     userName: useCsInputTextItem(
@@ -114,7 +121,7 @@ const useRegisterUserView = (): RegisterUserView => {
 };
 ```
 
-イベントの定義はイベントの変数名と Event のフックのセットで記述します。
+イベントの初期化はイベントの変数名と Event のフックのセットで記述します。
 
 ```tsx
 イベントの変数名: Eventのフック（APIフック）;
@@ -122,13 +129,13 @@ const useRegisterUserView = (): RegisterUserView => {
 
 :::info
 API フックには、実施したい API に対応した API フックを使用してください。
-本節では Orval で自動生成された API フックを使用しています。
+本節では Orval で自動生成された登録 API のフックを使用しています。
 :::
 
 ## API リクエストの設定
 
-`CsXxMutateButtonClickEvent`は`setRequest`メソッドを使用することができます。`setRequest`を使用することで API 送信時に渡したいリクエストデータを指定することができます。
-以下の例では、登録 API 送信時に入力された項目の値をリクエストデータに設定する方法を記載しています。
+`CsXxMutateButtonClickEvent`は`setRequest`メソッドを使用することができます。`setRequest`を使用することで、 API 送信時に渡したいリクエストデータを指定することができます。
+以下の例では、登録 API 送信時に入力された項目の値をリクエストデータに設定しています。
 
 ```tsx
 const view = useRegisterUserView();
@@ -145,16 +152,17 @@ view.createButton.setRequest({
 
 ## ボタンを配置する
 
-省力化コンポーネントでは API 送信に対応したボタンを提供しています。更新系の API では`AxMutateButton`を使用します。
+省力化コンポーネントでは [特徴](../../know-cs-component/features.md#高機能なボタンが使える)で述べたような高機能なボタンを提供しています。高機能なボタンは API 送信に対応した機能を持っています。
 
-以下の例では [入力フォームを配置する](./arrange-items.md)で配置した Item にボタンを追加しています。
+以下の例では [入力フォームを配置する](./arrange-items.md)で配置した Item にボタンを追加しています。登録 API では`AxMutateButton`を使用します。
 
 ```tsx
 // 自動で配置している場合
 const view = useRegisterUserView();
 return (
   <>
-    <AxTableLayout view={view} colSize={2} />;{/* ボタンを追加 */}
+    <AxTableLayout view={view} colSize={2} />
+    {/* ボタンを追加 */}
     <AxMutateButton event={view.createButton} validationViews={[view]} />
   </>
 );
@@ -170,12 +178,15 @@ return (
     <AxRadioBox item={view.gender} />
     <AxInputDate item={view.birthDay} />
     <AxInputNumber item={view.terminalNum} />
-    <AxMutateButton event={view.createButton} validationViews={[view]} /> // ボタンを追加
+    {/* ボタンを追加 */}
+    <AxMutateButton event={view.createButton} validationViews={[view]} />
   </>
 );
 ```
 
-- `AxMutateButton`の引数には View 定義で指定したイベントを渡す必要があります。
-- バリデーションを実施したい場合は`validationViews`にバリデーションを実施したい`View`を渡す必要があります。
+`AxMutateButton`には以下の Props を指定しています。
+
+- `event`：`view`で定義したイベント
+- `validationViews`：バリデーション対象の`view`
 
 「ボタンが追加された画面」
