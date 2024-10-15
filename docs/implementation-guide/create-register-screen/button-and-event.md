@@ -42,6 +42,7 @@ npm run mockoon
 :::info
 本ドキュメントでは Orval を推奨しているため、以降では 「Ov」 を使用した実装例を提供します。
 :::
+イベントの型定義には省力化コンポーネントが提供している型を使用する必要があります。
 
 以下の例では [View の型を定義する](./define-screen.md#view-の型を定義する)で定義した View の型定義 にイベントの型定義を追加しています。
 登録 API では、イベントに`CsOvMutateButtonClickEvent`を指定します。
@@ -71,7 +72,6 @@ type RegisterUserView = CsView & {
 イベントの型定義はイベントの変数名と Event のクラス型のセットで記述します。
 
 ```tsx
-// CsXxMutateButtonClickEvent
 イベントの変数名：CsXxMutateButtonClickEvent<リクエストデータ型, レスポンスデータ型, エラー型, コンテキスト型>
 ```
 
@@ -135,7 +135,7 @@ API フックには、実施したい API に対応した API フックを使用
 ## API リクエストの設定
 
 `CsXxMutateButtonClickEvent`は`setRequest`メソッドを使用することができます。`setRequest`を使用することで、 API 送信時に渡したいリクエストデータを指定することができます。
-以下の例では、登録 API 送信時に入力された項目の値をリクエストデータに設定しています。
+以下の例では、入力された項目の値をリクエストデータに設定しています。
 
 ```tsx
 const view = useRegisterUserView();
