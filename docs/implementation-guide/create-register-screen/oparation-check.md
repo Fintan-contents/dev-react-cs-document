@@ -1,52 +1,105 @@
 ---
-sidebar_position: 8
-title: 動作確認
+sidebar_position: 5
+title: イベントを定義する
 ---
 
-これまでの設定によって必要な処理を実装することができました。
-ここからは設定した内容についての動作確認を行っていきます。
+省力化コンポーネントで API 通信を行う際は「イベント」を定義する必要があります。ここでいう「イベント」とは、特定の操作（ボタンのクリックなど）をトリガーとして実行される API 処理（リクエストの送信、レスポンスの処理など）をまとめたものです。イベントに必要な情報を定義しボタンに渡すことで、ボタン押下時に行いたい API 処理を実装することができます。
 
-## バリデーションの実施
+更新系の API（POST, PUT, DELETE) を呼び出すのか、参照系の API (GET, 検索系）を呼び出すのかで使用する型、フック、ボタンが異なります。下記にそれぞれの対応表について載せています。
+| | 型*¹ | フック*¹ | ボタン |
+| ------ | ----------------------------- | -------------------------------- | ---------------- |
+| GET | `CsXxxQueryLoadEvent` | `useCsXxxQueryLoadEvent` | なし |
+| POST, PUT, DELETE | `CsXxxMutateButtonClickEvent` | `useCsXxxMutateButtonClickEvent` | `AxMutateButton` |
+| 検索系 | `CsXxxQueryButtonClickEvent` | `useCsXxxQueryButtonClickEvent` | `AxQueryButton` |
 
-[バリデーションを定義する](./define-validation.md)で設定した内容についての動作確認を行います。
-入力項目には何も設定せずに「登録」ボタンを押下してください。
-以下のような画面が表示されれば成功です。
-
-「バリデーションが実施された画像」
-
-最小値や最大値、カスタムバリデーションで設定したバリデーションルールが適切に表示されているか確認をしてください。
-
-## API 送信の確認
-
-指定した API が送信されているかの動作確認を行います。API 通信が適切に行えているかを確認する方法は、「開発者ツールで確認する」場合と「モックサーバーで確認する」場合の 2 通りがあります。
-
-以下のような、入力項目にバリデーションが実施されないような値を入力してください。
-
-「入力項目に適切な値が入力された画像」
-
-- ### 開発者ツールで確認する
+＊1：Xxx に入る文字は API 生成方式で選択した項目によって異なります。[API 呼び出し方式の選択](../../introduction-guide/introduction-tool.md#api-呼び出し方式の選択)で「Orval(シンプル版)」もしくは「TanStack Query」 を選択された方は「Rq」、「Orval(拡張版)」 を選択された方は 「RqA」 を使用します。
 
 :::info
-本ドキュメントでは「Google Chrome」を使用した画面例を示しますが、ほとんどのブラウザでも同様に確認が可能です。
+本節では登録 API を題材にした API 呼び出し方法の説明をします。CRUD 機能全般について知りたい方は[Todo アプリを作る](../crud-function-implementation.md)を参照してください。
 :::
-画面を表示している状態で開発者ツールを開き、ネットワークタブを選択してください。ネットワークタブを開いた状態で画面の「登録」ボタンを押下してください。
-ネットワークタブに以下のような通信履歴が表示されていたら成功です。
 
-「ネットワークタブの画像」
-
-「Headers」タグではリクエスト情報、「Payload」タグではリクエスト時に送信されたデータを確認することができます。必要に応じて確認をしてください。
-
-- ### モックサーバーで確認する
-
-モックサーバーで、、
+## イベントの型を定義する
 
 :::info
-省力化コンポーネントが提供するボタンには API 送信時にスピナーが表示されます。これにより API の通信中であることを視覚的に理解することができます。
-
-![ボタンデモ](/img/button_demo.gif)
+本ドキュメントでは 「Orval（シンプル版）」 を推奨しているため、以降では 「Rq」 を使用した実装例を提供します。
 :::
+イベントの型定義はイベントの変数名と Event のクラス型のセットで記述します。
 
----
+```tsx
+イベントの変数名：CsXxxMutateButtonClickEvent<リクエストデータ型, レスポンスデータ型, エラー型*¹, コンテキスト型*¹>
 
-動作確認については以上になります。
-[本節のゴール](./goal.md)で示した内容が実現されているかどうか、改めて確認をしてください。
+＊1：エラー型、コンテキスト型にはデフォルトで`unknown`型が指定されているため省略が可能です。
+```
+
+以下の例では [View の型を定義する](./define-screen.md#view-の型を定義する)で定義した View の型定義 にイベントの型定義を追加しています。
+登録 API ではイベントに`CsRqMutateButtonClickEvent`を指定します。
+
+```tsx title="Viewにイベントの型を追加する"
+// Orvalで自動生成されたUserRegistrationの型定義をimport
+
+type RegisterUserView = CsView & {
+  userName: CsInputTextItem;
+  password: CsInputPasswordItem;
+  gender: CsRadioBoxItem;
+  birthDay: CsInputDateItem;
+  terminalNum: CsInputNumberItem;
+  // イベントの型定義を追加
+  createButton: CsRqMutateButtonClickEvent<
+    {
+      data: UserRegistration; // APIのリクエストデータ型を定義
+    },
+    void // APIのレスポンスデータ型を定義
+  >;
+};
+```
+
+## イベントを View に定義する
+
+イベントの初期化はイベントの変数名と Event のフックのセットで記述します。Event の引数には API を呼び出す API フックを指定する必要があります。
+
+```tsx
+イベントの変数名: Eventのフック（APIフック）;
+```
+
+以下の例では、[View の初期化を定義する](./define-screen.md#view-の初期化を定義する)で定義した View にイベントの初期化処理を追加しています。登録 API では Event のフックに`useCsRqMutateButtonClickEvent()`、API フックに`usePostUserInfo()`を指定します。
+
+```tsx title="Viewを初期化する"
+// Orvalで自動生成されたAPIフック（usePostUserInfo）をimport
+
+const useRegisterUserView = (): RegisterUserView => {
+  return useCsView({
+    userName: useCsInputTextItem(
+      "ユーザー名",
+      useInit(""),
+      stringRule(true, 3, 30, "nameRule")
+    ),
+    password: useCsInputPasswordItem(
+      "パスワード",
+      useInit(""),
+      stringRule(true, 8, 16, "passwordRule")
+    ),
+    gender: useCsRadioBoxItem(
+      "性別",
+      useInit(""),
+      stringRule(true),
+      selectOptionStrings(["男性", "女性", "回答しない"])
+    ),
+    birthDay: useCsInputDateItem(
+      "生年月日",
+      useInit("2000-01-01"),
+      stringRule(true)
+    ),
+    terminalNum: useCsInputNumberItem(
+      "利用端末数",
+      useInit(),
+      numberRule(false, 1, 10)
+    ),
+    createButton: useCsRqMutateButtonClickEvent(usePostUserInfo()), // イベントの初期化処理の追加
+  });
+};
+```
+
+:::info
+API フックには、実施したい API に対応した API フックを使用してください。
+本節では Orval で自動生成された登録 API のフックを使用しています。
+:::
