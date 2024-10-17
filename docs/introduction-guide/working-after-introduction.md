@@ -69,7 +69,7 @@ OpenAPI 仕様が定義された `openapi.yml` を配置します。
 
 ### 2. orval.config.ts を作成する
 
-`orval.config.ts` という Orval の設定ファイルをルート直下に作成します。
+`orval.config.ts` という Orval の設定ファイルをプロジェクトのルート直下に作成します。
 
 ```
 プロジェクトのルート
