@@ -58,12 +58,12 @@ type RegisterUserView = CsView & {
 イベントの初期化はイベントの変数名と Event のフックのセットで記述します。Event の引数には API を呼び出す API フックを指定する必要があります。
 
 ```tsx
-イベントの変数名: Eventのフック（APIフック）;
+イベントの変数名: Eventのフック（APIフック）
 ```
 
 以下の例では、[View の初期化を定義する](./define-screen.md#view-の初期化を定義する)で定義した View にイベントの初期化処理を追加しています。登録 API では Event のフックに`useCsRqMutateButtonClickEvent()`、API フックに`usePostUserInfo()`を指定します。
 
-```tsx title="Viewを初期化する"
+```tsx title="ViewのcreateButtonの初期化を追加する"
 // Orvalで自動生成されたAPIフック（usePostUserInfo）をimport
 
 const useRegisterUserView = (): RegisterUserView => {
@@ -100,6 +100,6 @@ const useRegisterUserView = (): RegisterUserView => {
 ```
 
 :::info
-API フックには、実施したい API に対応した API フックを使用してください。
-本節では Orval で自動生成された登録 API のフックを使用しています。
+useCsRqMutateButtonClickEventの引数パラメータには、実行する API に対応した useMutationのカスタムフックを指定してください。
+本例では Orval で自動生成されたユーザー登録のAPI のカスタムフックを指定しています。
 :::

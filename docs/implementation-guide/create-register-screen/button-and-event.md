@@ -5,7 +5,7 @@ title: APIを呼び出す
 
 ## API リクエストの設定
 
-`useCsXxxMutateButtonClickEvent`は`setRequest`メソッドを使用することができます。`setRequest`を使用することで、 API 送信時に渡したいリクエストデータを指定することができます。
+API 送信時に渡したいリクエストデータを指定したい場合は`useCsXxxMutateButtonClickEvent`の`setRequest`メソッドを使用します。`setRequest`を使用することで、 API 送信時に渡したいリクエストデータを指定することができます。
 以下の例では、入力された項目の値をリクエストデータに設定しています。
 
 ```tsx
