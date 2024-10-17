@@ -30,7 +30,7 @@ http://localhost:3000/demo にアクセスし、以下のような画面が表�
 上記のデモ画面は、UI コンポーネントライブラリに 「Ant Design」 を選択した場合のイメージ図です。
 :::
 
-:::warning 
+:::warning
 デモ画面の中で、省力化コンポーネント部品の import 元が正しく設定されていない可能性があります。以下のファイルの import 文を確認し、エラーが出ている場合は正しいパスに設定し直してください。
 
 - `app/demo/DemoXxxHeader.tsx` (Xxx は選択した UI コンポーネントライブラリ名)
@@ -44,7 +44,7 @@ http://localhost:3000/demo にアクセスし、以下のような画面が表�
 API 呼び出し方式の選択で「TanStack Query」を選択した方はこの作業を実施する必要がありません。
 :::
 
-Orval を用いて OpenAPI 仕様からコードを自動生成するための設定手順について解説をします。  
+Orval を用いて OpenAPI 仕様からコードを自動生成するための設定手順について解説します。  
 設定手順は以下の 4 ステップです。
 
 1. OpenAPI の定義ファイルを配置する
@@ -63,14 +63,35 @@ OpenAPI 仕様が定義された `openapi.yml` を配置します。
 　　|- ...
 ```
 
-:::info 
-省力化コンポーネントのサンプルアプリで使用している OpenAPI 仕様は[こちら](https://github.com/Fintan-contents/dev-react-cs-component)。  
+:::info
+省力化コンポーネントのサンプルアプリで使用している OpenAPI 仕様は[こちら](https://github.com/Fintan-contents/dev-react-cs-example/tree/develop)。  
 :::
 
-### 2. Axios のカスタムインスタンスを作成する
+### 2. orval.config.ts を作成する
+
+`orval.config.ts` という Orval の設定ファイルをプロジェクトのルート直下に作成します。
+
+```
+プロジェクトのルート
+　　|- orval.config.ts
+　　|- ...
+```
+
+設定ファイルに記述する内容は[Configuration(公式サイト)](https://orval.dev/reference/configuration/overview)を参照してください。  
+最低限設定する必要がある項目は `input` と `output` です。
+
+- [input](https://orval.dev/reference/configuration/input)：参照元の OpenAPI 仕様
+- [output](https://orval.dev/reference/configuration/output)：自動生成されるコードに関する設定  
+  ※ `mutator` には、手順 3 で作成するカスタムインスタンスを設定してください。
+
+:::info
+省力化コンポーネントのサンプルアプリで使用している設定ファイルは[こちら](https://github.com/Fintan-contents/dev-react-cs-example/tree/develop)。
+:::
+
+### 3. Axios のカスタムインスタンスを作成する
 
 Orval に設定するための Axios のカスタムインスタンスを作成します。
-カスタムインスタンスを作成することで、API リクエストに必要な共通設定を一元化することができます。
+カスタムインスタンスを作成することで、API リクエストに必要な共通設定を一元化できます。
 
 ```
 プロジェクトのルート
@@ -80,31 +101,10 @@ Orval に設定するための Axios のカスタムインスタンスを作成�
 　　　　　　　　|- customInstance.ts　※配置場所はあくまで一例です
 ```
 
-カスタムインスタンスの作成方法は[Custom instance(公式サイト)](https://orval.dev/guides/custom-axios#custom-instance)を参考にしてください。
+カスタムインスタンスの作成方法は[Custom instance(公式サイト)](https://orval.dev/guides/custom-axios#custom-instance)を参照してください。
 
-:::info 
-省力化コンポーネントのサンプルアプリで使用しているカスタムインスタンスは[こちら](https://github.com/Fintan-contents/dev-react-cs-component)。  
-:::
-
-### 3. orval.config.ts を作成する
-
-`orval.config.ts` という Orval の設定ファイルをルート直下に作成します。
-
-```
-プロジェクトのルート
-　　|- orval.config.ts
-　　|- ...
-```
-
-設定ファイルに記述する内容は[Configuration(公式サイト)](https://orval.dev/reference/configuration/overview)を参考にしてください。  
-最低限設定する必要がある項目は `input` と `output` です。
-
-- [input](https://orval.dev/reference/configuration/input)：参照元の OpenAPI 仕様
-- [output](https://orval.dev/reference/configuration/output)：自動生成されるコードに関する設定  
-  ※ `mutator` には、手順 2 で作成したカスタムインスタンスを設定してください。
-
-:::info 
-省力化コンポーネントのサンプルアプリで使用している設定ファイルは[こちら](https://github.com/Fintan-contents/dev-react-cs-component)。
+:::info
+省力化コンポーネントのサンプルアプリで使用しているカスタムインスタンスは[こちら](https://github.com/Fintan-contents/dev-react-cs-example/tree/develop)。  
 :::
 
 ### 4. コードを自動生成する
