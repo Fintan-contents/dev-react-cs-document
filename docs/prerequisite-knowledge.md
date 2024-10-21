@@ -30,7 +30,7 @@ title: "前提知識"
 
 ### UI コンポーネントライブラリ
 
-:::warning 注意
+:::warning
 以下に示す 3 つの UI コンポーネントライブラリ全ての知識を持っている必要はありません。
 プロジェクトで使用する UI コンポーネントライブラリに対する知識があれば十分です。
 :::
@@ -43,7 +43,7 @@ title: "前提知識"
 
 ### バリデーションライブラリ
 
-:::warning 注意
+:::warning
 以下に示す 2 つのバリデーションライブラリ両方の知識を持っている必要はありません。
 プロジェクトで使用するバリデーションライブラリに対する知識があれば十分です。
 :::
@@ -55,9 +55,9 @@ title: "前提知識"
 
 ### API 関連知識
 
-:::warning 注意
+:::warning
 以下に示す API 関連知識の全てを持っている必要はありません。
-プロジェクトで採用する API 生成方式に対する知識があれば十分です。
+プロジェクトで採用する API 仕様に対する知識があれば十分です。
 :::
 
 | 技術                  | 説明                                                                                    |
@@ -109,7 +109,7 @@ Yup の学習は[公式サイト](https://yup-docs.vercel.app/)を参考にし�
 
 Zod の学習は[公式サイト](https://zod.dev/#:~:text=zod-to-ts:%20Generate%20TypeScript)を参考にしてください。
 
-### TanStack Query 公式サイト (TanStackQuery)
+### TanStack Query 公式サイト (TanStack Query)
 
 TanStack Query の学習は[公式サイト](https://tanstack.com/query/latest)を参考にしてください。  
 特に [useQuery](https://tanstack.com/query/v4/docs/framework/react/reference/useQuery)、[useMutation](https://tanstack.com/query/v4/docs/framework/react/reference/useMutation) は頻繁に使用するため、目を通しておくことをお勧めします。
@@ -118,7 +118,7 @@ TanStack Query の学習は[公式サイト](https://tanstack.com/query/latest)�
 
 OpenAPI Specification の学習は[公式サイト](https://www.openapis.org/what-is-openapi)を参考にしてください。
 
-:::note OpenAPI Specification の見方について
+:::info
 [Swagger Editor](https://editor.swagger.io/)を使用することで API のリクエスト、レスポンスなどの詳細を確認できます。
 API 仕様の内容を[Swagger Editor](https://editor.swagger.io/)のエディターに貼るとプレビューにその内容が表示されます。
 
