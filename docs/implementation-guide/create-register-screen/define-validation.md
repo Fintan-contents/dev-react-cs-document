@@ -92,24 +92,26 @@ const useRegisterUserView = (): RegisterUserView => {
 
 カスタムバリデーションルールを使用するためには、`useCsView` の第二引数にカスタムバリデーションルールオブジェクトを指定する必要があります。
 
-```tsx title="カスタムバリデーションルールを使用する"
+```tsx title="カスタムバリデーションルールを指定する"
 import { buildInCustomValidationRules } from "@/framework/validation-rules";
 
-return useCsView(
-  {
-    userName: useCsInputTextItem(
-      "ユーザー名",
-      useInit(""),
-      stringRule(true, 3, 30),
-    ),
-    // (...他の画面項目定義...)
-  },
-  // highlight-start
-  {
-    customValidationRules: buildInCustomValidationRules,
-  },
-  // highlight-end
-);
+const useRegisterUserView = (): RegisterUserView => {
+  return useCsView(
+    {
+      userName: useCsInputTextItem(
+        "ユーザー名",
+        useInit(""),
+        stringRule(true, 3, 30),
+      ),
+      // (...他の画面項目定義...)
+    },
+    // highlight-start
+    {
+      customValidationRules: buildInCustomValidationRules,
+    },
+    // highlight-end
+  );
+};
 ```
 
 カスタムバリデーションルールオブジェクトは、以下のようにルール名（キー）とルールメソッド（バリュー）のセットで定義されます。
@@ -135,70 +137,40 @@ export const buildInCustomValidationRules = {
 カスタムバリデーションルールを使用する場合は、使用したいルールのルール名（キー）を、`useCsXxxItem` の中で使用しているバリデーションルールメソッドの第四引数に指定してください。
 
 ```tsx title="カスタムバリデーションルールのキーを指定する"
-return useCsView(
-  {
-    userName: useCsInputTextItem(
-      "ユーザー名",
-      useInit(""),
-      // highlight-next-line
-      stringRule(true, 3, 30, "半角英数字"),
-    ),
-    // (...他の画面項目定義...)
-  },
-  {
-    customValidationRules: buildInCustomValidationRules,
-  },
-);
+const useRegisterUserView = (): RegisterUserView => {
+  return useCsView(
+    {
+      userName: useCsInputTextItem(
+        "ユーザー名",
+        useInit(""),
+        // highlight-next-line
+        stringRule(true, 3, 30, "半角英数字"),
+      ),
+      // (...他の画面項目定義...)
+    },
+    {
+      customValidationRules: buildInCustomValidationRules,
+    },
+  );
+};
 ```
 
-## バリデーションの実施方法
+:::note
 
-バリデーションを実施する方法として以下の 2 つがあります。
+## バリデーションの実行順序
 
-- ボタン押下時にバリデーションを実施する
-- 入力フォームのフォーカスアウト時にバリデーションを自動で実施する
+バリデーションは以下の順序で実施されます。なお、バリデーションエラーが発生したタイミングで、以降のチェックは実施されません。  
+例えば、必須チェックエラーとなった場合には、以降のカスタムバリデーション、桁数バリデーションは行われません。
 
-※上記の 2 つは併用できます。
+| 実行順 | チェック種類           | チェック内容                   |
+| ------ | ---------------------- | ------------------------------ |
+| 1      | 必須                   | 項目の有無                     |
+| 2      | カスタムバリデーション | 文字種や形式など               |
+| 3      | 桁数                   | 項目の長さ ※配列の場合は要素数 |
 
-### ボタン押下時にバリデーションを実施する
+例として、 `stringRule(true, 3, 30, "半角英数字")` のルールが設定された項目のバリデーション順序を以下に示します。  
+上記の表の順序に従い、桁数チェックよりも先に文字種チェックが行われます。
 
-省力化コンポーネントが提供するボタン部品を使用することで、ボタン押下時にバリデーションを実施できます。
-`validationViews` という Props に、バリデーション対象の View の変数を指定します。
+![バリデーション実施順序](../../../static/img/validation_order.gif)
 
-```tsx title="ボタン押下でバリデーションを実施する"
-// 対象画面の View を初期化する
-const view = useRegisterUserView();
-
-return (
-  {/* Ant Design を想定して Ax から始まるボタン部品を使用 */}
-  <AxButton validationViews={[view]}>
-    バリデーション実行
-  </AxButton>
-)
-```
-
-![ボタン押下によるバリデーション実施](../../../static/img/validation_onclick.gif)
-
-### 入力フォームのフォーカスアウト時にバリデーションを自動で実施する
-
-`useCsView` の第二引数に `validationTrigger: "onBlur"` を指定することで、各入力フォームのフォーカスが外れたタイミングでバリデーションを実施できます。
-
-```tsx
-return useCsView(
-  {
-    userName: useCsInputTextItem(
-      "ユーザー名",
-      useInit(""),
-      stringRule(true, 3, 30),
-    ),
-    // (...他の画面項目定義...)
-  },
-  // highlight-start
-  {
-    validationTrigger: "onBlur",
-  },
-  // highlight-end
-);
-```
-
-![ボタン押下によるバリデーション実施](../../../static/img/validation_onblur.gif)
+:::
