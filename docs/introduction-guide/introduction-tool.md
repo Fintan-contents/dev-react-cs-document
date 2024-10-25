@@ -45,7 +45,7 @@ installer-cli\installer-for-next.bat ＜プロジェクトのルートディレ�
 
 以下の 3 つの UI コンポーネントライブラリから選択してください。
 
-- Ant Design（デフォルト）
+- Ant Design ※デフォルト
 - Material UI
 - React Bootstrap
 
@@ -58,18 +58,24 @@ installer-cli\installer-for-next.bat ＜プロジェクトのルートディレ�
 
 以下の 2 つのバリデーションライブラリから選択してください。
 
-- Yup（デフォルト）
+- Yup ※デフォルト
 - Zod
 
 ## API 呼び出し方式の選択
 
-以下の 2 つの API 呼び出し方式から選択してください。
+以下の 3 つの API 呼び出し方式から選択してください。
 
-- Orval（デフォルト）
+- Orval（シンプル版）※デフォルト
+- Orval（拡張版）
 - TanStack Query
 
 :::info
+
 Orval は OpenAPI 仕様からソースコードを自動生成するツールです。「Orval」を選択すると、導入ツールは自動生成されるコードに対応する部品をインストールします。自動生成を行わずに TanStack Query を直接使用する場合は、「TanStack Query」を選択してください。自動生成の方が開発効率が上がるため、 Orval を推奨します。
+:::
+
+:::info
+Orval（シンプル版）と Orval（拡張版）の違いは、mutator に設定する Axios カスタムインスタンスの違いです。それぞれの Axios カスタムインスタンスの詳細については、[Orval の設定](./working-after-introduction.md#3-axios-のカスタムインスタンスを作成する)を参照してください。
 :::
 
 ## デモ画面を含めるかの選択
