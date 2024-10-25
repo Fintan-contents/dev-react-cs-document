@@ -98,7 +98,7 @@ export const RegisterUserComponent: React.FC = () => {
 
 入力項目を簡潔に書けることで、項目が増えた場合でもコードが冗長にならず、保守性が向上します。
 
-より詳しい実装方法については[View と Item の基本](../implementation-guide/basic-of-view-and-item.md)を参照してください。
+より詳しい実装方法については[実装ガイド](../category/実装ガイド)を参照してください。
 
 ## バリデーションの定義が簡潔に書ける
 
@@ -177,7 +177,7 @@ export const RegisterUserComponent: React.FC = () => {
 
 この例のように、`stringRule` や他のルール関数の省略可能な 4 番目の引数としてカスタムバリデーションルールの名前を指定します。
 
-より詳しい実装方法については[バリデーション](../implementation-guide/validation.md)を参照してください。
+より詳しい実装方法については[バリデーションを定義する](../implementation-guide/create-register-screen/define-validation.md)を参照してください。
 
 ## 高機能なボタンが使える
 
@@ -249,7 +249,7 @@ export const PostTodoComponent = () => {
 };
 ```
 
-より詳しい実装方法については[ボタンとイベント](../implementation-guide/button-and-event.md)を参照してください。
+より詳しい実装方法については[実装ガイド](../category/実装ガイド)を参照してください。
 
 ## 自動レイアウト機能が使える
 
@@ -268,4 +268,4 @@ export const PostTodoComponent = () => {
 
 入力項目の並びが単純で機械的なレイアウトでよい場合は自動レイアウト機能が利用できます。入力項目の並びが複雑な場合やデザインを重視する場合は手動でレイアウトします。
 
-より詳しい実装方法については[自動レイアウト](../implementation-guide/item-and-component.md)を参照してください。
+より詳しい実装方法については[入力項目を配置する](../implementation-guide/create-register-screen/arrange-items.md)を参照してください。
