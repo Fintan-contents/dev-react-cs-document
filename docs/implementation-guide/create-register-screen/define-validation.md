@@ -39,27 +39,32 @@ const useRegisterUserView = (): RegisterUserView => {
     userName: useCsInputTextItem(
       "ユーザー名",
       useInit(""),
+      // highlight-next-line
       stringRule(true, 3, 30),
     ),
     password: useCsInputPasswordItem(
       "パスワード",
       useInit(""),
+      // highlight-next-line
       stringRule(true, 8, 16),
     ),
     gender: useCsRadioBoxItem(
       "性別",
       useInit(""),
+      // highlight-next-line
       stringRule(true),
       selectOptionStrings(["男性", "女性", "回答しない"]),
     ),
     birthDay: useCsInputDateItem(
       "生年月日",
       useInit("2000-01-01"),
+      // highlight-next-line
       stringRule(true),
     ),
     terminalNum: useCsInputNumberItem(
       "利用端末数",
       useInit(),
+      // highlight-next-line
       numberRule(false, 1, 10),
     ),
   });
@@ -99,10 +104,11 @@ return useCsView(
     ),
     // (...他の画面項目定義...)
   },
+  // highlight-start
   {
-    // カスタムバリデーションルールオブジェクトを指定
     customValidationRules: buildInCustomValidationRules,
   },
+  // highlight-end
 );
 ```
 
@@ -134,7 +140,7 @@ return useCsView(
     userName: useCsInputTextItem(
       "ユーザー名",
       useInit(""),
-      // ルールメソッドの第四引数にカスタムバリデーションルールのキーを指定
+      // highlight-next-line
       stringRule(true, 3, 30, "半角英数字"),
     ),
     // (...他の画面項目定義...)
@@ -187,9 +193,11 @@ return useCsView(
     ),
     // (...他の画面項目定義...)
   },
+  // highlight-start
   {
     validationTrigger: "onBlur",
   },
+  // highlight-end
 );
 ```
 
