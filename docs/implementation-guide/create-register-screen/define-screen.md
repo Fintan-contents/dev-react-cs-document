@@ -34,17 +34,17 @@ type RegisterUserView = CsView & {
 };
 ```
 
-## View の初期化を定義する
+## View を初期化する
 
-View を初期化するためには、 `useCsView` という省力化コンポーネントのフックを使用します。 `useCsView` の引数には、`useCsXxxItem*` というフックを使って必要なパラメータを設定した Item を渡します。（※ `useCsXxxItem` の `Xxx` は Item の種類に応じて異なります。）
+View を初期化するためには、 `useCsView` という省力化コンポーネントのフックを使用します。 `useCsView` の引数には、`useCsXxxItem` というフックを使って初期化した Item を渡します。（ `useCsXxxItem` の `Xxx` は Item の種類に応じて異なります。）
 
 ```tsx
 useCsView({
-  項目の変数名: useCsXxxItem(ラベル名, 初期値, バリデーションルール, 選択肢*),
+  項目の変数名: useCsXxxItem(ラベル名, 初期値, バリデーションルール, 選択肢*¹),
   ...
 })
 
-※ 選択肢を持つ入力項目のみ指定します
+※1 選択肢を持つ入力項目のみ指定します
 ```
 
 以下に示すコードでは、[本節のゴール](goal.md)で示した画面を作るための View の初期化処理を、`useRegisterUserView` という名前のカスタムフックとして定義しています。
