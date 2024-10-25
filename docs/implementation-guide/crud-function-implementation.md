@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Todoアプリを作る
+title: CRUD機能を作る
 ---
 
 :::warning
