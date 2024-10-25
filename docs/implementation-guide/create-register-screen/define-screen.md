@@ -55,28 +55,28 @@ const useRegisterUserView = (): RegisterUserView => {
     userName: useCsInputTextItem(
       "ユーザー名",
       useInit(""),
-      stringRule(true, 3, 30)
+      stringRule(true, 3, 30),
     ),
     password: useCsInputPasswordItem(
       "パスワード",
       useInit(""),
-      stringRule(true, 8, 16)
+      stringRule(true, 8, 16),
     ),
     gender: useCsRadioBoxItem(
       "性別",
       useInit(""),
       stringRule(true),
-      selectOptionStrings(["男性", "女性", "回答しない"])
+      selectOptionStrings(["男性", "女性", "回答しない"]),
     ),
     birthDay: useCsInputDateItem(
       "生年月日",
       useInit("2000-01-01"),
-      stringRule(true)
+      stringRule(true),
     ),
     terminalNum: useCsInputNumberItem(
       "利用端末数",
       useInit(),
-      numberRule(false, 1, 10)
+      numberRule(false, 1, 10),
     ),
   });
 };

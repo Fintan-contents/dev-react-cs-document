@@ -39,28 +39,28 @@ const useRegisterUserView = (): RegisterUserView => {
     userName: useCsInputTextItem(
       "ユーザー名",
       useInit(""),
-      stringRule(true, 3, 30)
+      stringRule(true, 3, 30),
     ),
     password: useCsInputPasswordItem(
       "パスワード",
       useInit(""),
-      stringRule(true, 8, 16)
+      stringRule(true, 8, 16),
     ),
     gender: useCsRadioBoxItem(
       "性別",
       useInit(""),
       stringRule(true),
-      selectOptionStrings(["男性", "女性", "回答しない"])
+      selectOptionStrings(["男性", "女性", "回答しない"]),
     ),
     birthDay: useCsInputDateItem(
       "生年月日",
       useInit("2000-01-01"),
-      stringRule(true)
+      stringRule(true),
     ),
     terminalNum: useCsInputNumberItem(
       "利用端末数",
       useInit(),
-      numberRule(false, 1, 10)
+      numberRule(false, 1, 10),
     ),
   });
 };
@@ -95,14 +95,14 @@ return useCsView(
     userName: useCsInputTextItem(
       "ユーザー名",
       useInit(""),
-      stringRule(true, 3, 30)
+      stringRule(true, 3, 30),
     ),
     // (...他の画面項目定義...)
   },
   {
     // カスタムバリデーションルールオブジェクトを指定
     customValidationRules: buildInCustomValidationRules,
-  }
+  },
 );
 ```
 
@@ -112,15 +112,15 @@ return useCsView(
 export const buildInCustomValidationRules = {
   半角数字: stringRule(
     createRegExpValidator(/^\d*$/),
-    (label: string, _: string) => "半角数字で入力してください。"
+    (label: string, _: string) => "半角数字で入力してください。",
   ),
   半角英字: stringRule(
     createRegExpValidator(/^[a-zA-Z]*$/),
-    (label: string, _: string) => "半角英字で入力してください。"
+    (label: string, _: string) => "半角英字で入力してください。",
   ),
   半角英数字: stringRule(
     createRegExpValidator(/^[a-zA-Z0-9]*$/),
-    (label: string, _: string) => "半角英数字で入力してください。"
+    (label: string, _: string) => "半角英数字で入力してください。",
   ),
   // (...省略...)
 };
@@ -135,13 +135,13 @@ return useCsView(
       "ユーザー名",
       useInit(""),
       // ルールメソッドの第四引数にカスタムバリデーションルールのキーを指定
-      stringRule(true, 3, 30, "半角英数字")
+      stringRule(true, 3, 30, "半角英数字"),
     ),
     // (...他の画面項目定義...)
   },
   {
     customValidationRules: buildInCustomValidationRules,
-  }
+  },
 );
 ```
 
@@ -183,13 +183,13 @@ return useCsView(
     userName: useCsInputTextItem(
       "ユーザー名",
       useInit(""),
-      stringRule(true, 3, 30)
+      stringRule(true, 3, 30),
     ),
     // (...他の画面項目定義...)
   },
   {
     validationTrigger: "onBlur",
-  }
+  },
 );
 ```
 
