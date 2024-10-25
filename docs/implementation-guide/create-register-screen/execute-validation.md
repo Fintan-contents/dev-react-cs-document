@@ -13,7 +13,7 @@ title: バリデーションを実施する
 ### ボタン押下時にバリデーションを実施する
 
 省力化コンポーネントが提供するボタン部品を使用することで、ボタン押下時にバリデーションを実施できます。
-`validationViews` という Props に、バリデーション対象の View の変数を指定します。
+`validationViews` という Props に、バリデーション対象の View の変数を配列として指定します。
 
 ```tsx title="ボタン押下でバリデーションを実施する"
 // 対象画面の View を初期化する
@@ -29,6 +29,15 @@ return (
 ```
 
 ![ボタン押下によるバリデーション実施](../../../static/img/validation_onclick.gif)
+
+:::info
+`validationViews` には、複数の View 変数を指定することができます。
+
+```tsx
+<AxButton validationViews={[view1, view2]}>バリデーション実行</AxButton>
+```
+
+:::
 
 ### 入力フォームのフォーカスアウト時にバリデーションを自動で実施する
 
