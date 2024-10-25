@@ -108,19 +108,19 @@ return useCsView(
 
 カスタムバリデーションルールオブジェクトは、以下のようにルール名（キー）とルールメソッド（バリュー）のセットで定義されます。
 
-```tsx
+```tsx title="提供済みbuildInCustomValidationRulesの内容"
 export const buildInCustomValidationRules = {
-  半角数字: stringRule(
+  半角数字: stringCustomValidationRule(
     createRegExpValidator(/^\d*$/),
-    (label: string, _: string) => "半角数字で入力してください。",
+    (label: string) => `${label}は半角数字で入力してください`,
   ),
-  半角英字: stringRule(
+  半角英字: stringCustomValidationRule(
     createRegExpValidator(/^[a-zA-Z]*$/),
-    (label: string, _: string) => "半角英字で入力してください。",
+    (label: string) => `${label}は半角英字で入力してください`,
   ),
-  半角英数字: stringRule(
+  半角英数字: stringCustomValidationRule(
     createRegExpValidator(/^[a-zA-Z0-9]*$/),
-    (label: string, _: string) => "半角英数字で入力してください。",
+    (label: string) => `${label}は半角英数字で入力してください`,
   ),
   // (...省略...)
 };
