@@ -75,7 +75,9 @@ Orval は OpenAPI 仕様からソースコードを自動生成するツール�
 :::
 
 :::info
-Orval（シンプル版）と Orval（拡張版）の違いは、mutator に設定する Axios カスタムインスタンスの違いです。それぞれの Axios カスタムインスタンスの詳細については、[Orval の設定](./working-after-introduction.md#3-axios-のカスタムインスタンスを作成する)を参照してください。
+Orval（シンプル版）と Orval（拡張版）の違いは、mutator に設定する Axios カスタムインスタンスの違いです。それぞれの Axios カスタムインスタンスの詳細については、[Orval の設定](./working-after-introduction.md#3-axios-のカスタムインスタンスを作成する)を参照してください。  
+特に指定がない場合は、「Orval（シンプル版）」を選択してください。  
+なお、Orval（シンプル版）と Orval（拡張版）で、それぞれインストールされる省力化コンポーネント用の部品が異なることに注意してください。
 :::
 
 ## デモ画面を含めるかの選択
