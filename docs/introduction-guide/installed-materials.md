@@ -13,25 +13,31 @@ title: インストール資材
 
 ```
 //copy-destination//
-　　　|- framework
-　　　　　|- components - 論理情報に対応したコンポーネント
-　　　　　　　|- antd (*1)
-　　　　　　　|- mui (*1)
-　　　　　　　|- bootstrap (*1)
-　　　　　　　|- validation
-　　　　　|- logics - 画面や画面項目の論理情報クラス
-　　　　　　　|- orval (*3)
-　　　　　　　|- react-query (*3)
-　　　　　　　|- yup (*2)
-　　　　　　　|- zod (*2)
-　　　　　　　|- CsXxx.ts
-　　　　　　　|- ...
-　　　　　　　|- getCsDefautValidationEvent.ts
-　　　　　　　|- index.ts
+　　　└── framework
+　　　　　　├── components - 論理情報に対応したコンポーネント
+　　　　　　　　　├── antd (*1)
+　　　　　　　　　├── mui (*1)
+　　　　　　　　　├── bootstrap (*1)
+　　　　　　　　　└── validation
+　　　　　　├── logics - 画面や画面項目の論理情報クラス
+　　　　　　　　　├── react-query (*3)
+　　　　　　　　　├── react-query-advanced (*3)
+　　　　　　　　　├── yup (*2)
+　　　　　　　　　├── zod (*2)　　　　　　
+　　　　　　　　　├── CsXxx.ts
+　　　　　　　　　├── ...
+　　　　　　　　　├── index.ts
+　　　　　　　　　└── getCsDefautValidationEvent.ts
+　　　　　　├── validation-rules - ビルドインのカスタムバリデーションルール定義
+　　　　　　└── stories (*4) - Storybook用の資材
+　　　　　　　　　├── antd (*1)
+　　　　　　　　　├── mui (*1)
+　　　　　　　　　└── bootstrap (*1)
 
 *1: 選択した UI コンポーネントライブラリに対応するディレクトリのみがコピーされます
 *2: 選択したバリデーションライブラリに対応するディレクトリのみがコピーされます
 *3: 選択した API 生成方式に対応するディレクトリのみがコピーされます
+*4: Storybookのインストールを選択した場合のみコピーされます
 ```
 
 ## デモ画面
@@ -68,5 +74,6 @@ app
 | axios                                                    |     | 〃                                                           |
 | @tanstack/react-query                                    | 〇  |                                                              |
 | dayjs                                                    | 〇  |                                                              |
+| storybook                                                |     | Storybook のインストールを選択した場合                       |
 
 ※必に〇がついているライブラリは必ずインストールされます。
