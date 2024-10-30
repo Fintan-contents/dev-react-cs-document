@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: APIを呼び出す
+title: 6. APIを呼び出す
 ---
 
 ## API リクエストの設定

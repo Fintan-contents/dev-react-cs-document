@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: イベントを定義する
+title: 5. イベントを定義する
 ---
 
 省力化コンポーネントで API 通信を行う際は「イベント」を定義する必要があります。ここでいう「イベント」とは、特定の操作（ボタンのクリックなど）をトリガーとして実行される API 処理（リクエストの送信、レスポンスの処理など）をまとめたものです。イベントに必要な情報を定義しボタンに渡すことで、ボタン押下時に行いたい API 処理を実装することができます。
@@ -17,6 +17,60 @@ title: イベントを定義する
 :::info
 本節では登録 API を題材にした API 呼び出し方法の説明をします。CRUD 機能全般について知りたい方は[Todo アプリを作る](../crud-function-implementation.md)を参照してください。
 :::
+
+## ハンズオンの事前準備
+
+<details>
+  <summary>実装ガイドで使用するOpenAPI</summary>
+
+```yml
+openapi: 3.0.0
+info:
+  title: User API
+  version: "1.0.0"
+  description: User registration API for submitting user information
+paths:
+  /user:
+    post:
+      summary: Register a new user
+      description: Creates a new user with specified information.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userName:
+                  type: string
+                  description: User's username
+                password:
+                  type: string
+                  description: User's password
+                gender:
+                  type: string
+                  description: User's gender
+                birthDay:
+                  type: string
+                  description: User's birth date
+                terminalNum:
+                  type: number
+                  description: Optional terminal number for the user
+              required:
+                - userName
+                - password
+                - gender
+                - birthDay
+      responses:
+        "201":
+          description: User created successfully
+        "400":
+          description: Invalid input
+```
+
+</details>
+
+- 
 
 ## イベントの型を定義する
 
@@ -71,28 +125,28 @@ const useRegisterUserView = (): RegisterUserView => {
     userName: useCsInputTextItem(
       "ユーザー名",
       useInit(""),
-      stringRule(true, 3, 30, "nameRule")
+      stringRule(true, 3, 30, "nameRule"),
     ),
     password: useCsInputPasswordItem(
       "パスワード",
       useInit(""),
-      stringRule(true, 8, 16, "passwordRule")
+      stringRule(true, 8, 16, "passwordRule"),
     ),
     gender: useCsRadioBoxItem(
       "性別",
       useInit(""),
       stringRule(true),
-      selectOptionStrings(["男性", "女性", "回答しない"])
+      selectOptionStrings(["男性", "女性", "回答しない"]),
     ),
     birthDay: useCsInputDateItem(
       "生年月日",
       useInit("2000-01-01"),
-      stringRule(true)
+      stringRule(true),
     ),
     terminalNum: useCsInputNumberItem(
       "利用端末数",
       useInit(),
-      numberRule(false, 1, 10)
+      numberRule(false, 1, 10),
     ),
     createButton: useCsRqMutateButtonClickEvent(usePostUserInfo()), // イベントの初期化処理の追加
   });
