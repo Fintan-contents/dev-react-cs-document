@@ -8,19 +8,18 @@ title: stringCustomValidationRule
 ### 使用例
 
 ```tsx
-const customValidationRules: CustomValidationRules =
+const customValidationRules: CustomValidationRules = {
   // highlight-start
-  {
-    半角英字: stringCustomValidationRule(
-      createRegExpValidator(/^[a-zA-Z]*$/),
-      (label: string) => `${label}は半角英字で入力してください`
-    ),
-    全角文字: stringCustomValidationRule(
-      createRegExpValidator(/^[^ -~｡-ﾟ]*$/),
-      (label: string) => `${label}は全角文字で入力してください`
-    ),
-  };
-// highlight-end
+  半角英字: stringCustomValidationRule(
+    createRegExpValidator(/^[a-zA-Z]*$/),
+    (label: string) => `${label}は半角英字で入力してください`
+  ),
+  全角文字: stringCustomValidationRule(
+    createRegExpValidator(/^[^ -~｡-ﾟ]*$/),
+    (label: string) => `${label}は全角文字で入力してください`
+  ),
+  // highlight-end
+};
 ```
 
 ### シグネチャ
@@ -32,8 +31,8 @@ const customValidationRules: CustomValidationRules =
 | 引数名    | 必須 | 型                              | 説明                                                                                                                                                                                                          |
 | --------- | ---- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | validator | 〇   | `CustomValidator<string>`       | 入力値を検証するためのバリデータを指定します。`createRegExpValidator`関数を使用し、引数に特定の文字列を検出する正規表現を指定します。この正規表現に該当しない文字列の場合、バリデーションエラーとなります。　 |
-| message   | 〇   | `CustomValidateMessage<string>` | バリデーション時のエラーメッセージを指定します。入力項目の情報をパラメータとして受け取り、メッセージに含めることができます。                                                                                  |
+| message   | 〇   | `CustomValidateMessage<string>` | バリデーションエラー時のエラーメッセージを指定します。入力項目の情報をパラメータとして受け取り、メッセージに含めることができます。                                                                                  |
 
 ### 返り値
 
-`CustomValidationRule<string>` クラスのインスタンスを返します。このインスタンスは、指定されたバリデータとエラーメッセージを使用して文字列のバリデーションを行います。
+バリデーションの条件やメッセージを保持した`CustomValidationRule<string>` クラスのインスタンスを返します。
