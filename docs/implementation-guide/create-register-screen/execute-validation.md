@@ -23,7 +23,9 @@ return (
   <>
     <AxTableLayout view={view} colSize={2} />
     {/* highlight-next-line */}
-    <AxButton validationViews={[view]}>バリデーション実行</AxButton>
+    <AxButton type="primary" validationViews={[view]}>
+      バリデーション実行
+    </AxButton>
   </>
 );
 ```
@@ -34,7 +36,9 @@ return (
 `validationViews` には、複数の View 変数を指定することができます。
 
 ```tsx
-<AxButton validationViews={[view1, view2]}>バリデーション実行</AxButton>
+<AxButton type="primary" validationViews={[view1, view2]}>
+  バリデーション実行
+</AxButton>
 ```
 
 :::
