@@ -3,7 +3,7 @@ sidebar_position: 2
 title: useInit
 ---
 
-`useInit` は、入力項目の初期値を設定するためのフックです。[画面定義](../../../category/画面定義)にある`useCsXxxItem`で使用できます。
+`useInit` は、入力項目の初期値を設定するためのフックです。[入力項目定義のフック](../../../category/入力項目定義のフック)にある`useCsXxxItem`で使用できます。
 
 ## シグネチャ
 
