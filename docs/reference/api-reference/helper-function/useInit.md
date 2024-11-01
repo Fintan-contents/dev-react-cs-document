@@ -7,7 +7,7 @@ title: useInit
 
 ## シグネチャ
 
-<h3>`useInit<T>(value?: T): UseInitResult<T>`</h3>
+<h3>`useInit<T>(value?: T): any`</h3>
 
 ## 引数
 
