@@ -9,6 +9,15 @@ title: useCsInputTextItem
 
 <h3>`useCsInputTextItem(label, state, rule, readonly?): CsInputTextItem`</h3>
 
+## 引数
+
+| 引数名   | 必須 | 型                           | 説明                                                                                                                               |
+| -------- | ---- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| label    | 〇   | `string`                     | 入力項目のラベルを指定します。 　                                                                                                  |
+| state    | 〇   | `StateResult<string>`        | 入力項目の状態変数を指定します。通常、[useInit](../default-value-preference/useInit.md) を使用して初期化した状態変数を指定します。 |
+| rule     | 〇   | `StringValidationRule`       | 入力項目のバリデーションルールを指定します。 通常、`stringRule` を使用して初期化したルールを指定します。                           |
+| readonly |      | `RW.Editable \| RW.Readonly` | 入力項目が読み取り専用かどうかを指定します。デフォルトは `RW.Editable` です。 　                                                   |
+
 ## 使用例
 
 ```tsx
@@ -23,15 +32,6 @@ useCsView({
   // highlight-end
 });
 ```
-
-## 引数
-
-| 引数名   | 必須 | 型                           | 説明                                                                                                                               |
-| -------- | ---- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| label    | 〇   | `string`                     | 入力項目のラベルを指定します。 　                                                                                                  |
-| state    | 〇   | `StateResult<string>`        | 入力項目の状態変数を指定します。通常、[useInit](../default-value-preference/useInit.md) を使用して初期化した状態変数を指定します。 |
-| rule     | 〇   | `StringValidationRule`       | 入力項目のバリデーションルールを指定します。 通常、`stringRule` を使用して初期化したルールを指定します。                           |
-| readonly |      | `RW.Editable \| RW.Readonly` | 入力項目が読み取り専用かどうかを指定します。デフォルトは `RW.Editable` です。 　                                                   |
 
 ## 返り値
 
