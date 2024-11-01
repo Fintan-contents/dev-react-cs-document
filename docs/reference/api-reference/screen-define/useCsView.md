@@ -47,11 +47,3 @@ const view = useCsView(
 ## 返り値
 
 画面項目が 1 つに集約された`CsView`の拡張クラスのインスタンスを返します。
-
-
-| options             |      | `{ readonly?: boolean, customValidationRules?: AppValidationRules extends CustomValidationRules, validationTrigger?: "onSubmit" \| "onBlur" }` | ①`readonly`には読み取り専用にするかどうかを指定します。デフォルトは`false`が指定されます。②`customValidationRules`には適用したいカスタムバリデーションルールを指定します。バリデーションルールには[バリデーション定義](../../../category/バリデーション定義)の`xxCustomValidationRule`で初期化したルールを指定します。③`validationTrigger`にはバリデーションの実行タイミングを指定します。`onSubmit`はボタン押下時、`onBlur`は入力項目からフォーカスが外れたタイミングでバリデーションを実施します。デフォルトは`onSubmit`です。 |
-| validationEventHook |      | `(instance: CsView & D, customRules?: CustomValidationRules) => CsValidationEvent`                                                             | 使用するバリデーションイベントを指定します。デフォルトは `getCsDefaultValidationEvent()`が指定されており、初期設定でインストールしたバリデーションライブラリに対応したフックが使用されます。                                                                                                                                                                                                                                                                                                                                     |
-|  | 見出しA | 見出しB |
-|---|---|---|
-| 情報1 | `- A   
-BCD` | ABCDE |
