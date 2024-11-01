@@ -3,7 +3,7 @@ sidebar_position: 2
 title: useCsInputTextItem
 ---
 
-`useCsInputTextItem` は、1 つのテキスト入力項目に対応する Item を初期化するためのフックです。
+`useCsInputTextItem` は、`AxInputText`に対応する Item を初期化するためのフックです。
 
 ## シグネチャ
 
