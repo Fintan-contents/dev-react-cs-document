@@ -26,7 +26,9 @@ const view = useCsView(
     title: useCsInputTextItem(
       "タイトル",
       useInit(""),
+      // highlight-start
       stringRule(true, 1, 10, "全角文字")
+      // highlight-end
     ),
   },
   {
@@ -37,4 +39,4 @@ const view = useCsView(
 
 ## 返り値
 
-文字列型のバリデーション定義情報を保持する`StringValidationRule` クラスのインスタンスを返します。
+`string`型に対するバリデーション定義情報を保持する`StringValidationRule` クラスのインスタンスを返します。
