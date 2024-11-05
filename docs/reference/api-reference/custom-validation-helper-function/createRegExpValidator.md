@@ -13,7 +13,9 @@ title: createRegExpValidator
 
 | 引数名  | 必須 | 型       | 説明                                                                                                                     |
 | ------- | ---- | -------- | ------------------------------------------------------------------------------------------------------------------------ |
-| pattern | 〇   | `RegExp` | 入力値を検証するための正規表現パターンを指定します。指定したパターンに一致しない場合にバリデーションエラーが発生します。 |
+| pattern | 〇   | `RegExp`*¹ | 入力値を検証するための正規表現パターンを指定します。指定したパターンに一致しない場合にバリデーションエラーが発生します。 |
+
+\*1：`RegExp`は正規表現の値を保持する型定義です。
 
 ## 使用例
 
@@ -21,13 +23,13 @@ title: createRegExpValidator
 const customValidationRules: CustomValidationRules = {
   半角英字: stringCustomValidationRule(
     // highlight-start
-    createRegExpValidator(/^[a-zA-Z]*$/),
+    createRegExpValidator(/^[a-zA-Z]*$/), // 半角数字のみを許容する正規表現を定義
     // highlight-end
     (label: string) => `${label}は半角英字で入力してください`
   ),
   全角文字: stringCustomValidationRule(
     // highlight-start
-    createRegExpValidator(/^[^ -~｡-ﾟ]*$/),
+    createRegExpValidator(/^[^ -~｡-ﾟ]*$/), // 全角文字のみを許容する正規表現を定義
     // highlight-end
     (label: string) => `${label}は全角文字で入力してください`
   ),
