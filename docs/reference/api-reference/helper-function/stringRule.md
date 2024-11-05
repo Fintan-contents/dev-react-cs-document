@@ -26,7 +26,7 @@ const view = useCsView(
     title: useCsInputTextItem(
       "タイトル",
       useInit(""),
-      stringRule(true, 1, 10, "全角文字") //
+      stringRule(true, 1, 10, "全角文字")
     ),
   },
   {
@@ -37,4 +37,4 @@ const view = useCsView(
 
 ## 返り値
 
-StringValidationRule クラスのインスタンスを返します。このインスタンスは指定されたバリデーション条件を保持し、入力項目のバリデーションを行います。
+文字列型のバリデーション定義情報を保持する`StringValidationRule` クラスのインスタンスを返します。

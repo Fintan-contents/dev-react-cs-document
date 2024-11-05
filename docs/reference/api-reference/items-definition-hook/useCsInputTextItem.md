@@ -14,9 +14,9 @@ title: useCsInputTextItem
 | 引数名      | 必須 | 型                              | 説明                                                                                                                      |
 | ----------- | ---- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | label       | 〇   | `string`                        | 入力項目のラベルを指定します。 　                                                                                         |
-| state       | 〇   | `StateResult<string>` \*¹       | 入力項目の状態変数を指定します。通常、[useInit](../helper-function/useInit.md) を使用して初期化した状態変数を指定します。 |
-| rule        | 〇   | `StringValidationRule` \*²      | 入力項目のバリデーションルールを指定します。 通常、`stringRule` を使用して初期化したルールを指定します。                  |
-| readonly    |      | `RW.Editable \| RW.Readonly`\*³ | 入力項目が読み取り専用かどうかを指定します。デフォルトは `RW.Editable` です。 　                                          |
+| state       | 〇   | `StateResult<string>*¹`      | 入力項目の状態変数を指定します。通常、[useInit](../helper-function/useInit.md) を使用して初期化した状態変数を指定します。 |
+| rule        | 〇   | `StringValidationRule*²`    | 入力項目のバリデーションルールを指定します。 通常、`stringRule` を使用して初期化したルールを指定します。                  |
+| readonly    |      | `RW.Editable \| RW.Readonly*³`| 入力項目が読み取り専用かどうかを指定します。デフォルトは `RW.Editable` です。 　                                          |
 | placeholder |      | `string`                        | 入力フィールドが未入力の場合に表示されるテキストを指定できます。                                                          |
 
 \*1：`StateResult`は 状態変数の情報を保持するための型定義です。
