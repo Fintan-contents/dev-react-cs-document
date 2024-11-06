@@ -13,7 +13,7 @@ title: 更新機能
 
 ## イベントの定義
 
-更新機能のイベントの型定義には`CsMutateButtonClickEvent`を指定します。更新画面（`TodoEditView`）定義にイベントの型を定義します。型パラメータには API リクエスト、API レスポンス型を指定します。
+更新機能のイベントの型定義には`CsMutateButtonClickEvent`を指定します。更新用の View（`TodoEditView`）定義にイベントの型を定義します。型パラメータには API リクエスト、API レスポンス型を指定します。
 
 `app/todo/page.view.ts`ファイルで以下のようなコードを記述します。
 
@@ -42,7 +42,7 @@ type TodoEditView = CsView & {
 
 ## イベントの初期化
 
-更新用の View 定義（`TodoEditView`）にイベントの初期化処理を追加します。更新 API では Event のフックに`useCsRqMutateButtonClickEvent()`、引数には API フック`useEditUserInfo()`を指定します。`useEditUserInfo()`は Orval で自動生成された API フックを使用します。
+更新用の View 定義（`TodoEditView`）にイベントの初期化処理を追加します。更新 API では Event のフックに`useCsRqMutateButtonClickEvent()`、引数には Orval で自動生成された API フック`useEditUserInfo()`を指定します。
 
 `app/todo/page.view.ts`ファイルで以下のようなコードを記述します。
 
@@ -75,31 +75,45 @@ export const useTodoEditView = (): TodoEditView => {
 };
 ```
 
-## View の初期化
+## View 定義の呼び出し
 
-[イベントの初期化](./crud-update.md#イベントの初期化)で定義した View の初期化をします。
+[イベントの初期化](./crud-update.md#イベントの初期化)で定義した 更新用の View 定義を呼び出します。引数には
 
 `app/todo/page.tsx`ファイルで以下のようなコードを記述します。
 
 ```tsx title="todo/page.ts"
-const todoEditView = useTodoEditView(); // 更新用のViewの初期化
+const todoEditView = useTodoEditView(); // 更新用のViewの呼び出し
 ```
 
-## 更新 API に必要なリクエストの設定
+## 取得 API で取得した値を更新画面の初期値に渡す
 
-更新 API 送信時に指定する API リクエストを指定します。`todoId`には更新対象の Id、`data`には更新するデータを指定します。
+固定の文字列などを用いて View に初期値を渡すには`useInit`を指定します。ただし、取得 API のような非同期で取得される値を渡す場合には`setValue`を使用します。
 
-`app/todo/page.tsx`ファイルで以下のようなコードを記述します。
+`app/todo/page.tsx`指定した値をセットする方法について記述します。
 
 ```tsx title="todo/page.ts"
-todoEditView.updateButton.setRequest({
-  // リクエストデータに値をセット
-  todoId: todoEditView.id.value ?? "",
-  data: {
-    title: todoEditView.title.value ?? "",
-    description: todoEditView.description.value ?? "",
-  },
-});
+const openModal = (mode: "create" | "edit" | "delete", record?: Todo) => {
+  switch (mode) {
+    case "create":
+      setIsOpenCreate(true);
+      break;
+    case "edit":
+      // highlight-start
+      todoPutView.id.setValue(record?.id);
+      todoPutView.title.setValue(record?.title);
+      todoPutView.description.setValue(record?.description);
+      todoPutView.assignee.setValue(record?.assignee);
+      // highlight-end
+      setIsOpenEdit(true);
+      break;
+    case "delete":
+      todoDeleteView.id.setValue(record?.id);
+      setIsOpenDelete(true);
+      break;
+    default:
+      break;
+  }
+};
 ```
 
 ## ボタンを配置する
@@ -139,4 +153,21 @@ todoEditView.updateButton.setRequest({
 </Modal>
 ```
 
-以上の実装により、更新機能 API の実装が完了します。ボタン押下時に適切に更新 API が送信されているかご確認をお願いいたします。
+## 更新 API に必要なリクエストの設定
+
+更新 API 呼び出し時に指定する API リクエストを指定します。`todoId`には更新対象の Id、`data`には更新するデータを指定します。
+
+`app/todo/page.tsx`ファイルで以下のようなコードを記述します。
+
+```tsx title="todo/page.ts"
+todoEditView.updateButton.setRequest({
+  // リクエストデータに値をセット
+  todoId: todoEditView.id,
+  data: {
+    title: todoEditView.title.value ?? "",
+    description: todoEditView.description.value ?? "",
+  },
+});
+```
+
+以上の実装により、更新機能 の実装が完了します。ボタン押下時に適切に更新 API が呼び出されているか確認してください。
