@@ -17,9 +17,7 @@ title: 本節の内容
 
 「CRUD 機能の画像（全体）」
 
-:::info
-登録・更新・削除機能は[画面を作る](../create-register-screen/)で作成した登録 API と実装方法が似ています。これらについて、より詳しい説明は[画面を作る](../create-register-screen/)を参照してください。
-:::
+本節では API の実装方法にフォーカスした説明を行うため、API を含めた一通りの画面実装を行いたい場合は[画面を作る](../create-register-screen/)を参照してください。
 
 :::info
 本節では[サンプルアプリ](https://github.com/Fintan-contents/dev-react-cs-example/tree/develop)の`todo/page.tsx`と`todo/page.view.ts`ファイルを使用します。`todo/page.tsx`は CRUD 機能を実装した画面を表示するファイル、`todo/page.view.ts`では View 定義を行うファイルとして使用します。
