@@ -14,9 +14,12 @@ API に関するイベントは、自動実行が可能な **LoadEvent** と、�
 画面表示時などに自動で実行できる API イベントです。初回ロード時に画面で表示したいデータを取得する、といった用途で使用できます。
 LoadEvent で使用する型と初期化フックは次の表の通りです。（※対応する画面コンポーネントはありません。）
 
-| リクエスト | 型                 | フック                       | 画面コンポーネント |
-| ---------- | ------------------ | ---------------------------- | ------------------ |
-| GET        | `CsQueryLoadEvent` | `useCsXxxQueryLoadEvent` \*¹ | なし               |
+| リクエスト              | 型                  | フック                        | 画面コンポーネント |
+| ----------------------- | ------------------- | ----------------------------- | ------------------ |
+| GET                     | `CsQueryLoadEvent`  | `useCsXxxQueryLoadEvent` \*¹  | なし               |
+| POST<br/>PUT<br/>DELETE | `CsMutateLoadEvent` | `useCsXxxMutateLoadEvent` \*¹ | なし               |
+
+＊1：`Xxx` は API 呼び出し方式によって異なります。[API 呼び出し方式の選択](../../introduction-guide/introduction-tool.md#api-呼び出し方式の選択)で「Orval(シンプル版)」もしくは「TanStack Query」 を選択した場合は`Rq`、「Orval(拡張版)」 を選択した場合は `RqAdvanced` から始まる部品を使用します。
 
 <h3>ButtonClickEvent</h3>
 
@@ -41,7 +44,7 @@ LoadEvent で使用する型と初期化フックは次の表の通りです。�
 | 名前                  |  説明                                                                 |
 |-------------------------|-------------------------------------------------------------------------------|
 | `usePostUser`   | 登録用APIを呼び出すためのクライアントメソッド   |
-| `PostUserBody`          | 登録用APIのリクエストデータ型   | 
+| `PostUserRequest`          | 登録用APIのリクエストデータ型   | 
 :::
 
 まず初めに、イベントの型を定義します。  
@@ -56,12 +59,13 @@ LoadEvent で使用する型と初期化フックは次の表の通りです。�
 | イベントクラス名 | リクエストデータ型 | レスポンスデータ型 | エラー型 |
 |-----------------------------|--------------------|--------------------|----------|
 | `CsQueryLoadEvent` | なし | 必須 | 任意 |
+| `CsMutateLoadEvent` | なし | 必須 | 任意 |
 | `CsQueryButtonClickEvent` | なし | 必須 | 任意 |
 | `CsMutateButtonClickEvent` | 必須 | 任意 | 任意 |
 :::
 
 以下に示すコードでは、 [1. 画面を定義する](./define-screen.md#view-の型を定義する) で定義した View の型に、登録ボタン用のイベントの型定義を追加しています。  
-更新系の API をボタン押下時に呼び出す場合は、 `CsMutateButtonClickEvent` を使用します。型引数には、リクエストデータ型として `{data: PostUserBody}` を指定します。
+更新系の API をボタン押下時に呼び出す場合は、 `CsMutateButtonClickEvent` を使用します。型引数には、リクエストデータ型として `{data: PostUserRequest}` を指定します。
 
 ```tsx title="Viewの型定義に登録ボタン用のイベントを追加する"
 type RegisterUserView = CsView & {
@@ -72,7 +76,7 @@ type RegisterUserView = CsView & {
   terminalNum: CsInputNumberItem;
   // highlight-start
   registerButton: CsMutateButtonClickEvent<{
-    data: PostUserBody;
+    data: PostUserRequest;
   }>;
   // highlight-end
 };
@@ -117,5 +121,5 @@ const useRegisterUserView = (): RegisterUserView => {
 ```
 
 :::info
-本節で解説していない `CsQueryLoadEvent` や `CsQueryButtonClickEvent` を用いた実装方法については、[CRUD 機能を作る](../crud-function-implementation.md) で解説しています。
+本節で解説していない `CsQueryLoadEvent` や `CsQueryButtonClickEvent` を用いた実装方法については、[CRUD 機能を作る](../crud-function-implementation.md) で解説しています。`CsMutateLoadEvent`については本ドキュメントでは解説をしていません。
 :::
