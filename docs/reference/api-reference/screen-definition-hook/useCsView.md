@@ -3,7 +3,7 @@ sidebar_position: 2
 title: useCsView
 ---
 
-`useCsView` は、画面項目を 1 つの View（画面）として初期化するためのフックです。View に対してオプションを設定することもできます。
+`useCsView` は、画面項目を 1 つの View（画面）として初期化するためのフックです。カスタムバリデーションの設定やバリデーションのタイミングなど、追加のオプションを設定することもできます。
 
 ## シグネチャ
 
@@ -17,11 +17,11 @@ title: useCsView
 | options             |      | `{ readonly?: boolean, customValidationRules?: AppValidationRules extends CustomValidationRules,*² validationTrigger?: "onSubmit" \| "onBlur" }` | ①`readonly`には読み取り専用にするかどうかを指定します。 デフォルトは`false`が指定されます。②`customValidationRules`には適用したいカスタムバリデーションルールを指定します。バリデーションルールには[カスタムバリデーション定義の関数](../../../category/カスタムバリデーション定義の関数)で初期化したルールを指定します。③`validationTrigger`にはバリデーションの実行タイミングを指定します。`onSubmit`はボタン押下時、`onBlur`は入力項目からフォーカスが外れたタイミングでバリデーションを実施します。デフォルトは`onSubmit`です。 |
 | validationEventHook |      | `(instance: CsView & D, customRules?: CustomValidationRules*²) => CsValidationEvent*³`                                                             | 使用するバリデーションイベントを指定します。デフォルトは `getCsDefaultValidationEvent()`が指定されており、初期設定でインストールしたバリデーションライブラリに対応したフックが使用されます。                                                                                                                                                                                                                                                                                                                                        |
 
-\*1: `CsViewDefinition`は、キーに`string`、値に`CsItemBase`または`CsEvent`のみを許容する`Record`型です。他の型が指定されるとエラーになります。
+\*1: `CsViewDefinition`は、キー値に`string`、値に`CsItemBase`または`CsEvent`のみを許容する`Record`型です。他の型が指定されるとエラーになります。
 
 \*2: `CustomValidationRules`はバリデーションの実行条件やメッセージの表示などの情報を保持する型定義です。
 
-\*3: `CsValidationEvent`はバリデーションエラーが起きたかどうか、エラー時の表示するメッセージなどバリデーションに関する情報を保持する型定義です。
+\*3: `CsValidationEvent`はバリデーションエラーが発生したかどうか、エラー時の表示するメッセージなどバリデーションに関する情報を保持する型定義です。
 
 ## 使用例
 

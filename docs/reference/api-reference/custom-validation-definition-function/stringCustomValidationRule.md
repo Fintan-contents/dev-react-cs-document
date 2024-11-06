@@ -16,9 +16,9 @@ title: stringCustomValidationRule
 | validator | 〇   | `CustomValidator<string>*¹`       | 入力値を検証するためのバリデータを指定します。正規表現を用いてバリデーションを実行したい場合は、`createRegExpValidator`を使用することで指定できます。 |
 | message   | 〇   | `CustomValidateMessage<string>*²` | バリデーションエラー時のエラーメッセージを指定します。入力項目の情報をパラメータとして受け取り、メッセージに含めることができます。                        |
 
-\*1：`CustomValidator`は バリデーションエラーが起こったかどうかを保持する型定義です。
+\*1：`CustomValidator`は バリデーションエラーが発生したかどうかを検証する型定義です。
 
-\*2：`CustomValidateMessage`はバリデーションエラーが発生した際のエラーメッセージを保持する型定義です。
+\*2：`CustomValidateMessage`はバリデーションエラーが発生した際のエラーメッセージを出力する型定義です。
 
 ## 使用例
 
