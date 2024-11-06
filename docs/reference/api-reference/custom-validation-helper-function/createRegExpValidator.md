@@ -38,4 +38,4 @@ const customValidationRules: CustomValidationRules = {
 
 ## 返り値
 
-`CustomValidator<string>` 型の関数を返します。入力値が未定義もしくは入力値が正規表現に一致する場合は`true`、一致しない場合は`false`が返されます。
+`CustomValidator<string>` 型の関数を返します。この関数は入力情報を受けとり、入力値が未定義もしくは入力値が正規表現に一致する場合は`true`、一致しない場合は`false`を返します。
