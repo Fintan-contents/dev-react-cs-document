@@ -11,9 +11,9 @@ title: 更新機能
 
 「更新機能の Gif」
 
-## イベントの定義
+## イベントの型を定義する
 
-更新機能のイベントの型定義には`CsMutateButtonClickEvent`を指定します。更新用の View（`TodoEditView`）定義にイベントの型を定義します。型パラメータには API リクエスト、API レスポンス型を指定します。
+更新機能のイベントの型定義には`CsMutateButtonClickEvent`を指定します。更新用の View（`TodoEditView`）の型にイベントの型を定義します。型パラメータには API リクエスト、API レスポンス型を指定します。
 
 `app/todo/page.view.ts`ファイルで以下のようなコードを記述します。
 
@@ -21,7 +21,7 @@ title: 更新機能
 // Orvalで自動生成されたTodoRegistrationの型定義をimport
 
 /**
- * 更新用のView型
+ * 更新用のViewの型定義
  */
 type TodoEditView = CsView & {
   title: CsInputTextItem;
@@ -40,9 +40,9 @@ type TodoEditView = CsView & {
 };
 ```
 
-## イベントの初期化
+## イベントを初期化する
 
-更新用の View 定義（`TodoEditView`）にイベントの初期化処理を追加します。更新 API では Event のフックに`useCsRqMutateButtonClickEvent()`、引数には Orval で自動生成された API フック`useEditUserInfo()`を指定します。
+更新用の View（`TodoEditView`）の初期化にイベントの初期化処理を追加します。更新 API では Event のフックに`useCsRqMutateButtonClickEvent()`、引数には Orval で自動生成された API フック`useEditUserInfo()`を指定します。
 
 `app/todo/page.view.ts`ファイルで以下のようなコードを記述します。
 
@@ -50,7 +50,7 @@ type TodoEditView = CsView & {
 // Orvalで自動生成されたAPIフック（useEditUserInfo）をimport
 
 /**
- * 更新用のView定義
+ * 更新用のViewの初期化
  */
 export const useTodoEditView = (): TodoEditView => {
   return useCsView({
@@ -75,9 +75,9 @@ export const useTodoEditView = (): TodoEditView => {
 };
 ```
 
-## View 定義の呼び出し
+## View 定義を呼び出す
 
-[イベントの初期化](./crud-update.md#イベントの初期化)で定義した 更新用の View 定義を呼び出します。引数には
+[イベントの初期化](./crud-update.md#イベントの初期化)で定義した 更新用の View 定義を呼び出します。
 
 `app/todo/page.tsx`ファイルで以下のようなコードを記述します。
 
@@ -153,7 +153,7 @@ const openModal = (mode: "create" | "edit" | "delete", record?: Todo) => {
 </Modal>
 ```
 
-## 更新 API に必要なリクエストの設定
+## 更新 API に必要なリクエストを設定する
 
 更新 API 呼び出し時に指定する API リクエストを指定します。`todoId`には更新対象の Id、`data`には更新するデータを指定します。
 
