@@ -18,7 +18,7 @@ const view = useRegisterUserView();
 return (
   <>
     {/* 入力項目を配置する */}
-    <AxTableLayout view={view} colSize={2} />
+    <AxTableLayout view={view} colSize={1} />
     {/* highlight-start */}
     {/* 登録ボタンを配置する */}
     <AxMutateButton

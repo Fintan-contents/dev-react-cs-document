@@ -22,10 +22,11 @@ const view = useRegisterUserView();
 return (
   <>
     <AxTableLayout view={view} colSize={2} />
-    {/* highlight-next-line */}
+    {/* highlight-start */}
     <AxButton type="primary" validationViews={[view]}>
       バリデーション実行
     </AxButton>
+    {/* highlight-end */}
   </>
 );
 ```
