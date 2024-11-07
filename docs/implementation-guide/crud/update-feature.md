@@ -36,10 +36,10 @@ type TodoEditView = CsView & {
 
 ## イベントを初期化する
 
-更新用の View（`TodoEditView`）の初期化にイベントの初期化処理を追加します。更新 API では Event のフックに`useCsRqMutateButtonClickEvent()`、引数には Orval で自動生成された API フック`useEditUserInfo()`を指定します。
+更新用の View（`TodoEditView`）の初期化にイベントの初期化処理を追加します。更新 API では Event のフックに`useCsRqMutateButtonClickEvent()`、引数には Orval で自動生成された API フック`usePostTodo()`を指定します。
 
 ```tsx title="app/todo/page.view.ts"
-// Orvalで自動生成されたAPIフック（useEditUserInfo）をimport
+// Orvalで自動生成されたAPIフック（usePostTodo）をimport
 
 /**
  * 更新用のViewの初期化
@@ -61,7 +61,7 @@ export const useTodoEditView = (): TodoEditView => {
     // 更新対象を識別するためのID（表示はしない）
     id: useCsInputTextItem("ID", useInit(""), stringRule(false), RW.Editable),
     // highlight-start
-    updateButton: useCsRqAdvancedMutateButtonClickEvent(useEditUserInfo()), // イベントの初期化処理の追加
+    updateButton: useCsRqAdvancedMutateButtonClickEvent(usePostTodo()), // イベントの初期化処理の追加
     // highlight-end
   });
 };
