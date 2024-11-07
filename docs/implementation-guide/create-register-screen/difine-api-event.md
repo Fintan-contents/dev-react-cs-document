@@ -40,10 +40,10 @@ LoadEvent で使用する型と初期化フックは次の表の通りです。�
 
 ハンズオン形式で進めたい方は、まず [こちらの手順](../../introduction-guide/working-after-introduction/orval-setting.md#実装ガイドのハンズオンで使用する-api-クライアントコードの生成手順) に従って API クライアントコードを作成してください。
 
-<h4>以降の解説で登場するAPIクライアントメソッド / 型</h4>
+<h4>以降の解説で登場するAPIクライアント関数 / 型</h4>
 | 名前                  |  説明                                                                 |
 |-------------------------|-------------------------------------------------------------------------------|
-| `usePostUser`   | 登録用APIを呼び出すためのクライアントメソッド   |
+| `usePostUser`   | 登録用APIを呼び出すためのクライアント関数   |
 | `PostUserRequest`          | 登録用APIのリクエストデータ型   | 
 :::
 
@@ -84,7 +84,7 @@ type RegisterUserView = CsView & {
 
 ## イベントを初期化する
 
-イベントを初期化するためには、`useCsXxxEvent` という省力化コンポーネントのフックを使用します。フックの引数には、API を呼び出すためのクライアントメソッドの実行結果を指定します。
+イベントを初期化するためには、`useCsXxxEvent` という省力化コンポーネントのフックを使用します。フックの引数には、API を呼び出すためのクライアント関数の実行結果を指定します。
 
 ```tsx
 useCsView({
@@ -95,7 +95,7 @@ useCsView({
 
 以下に示すコードでは、[1. 画面を定義する](./define-screen.md#view-の型を定義する) で定義した View にイベントの初期化処理を追加しています。  
 フックとして、型定義で用いた `CsMutateButtonClickEvent` に対応する、 `useCsRqMutateButtonClickEvent` を使用します。  
-フックの引数には、登録用 API を呼び出すためのクライアントメソッド `usePostUser` の実行結果を指定します。
+フックの引数には、登録用 API を呼び出すためのクライアント関数 `usePostUser` の実行結果を指定します。
 
 :::warning
 Orval（拡張版）を選択している場合は、フックとして `useCsRqAdvancedMutateButtonClickEvent` を使用してください。
@@ -121,5 +121,5 @@ const useRegisterUserView = (): RegisterUserView => {
 ```
 
 :::info
-本節で解説していない `CsQueryLoadEvent` や `CsQueryButtonClickEvent` を用いた実装方法については、[CRUD 機能を作る](../crud-function-implementation.md) で解説しています。`CsMutateLoadEvent`については本ドキュメントでは解説をしていません。
+本節で解説していない `CsQueryLoadEvent` や `CsQueryButtonClickEvent` を用いた実装方法については、[CRUD 機能を作る](../crud-function-implementation.md) で解説しています。`CsMutateLoadEvent`については本ドキュメントでは解説していません。
 :::
