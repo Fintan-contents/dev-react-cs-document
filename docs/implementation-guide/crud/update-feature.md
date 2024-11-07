@@ -3,13 +3,9 @@ sidebar_position: 4
 title: 更新機能
 ---
 
-:::warning
-執筆途中
-:::
-
 本節では以下に示すような更新機能の実装方法について説明します。
 
-「更新機能の Gif」
+![更新機能の画面](../../../static/img/crud-update.png)
 
 ## イベントの型を定義する
 
@@ -35,8 +31,8 @@ type TodoEditView = CsView & {
       data: TodoRegistration; // TodoRegistration型を定義
     },
     Todo // APIのレスポンスデータ型を定義
-    // highlight-end
   >;
+  // highlight-end
 };
 ```
 
@@ -89,7 +85,7 @@ const todoEditView = useTodoEditView(); // 更新用のViewの呼び出し
 
 固定の文字列などを用いて View に初期値を渡すには`useInit`を指定します。ただし、取得 API のような非同期で取得される値を渡す場合には`setValue`を使用します。
 
-`app/todo/page.tsx`指定した値をセットする方法について記述します。
+`app/todo/page.tsx`ファイルで指定した値をセットする方法について記述します。
 
 ```tsx title="todo/page.ts"
 const openModal = (mode: "create" | "edit" | "delete", record?: Todo) => {
@@ -118,7 +114,7 @@ const openModal = (mode: "create" | "edit" | "delete", record?: Todo) => {
 
 ## ボタンを配置する
 
-更新 API に対応する`AxMutateButton`を配置します。`event`引数にはボタン押下時に実施したいイベント（`updateButton`）を指定します。、`validationViews`にはバリデーションを実施したい画面単位（`todoEditView`）を配列型で指定します。
+更新 API に対応する`AxMutateButton`を配置します。`event`引数にはボタン押下時に実施したいイベント（`updateButton`）を指定します。`validationViews`にはバリデーションを実施したい画面単位（`todoEditView`）を配列型で指定します。
 
 `app/todo/page.tsx`ファイルで以下のようなコードを記述します。
 
