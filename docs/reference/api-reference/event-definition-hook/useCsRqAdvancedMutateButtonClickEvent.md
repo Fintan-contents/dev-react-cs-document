@@ -17,7 +17,7 @@ title: useCsRqAdvancedMutateButtonClickEvent
 | -------------- | ---- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | mutationResult | 〇   | `RqAdvancedMutationResult<TApiResponse, TApiError, TApiRequest, TContext>*¹` | 更新系 API を呼び出す API フックを指定します。OpenAPI で自動生成された API フックを指定できます。 |
 
-\*1：`RqAdvancedMutationResult`は API のリクエスト、レスポンス、エラー、コンテキストに関する情報をを保持する型定義です。
+\*1：`RqAdvancedMutationResult`は API のリクエスト、レスポンス、エラー、コンテキストに関する情報を保持する型定義です。
 
 ## 返り値
 

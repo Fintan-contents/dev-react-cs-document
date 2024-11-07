@@ -25,7 +25,7 @@ title: useCsView
       <td>definitions</td>
       <td>〇</td>
       <td><code>D extends CsViewDefinition*¹</code></td>
-      <td>フックで定義した画面項目を指定します。画面項目には<a href="../../../category/入力項目定義のフック">入力項目定義のフック</a>や<a href="../../../category/イベント定義のフック">イベント定義のフック</a>のみを指定できます。</td>
+      <td>開発者が定義した画面項目の型を指定します。画面項目には<a href="../../../category/入力項目定義のフック">入力項目定義のフック</a>や<a href="../../../category/イベント定義のフック">イベント定義のフック</a>を指定できます。</td>
     </tr>
     <tr>
       <td>options</td>
@@ -37,8 +37,8 @@ title: useCsView
     </tr>
     <tr>
       <td>validationEventHook</td>
-      <td>あああ</td>
-      <td><code>(instance: CsView & D, customRules?: CustomValidationRules*²) => CsValidationEvent*³</code></td>
+      <td></td>
+      <td><code>(instance: CsView & D, customRules?: CustomValidationRules\*²) => CsValidationEvent\*³</code></td>
       <td>使用するバリデーションイベントを指定します。デフォルトは <code>getCsDefaultValidationEvent()</code>が指定されており、初期設定でインストールしたバリデーションライブラリに対応したフックが使用されます。</td>
     </tr>
   </tbody>

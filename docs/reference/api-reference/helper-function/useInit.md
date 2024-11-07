@@ -7,7 +7,7 @@ title: useInit
 
 ## シグネチャ
 
-<h3>`useInit<T>(value?: T): any`</h3>
+<h3>`useInit<T>(value?: T): StateResult<T>`</h3>
 
 ## 引数
 
@@ -17,7 +17,7 @@ title: useInit
 
 ## 返り値
 
-入力項目の初期値が格納された`UseInitResult<T>`のインスタンスを返します。
+入力項目の初期値と更新関数を持った`StateResult<T>`を返します。
 
 ## 使用例
 

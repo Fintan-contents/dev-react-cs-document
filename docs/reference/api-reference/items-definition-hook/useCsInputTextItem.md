@@ -21,7 +21,7 @@ title: useCsInputTextItem
 
 \*1：`StateResult`は 状態変数の情報を保持するための型定義です。
 
-\*2：`StringValidationRule`は文字列型のバリデーション定義情報を保持する型定義です。最小・最大文字数、正規表現などの情報を保持しています。
+\*2：`StringValidationRule`は`string`型のバリデーション定義情報（必須、最小・最大文字数、カスタムルールなど）を保持する型定義です。
 
 ## 返り値
 
