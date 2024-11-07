@@ -11,8 +11,6 @@ title: 更新機能
 
 更新機能のイベントの型定義には`CsMutateButtonClickEvent`を指定します。更新用の View（`TodoEditView`）の型にイベントの型を定義します。型パラメータには API リクエスト、API レスポンス型を指定します。
 
-`app/todo/page.view.ts`ファイルで以下のようなコードを記述します。
-
 ```tsx title="app/todo/page.view.ts"
 // Orvalで自動生成されたTodoRegistrationの型定義をimport
 
@@ -39,8 +37,6 @@ type TodoEditView = CsView & {
 ## イベントを初期化する
 
 更新用の View（`TodoEditView`）の初期化にイベントの初期化処理を追加します。更新 API では Event のフックに`useCsRqMutateButtonClickEvent()`、引数には Orval で自動生成された API フック`useEditUserInfo()`を指定します。
-
-`app/todo/page.view.ts`ファイルで以下のようなコードを記述します。
 
 ```tsx title="app/todo/page.view.ts"
 // Orvalで自動生成されたAPIフック（useEditUserInfo）をimport
@@ -75,8 +71,6 @@ export const useTodoEditView = (): TodoEditView => {
 
 [イベントの初期化](./crud-update.md#イベントの初期化)で定義した 更新用の View 定義を呼び出します。
 
-`app/todo/page.tsx`ファイルで以下のようなコードを記述します。
-
 ```tsx title="todo/page.ts"
 const todoEditView = useTodoEditView(); // 更新用のViewの呼び出し
 ```
@@ -84,8 +78,6 @@ const todoEditView = useTodoEditView(); // 更新用のViewの呼び出し
 ## 取得 API で取得した値を更新画面の初期値に渡す
 
 固定の文字列などを用いて View に初期値を渡すには`useInit`を指定します。ただし、取得 API のような非同期で取得される値を渡す場合には`setValue`を使用します。
-
-`app/todo/page.tsx`ファイルで指定した値をセットする方法について記述します。
 
 ```tsx title="todo/page.ts"
 const openModal = (mode: "create" | "edit" | "delete", record?: Todo) => {
@@ -115,8 +107,6 @@ const openModal = (mode: "create" | "edit" | "delete", record?: Todo) => {
 ## ボタンを配置する
 
 更新 API に対応する`AxMutateButton`を配置します。`event`引数にはボタン押下時に実施したいイベント（`updateButton`）を指定します。`validationViews`にはバリデーションを実施したい画面単位（`todoEditView`）を配列型で指定します。
-
-`app/todo/page.tsx`ファイルで以下のようなコードを記述します。
 
 ```tsx title="todo/page.ts"
 /**
@@ -152,8 +142,6 @@ const openModal = (mode: "create" | "edit" | "delete", record?: Todo) => {
 ## 更新 API に必要なリクエストを設定する
 
 更新 API 呼び出し時に指定する API リクエストを指定します。`todoId`には更新対象の Id、`data`には更新するデータを指定します。
-
-`app/todo/page.tsx`ファイルで以下のようなコードを記述します。
 
 ```tsx title="todo/page.ts"
 todoEditView.updateButton.setRequest({
