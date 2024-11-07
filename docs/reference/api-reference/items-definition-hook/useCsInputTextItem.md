@@ -7,7 +7,7 @@ title: useCsInputTextItem
 
 ## シグネチャ
 
-<h3>`useCsInputTextItem(label, state, rule, readonly?, placeholder): CsInputTextItem`</h3>
+<h3>`useCsInputTextItem(label, state, rule, readonly?, placeholder?): CsInputTextItem`</h3>
 
 ## 引数
 
@@ -22,6 +22,10 @@ title: useCsInputTextItem
 \*1：`StateResult`は 状態変数の情報を保持するための型定義です。
 
 \*2：`StringValidationRule`は文字列型のバリデーション定義情報を保持する型定義です。最小・最大文字数、正規表現などの情報を保持しています。
+
+## 返り値
+
+引数で定義した初期値やバリデーションルールなど、入力項目に関する情報が集約された `CsInputTextItem` クラスのインスタンスを返します。
 
 ## 使用例
 
@@ -38,7 +42,3 @@ useCsView({
   // highlight-end
 });
 ```
-
-## 返り値
-
-引数で定義した初期値やバリデーションルールなど、入力項目に関する情報が集約された `CsInputTextItem` クラスのインスタンスを返します。

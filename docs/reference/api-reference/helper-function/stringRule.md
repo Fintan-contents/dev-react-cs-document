@@ -18,6 +18,10 @@ title: stringRule
 | max            |      | `number`  | 入力文字列の最大文字数を指定します。                                                                                                                                                      |
 | customRuleName |      | `string`  | カスタムバリデーションルールの名前を指定します。[useCsView](../screen-define/useCsView.md)の`customRules`で指定されたキー値を指定します。要件に応じた固有のバリデーションを設定できます。 |
 
+## 返り値
+
+`string`型に対するバリデーション定義情報を保持する`StringValidationRule` クラスのインスタンスを返します。
+
 ## 使用例
 
 ```tsx
@@ -36,7 +40,3 @@ const view = useCsView(
   }
 );
 ```
-
-## 返り値
-
-`string`型に対するバリデーション定義情報を保持する`StringValidationRule` クラスのインスタンスを返します。

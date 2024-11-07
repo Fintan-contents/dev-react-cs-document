@@ -11,17 +11,48 @@ title: useCsView
 
 ## 引数
 
-| 引数名              | 必須 | 型                                                                                                                                               | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| ------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| definitions         | 〇   | `D extends CsViewDefinition*¹ `                                                                                                                  | フックで定義した画面項目を指定します。画面項目には[入力項目定義のフック](../../../category/入力項目定義のフック)や[イベント定義のフック](../../../category/イベント定義のフック)のみを指定できます。                                                                                                                                                                                                                                                                                                                                |
-| options             |      | `{ readonly?: boolean, customValidationRules?: AppValidationRules extends CustomValidationRules,*² validationTrigger?: "onSubmit" \| "onBlur" }` | ①`readonly`には読み取り専用にするかどうかを指定します。 デフォルトは`false`が指定されます。②`customValidationRules`には適用したいカスタムバリデーションルールを指定します。バリデーションルールには[カスタムバリデーション定義の関数](../../../category/カスタムバリデーション定義の関数)で初期化したルールを指定します。③`validationTrigger`にはバリデーションの実行タイミングを指定します。`onSubmit`はボタン押下時、`onBlur`は入力項目からフォーカスが外れたタイミングでバリデーションを実施します。デフォルトは`onSubmit`です。 |
-| validationEventHook |      | `(instance: CsView & D, customRules?: CustomValidationRules*²) => CsValidationEvent*³`                                                             | 使用するバリデーションイベントを指定します。デフォルトは `getCsDefaultValidationEvent()`が指定されており、初期設定でインストールしたバリデーションライブラリに対応したフックが使用されます。                                                                                                                                                                                                                                                                                                                                        |
+<table>
+  <thead>
+    <tr>
+      <th>引数名</th>
+      <th>必須</th>
+      <th>型</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>definitions</td>
+      <td>〇</td>
+      <td><code>D extends CsViewDefinition*¹</code></td>
+      <td>フックで定義した画面項目を指定します。画面項目には<a href="../../../category/入力項目定義のフック">入力項目定義のフック</a>や<a href="../../../category/イベント定義のフック">イベント定義のフック</a>のみを指定できます。</td>
+    </tr>
+    <tr>
+      <td>options</td>
+      <td></td>
+      <td><code> readonly?: boolean, customValidationRules?: AppValidationRules extends CustomValidationRules,*² validationTrigger?: "onSubmit" | "onBlur"</code></td>
+      <td><p><code>readonly</code>には読み取り専用にするかどうかを指定します。 デフォルトは<code>false</code>が指定されます。</p>
+        <p><code>customValidationRules</code>には適用したいカスタムバリデーションルールを指定します。バリデーションルールには<a href="../../../category/カスタムバリデーション定義の関数">カスタムバリデーション定義の関数</a>で初期化したルールを指定します。</p>
+        <code>validationTrigger</code>にはバリデーションの実行タイミングを指定します。<code>onSubmit</code>はボタン押下時、<code>onBlur</code>は入力項目からフォーカスが外れたタイミングでバリデーションを実施します。デフォルトは<code>onSubmit</code>です。</td>
+    </tr>
+    <tr>
+      <td>validationEventHook</td>
+      <td>あああ</td>
+      <td><code>(instance: CsView & D, customRules?: CustomValidationRules*²) => CsValidationEvent*³</code></td>
+      <td>使用するバリデーションイベントを指定します。デフォルトは <code>getCsDefaultValidationEvent()</code>が指定されており、初期設定でインストールしたバリデーションライブラリに対応したフックが使用されます。</td>
+    </tr>
+  </tbody>
+</table>
 
-\*1: `CsViewDefinition`は、キー値に`string`、値に`CsItemBase`または`CsEvent`のみを許容する`Record`型です。他の型が指定されるとエラーになります。
+\*1: `CsViewDefinition`は、キー値に`string`、値に`CsItemBase`または`CsEvent`のみを許容する`Record`型です。
 
 \*2: `CustomValidationRules`はバリデーションの実行条件やメッセージの表示などの情報を保持する型定義です。
 
 \*3: `CsValidationEvent`はバリデーションエラーが発生したかどうか、エラー時の表示するメッセージなどバリデーションに関する情報を保持する型定義です。
+
+## 返り値
+
+画面項目が 1 つに集約された`CsView`の拡張クラスのインスタンスを返します。
 
 ## 使用例
 
@@ -43,7 +74,3 @@ const view = useCsView(
   }
 );
 ```
-
-## 返り値
-
-画面項目が 1 つに集約された`CsView`の拡張クラスのインスタンスを返します。
