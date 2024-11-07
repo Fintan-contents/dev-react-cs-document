@@ -9,7 +9,7 @@ title: 更新機能
 
 ## イベントの型を定義する
 
-更新機能のイベントの型定義には`CsMutateButtonClickEvent`を指定します。更新用の View（`TodoEditView`）の型にイベントの型を定義します。型パラメータには API リクエスト、API レスポンス型を指定します。
+更新機能のイベントの型定義には`CsMutateButtonClickEvent`を指定します。更新用の View（`TodoEditView`）のプロパティにイベントの型を定義します。型パラメータには 更新 API のリクエスト、レスポンスの型を指定します。
 
 ```tsx title="app/todo/page.view.ts"
 // Orvalで自動生成されたTodoRegistrationの型定義をimport
@@ -23,7 +23,7 @@ type TodoEditView = CsView & {
   id: CsInputTextItem; // 更新対象を識別するためのID
   // highlight-start
   updateButton: CsMutateButtonClickEvent<
-    // 更新対象のId、APIのレスポンスデータ型を定義
+    // 更新対象のId、APIのリクエストデータ型を定義
     {
       todoId: string;
       data: TodoRegistration; // TodoRegistration型を定義
@@ -77,7 +77,7 @@ const todoEditView = useTodoEditView(); // 更新用のViewの呼び出し
 
 ## 取得 API で取得した値を更新画面の初期値に渡す
 
-固定の文字列などを用いて View に初期値を渡すには`useInit`を指定します。ただし、取得 API のような非同期で取得される値を渡す場合には`setValue`を使用します。
+固定の文字列などを用いて 入力項目 に初期値を渡すには`useInit`を指定します。ただし、取得 API のような非同期で取得される値を渡す場合には`setValue`を使用します。
 
 ```tsx title="todo/page.ts"
 const openModal = (mode: "create" | "edit" | "delete", record?: Todo) => {
@@ -154,4 +154,4 @@ todoEditView.updateButton.setRequest({
 });
 ```
 
-以上の実装により、更新機能 の実装が完了します。ボタン押下時に適切に更新 API が呼び出されているか確認してください。
+以上で、更新機能の実装が完了します。ボタン押下時に適切に更新 API が呼び出されているか確認してください。
