@@ -89,7 +89,7 @@ type RegisterUserView = CsView & {
 ```tsx
 useCsView({
   ...
-  イベントの変数名: useCsXxxEvent(useApiClient()),
+  イベントの変数名: useCsXxxEvent(useApiClient()), // APIを呼び出すためのクライアント関数（useApiClient()）を指定
 })
 ```
 
