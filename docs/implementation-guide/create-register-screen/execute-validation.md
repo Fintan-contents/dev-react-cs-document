@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: バリデーションを実施する
+title: 4. バリデーションを実施する
 ---
 
 バリデーションを実施する方法として以下の 2 つがあります。
@@ -22,8 +22,11 @@ const view = useRegisterUserView();
 return (
   <>
     <AxTableLayout view={view} colSize={2} />
-    {/* highlight-next-line */}
-    <AxButton validationViews={[view]}>バリデーション実行</AxButton>
+    {/* highlight-start */}
+    <AxButton type="primary" validationViews={[view]}>
+      バリデーション実行
+    </AxButton>
+    {/* highlight-end */}
   </>
 );
 ```
@@ -34,7 +37,9 @@ return (
 `validationViews` には、複数の View 変数を指定することができます。
 
 ```tsx
-<AxButton validationViews={[view1, view2]}>バリデーション実行</AxButton>
+<AxButton type="primary" validationViews={[view1, view2]}>
+  バリデーション実行
+</AxButton>
 ```
 
 :::
