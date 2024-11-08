@@ -37,7 +37,7 @@ export type TodoEditView = CsView & {
 
 ## イベントを初期化する
 
-更新用の View（`TodoEditView`）の初期化にイベントの初期化処理を追加します。更新 API では Event のフックに`CsRqAdvancedMutateButtonClickEvent()`、引数には Orval で自動生成された API フック`usePutTodo()`を指定します。
+更新用の View（`TodoEditView`）にイベントの初期化処理を追加します。更新 API では Event のフックに`CsRqAdvancedMutateButtonClickEvent()`、引数には Orval で自動生成された API フック`usePutTodo()`を指定します。
 
 ```ts title="src/app/todo/page.view.ts"
 // Orvalで自動生成されたAPIフック（usePutTodo）をimport
