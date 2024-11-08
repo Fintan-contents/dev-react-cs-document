@@ -5,13 +5,13 @@ title: 更新機能
 
 本節では以下に示すような更新機能の実装方法について説明します。
 
-![更新機能の画面](../../../static/img/crud-update.png)
+![更新機能の画面](../../../static/img/crud-update.gif)
 
 ## イベントの型を定義する
 
 更新機能のイベントの型定義には`CsMutateButtonClickEvent`を指定します。更新用の View（`TodoEditView`）のプロパティにイベントの型を定義します。型パラメータには 更新 API のリクエスト、レスポンスの型を指定します。
 
-```tsx title="app/todo/page.view.ts"
+```tsx title="src/app/todo/page.view.ts"
 // Orvalで自動生成されたTodoRegistrationの型定義をimport
 
 /**
@@ -38,7 +38,7 @@ type TodoEditView = CsView & {
 
 更新用の View（`TodoEditView`）の初期化にイベントの初期化処理を追加します。更新 API では Event のフックに`useCsRqMutateButtonClickEvent()`、引数には Orval で自動生成された API フック`usePostTodo()`を指定します。
 
-```tsx title="app/todo/page.view.ts"
+```tsx title="src/app/todo/page.view.ts"
 // Orvalで自動生成されたAPIフック（usePostTodo）をimport
 
 /**
@@ -69,9 +69,9 @@ export const useTodoEditView = (): TodoEditView => {
 
 ## View 定義を呼び出す
 
-[イベントの初期化](./crud-update.md#イベントの初期化)で定義した 更新用の View 定義を呼び出します。
+[イベントの初期化](./update-feature.md#イベントを初期化する)で定義した 更新用の View 定義を呼び出します。
 
-```tsx title="todo/page.ts"
+```tsx title="src/app/todo/page.tsx"
 const todoEditView = useTodoEditView(); // 更新用のViewの呼び出し
 ```
 
@@ -79,7 +79,7 @@ const todoEditView = useTodoEditView(); // 更新用のViewの呼び出し
 
 固定の文字列などを用いて 入力項目 に初期値を渡すには`useInit`を指定します。ただし、取得 API のような非同期で取得される値を渡す場合には`setValue`を使用します。
 
-```tsx title="todo/page.ts"
+```tsx title="todo/page.tsx"
 const openModal = (mode: "create" | "edit" | "delete", record?: Todo) => {
   switch (mode) {
     case "create":
@@ -108,7 +108,7 @@ const openModal = (mode: "create" | "edit" | "delete", record?: Todo) => {
 
 更新 API に対応する`AxMutateButton`を配置します。`event`引数にはボタン押下時に実施したいイベント（`updateButton`）を指定します。`validationViews`にはバリデーションを実施したい画面単位（`todoEditView`）を配列型で指定します。
 
-```tsx title="todo/page.ts"
+```tsx title="src/app/todo/page.tsx"
 /**
  * 更新用のModal定義
  */
@@ -143,7 +143,7 @@ const openModal = (mode: "create" | "edit" | "delete", record?: Todo) => {
 
 更新 API 呼び出し時に指定する API リクエストを指定します。`todoId`には更新対象の Id、`data`には更新するデータを指定します。
 
-```tsx title="todo/page.ts"
+```tsx title="src/app/todo/page.tsx"
 todoEditView.updateButton.setRequest({
   // リクエストデータに値をセット
   todoId: todoEditView.id,
