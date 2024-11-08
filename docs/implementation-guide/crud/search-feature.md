@@ -18,7 +18,6 @@ title: 検索機能
  * 担当者検索用のViewの型定義
  */
 export type TodoSearchView = CsView & {
-  assignee: CsInputTextItem; // TODO: ここ消すかも　サンプルアプリの変更も必要
   searchTodo: CsQueryButtonClickEvent<ListTodoResponse>;
 };
 ```
@@ -30,7 +29,6 @@ export type TodoSearchView = CsView & {
 ```ts title="src/app/todo/page.view.ts"
 // Orvalで自動生成されたAPIフック（useListTodo）をimport
 
-// TODO: ここのコードは変わるかも
 /**
  * 担当者検索用のViewの初期化
  *
@@ -39,7 +37,6 @@ export type TodoSearchView = CsView & {
  */
 export const useTodoSearchView = (assignee: string): TodoSearchView => {
   return useCsView({
-    assignee: useCsInputTextItem("担当者", useInit(""), stringRule(true, 1, 20), RW.Editable, "検索する担当者を入力してください"),
     // highlight-start
     searchTodo: useCsRqAdvancedQueryButtonClickEvent(
       useListTodo(
@@ -61,11 +58,11 @@ export const useTodoSearchView = (assignee: string): TodoSearchView => {
 [イベントを初期化する](./search-feature.md#イベントを初期化する)で定義した 検索用の View 定義を呼び出します。
 
 ```tsx title="src/app/todo/page.tsx"
-// 検索条件（担当者）の保持
-const [assignee, setAssignee] = useState<string>("");
+// 検索条件入力用のView
+const todoSearchInputView = useTodoSearchInputView();
 
 // highlight-start
-const todoSearchView = useTodoSearchView(assignee); // 検索用のViewの呼び出し
+const todoSearchView = useTodoSearchView(todoSearchInputView.assignee.value ?? ""); // 検索用のViewの呼び出し
 // highlight-end
 ```
 
