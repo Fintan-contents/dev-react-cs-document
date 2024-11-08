@@ -11,7 +11,7 @@ title: 登録機能
 
 登録機能のイベントの型定義には`CsMutateButtonClickEvent`を指定します。登録用の View（`TodoCreateView`）のプロパティにイベントの型を定義します。型パラメータには 登録 API のリクエスト、レスポンスの型を指定します。
 
-```tsx title="src/app/todo/page.view.ts"
+```ts title="src/app/todo/page.view.ts"
 // Orvalで自動生成されたTodoRegistrationの型定義をimport
 
 /**
@@ -37,7 +37,7 @@ export type TodoCreateView = CsView & {
 
 登録用の View（`TodoCreateView`）の初期化にイベントの初期化処理を追加します。登録 API では Event のフックに`useCsRqMutateButtonClickEvent()`、引数には Orval で自動生成された API フック`usePutTodo()`を指定します。
 
-```tsx title="src/app/todo/page.view.ts"
+```ts title="src/app/todo/page.view.ts"
 // Orvalで自動生成されたAPIフック（usePutTodo）をimport
 
 /**
