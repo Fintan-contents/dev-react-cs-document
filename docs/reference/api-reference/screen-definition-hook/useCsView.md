@@ -69,7 +69,7 @@ const view = useCsView(
   },
   {
     readonly: true,
-    customRules: customRules, // customRuleには`xxCustomValidationRule`で初期化したルールを定義
+    customRules: customRules, // customRuleにはxxCustomValidationRuleで初期化したルールを定義
     validationTrigger: "onBlur",
   }
 );

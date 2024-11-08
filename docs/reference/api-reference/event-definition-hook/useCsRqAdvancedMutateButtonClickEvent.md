@@ -3,7 +3,7 @@ sidebar_position: 2
 title: useCsRqAdvancedMutateButtonClickEvent
 ---
 
-`useCsRqAdvancedMutateButtonClickEvent` は、Axios（シンプル版）もしくは React Query に対応する更新系 API イベントを初期化するためのフックです。
+`useCsRqAdvancedMutateButtonClickEvent` は、Axios（シンプル版）もしくは React Query に対応する更新系 API ボタンイベントを初期化するためのフックです。
 
 ## シグネチャ
 
@@ -21,7 +21,7 @@ title: useCsRqAdvancedMutateButtonClickEvent
 
 ## 返り値
 
-API のリクエストやレスポンス、成功・失敗のステータスなどの情報が含まれるデータが格納される`CsRqMutateButtonClickEvent`クラスのインスタンスが返却されます。
+API のリクエストやレスポンス、成功・失敗のステータスなどの情報が含まれる`CsRqMutateButtonClickEvent`クラスのインスタンスを返します。
 
 ## 使用例
 

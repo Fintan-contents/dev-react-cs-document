@@ -3,7 +3,7 @@ sidebar_position: 2
 title: stringCustomValidationRule
 ---
 
-`stringCustomValidationRule` は、指定されたバリデータとエラーメッセージを使用して、文字列に対するカスタムバリデーションルールを生成します。[useCsView](../screen-define/useCsView.md)の`options`で使用できます。
+`stringCustomValidationRule` は、指定されたバリデータとエラーメッセージを使用して、テキスト入力項目に対するカスタムバリデーションルールを生成します。[useCsView](../screen-define/useCsView.md)の`options`で使用できます。
 
 ## シグネチャ
 

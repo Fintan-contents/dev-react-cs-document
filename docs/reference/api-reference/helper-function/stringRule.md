@@ -20,7 +20,7 @@ title: stringRule
 
 ## 返り値
 
-`string`型に対するバリデーション定義情報を保持する`StringValidationRule` クラスのインスタンスを返します。
+テキスト入力項目のバリデーション定義情報（必須、最小・最大文字数、カスタムルールなど）を保持する`StringValidationRule` クラスのインスタンスを返します。
 
 ## 使用例
 
