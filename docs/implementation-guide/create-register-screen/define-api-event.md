@@ -11,23 +11,27 @@ API に関するイベントは、自動実行が可能な **LoadEvent** と、�
 
 <h3> LoadEvent </h3>
 
-画面表示時などに自動で実行できる API イベントです。初回ロード時に画面で表示したいデータを取得する、といった用途で使用できます。
+画面表示時などに自動で実行できる API イベントです。初回ロード時に画面で表示したいデータを取得する、といった用途で使用できます。一般の GET を使った検索では`CsQueryLoadEvent`、POST を使ってリクエストボティを必要とするような複雑な検索では`CsMutateLoadEvent`を使用します。
+
 LoadEvent で使用する型と初期化フックは次の表の通りです。（※対応する画面コンポーネントはありません。）
 
-| リクエスト              | 型                  | フック                        | 画面コンポーネント |
-| ----------------------- | ------------------- | ----------------------------- | ------------------ |
-| GET                     | `CsQueryLoadEvent`  | `useCsXxxQueryLoadEvent` \*¹  | なし               |
-| POST<br/>PUT<br/>DELETE | `CsMutateLoadEvent` | `useCsXxxMutateLoadEvent` \*¹ | なし               |
+| リクエスト | 型                  | フック                        | 画面コンポーネント |
+| ---------- | ------------------- | ----------------------------- | ------------------ |
+| GET        | `CsQueryLoadEvent`  | `useCsXxxQueryLoadEvent` \*¹  | なし               |
+| POST       | `CsMutateLoadEvent` | `useCsXxxMutateLoadEvent` \*¹ | なし               |
 
 ＊1：`Xxx` は API 呼び出し方式によって異なります。[API 呼び出し方式の選択](../../introduction-guide/introduction-tool.md#api-呼び出し方式の選択)で「Orval(シンプル版)」もしくは「TanStack Query」 を選択した場合は`Rq`、「Orval(拡張版)」 を選択した場合は `RqAdvanced` から始まる部品を使用します。
 
 <h3>ButtonClickEvent</h3>
 
-ボタン押下によって実行できる API イベントです。検索ボタンや送信ボタンを実装する際に使用できます。呼び出す API が取得系か更新系かによって、使用する型や初期化フック、画面コンポーネントが異なります。 以下に対応表を示します。
-|リクエスト | 型 | フック | 画面コンポーネント |
-| ------ | ----------------------------- | -------------------------------- | ---------------- |
-| GET | `CsQueryButtonClickEvent` | `useCsXxxQueryButtonClickEvent` *¹ | `AxQueryButton` *² |
-| POST<br/>PUT<br/>DELETE | `CsMutateButtonClickEvent` | `useCsXxxMutateButtonClickEvent` *¹ | `AxMutateButton`*² |
+ボタン押下によって実行できる API イベントです。検索ボタンや送信ボタンを実装する際に使用できます。参照系 API を呼び出す場合は`CsQueryButtonClickEvent`、更新系 API を呼び出す場合は`CsMutateButtonClickEvent`を使用します。
+
+以下に対応表を示します。
+
+| リクエスト              | 型                         | フック                               | 画面コンポーネント  |
+| ----------------------- | -------------------------- | ------------------------------------ | ------------------- |
+| GET                     | `CsQueryButtonClickEvent`  | `useCsXxxQueryButtonClickEvent` \*¹  | `AxQueryButton` \*² |
+| POST<br/>PUT<br/>DELETE | `CsMutateButtonClickEvent` | `useCsXxxMutateButtonClickEvent` \*¹ | `AxMutateButton`\*² |
 
 ＊1：`Xxx` は API 呼び出し方式によって異なります。[API 呼び出し方式の選択](../../introduction-guide/introduction-tool.md#api-呼び出し方式の選択)で「Orval(シンプル版)」もしくは「TanStack Query」 を選択した場合は`Rq`、「Orval(拡張版)」 を選択した場合は `RqAdvanced` から始まる部品を使用します。  
 ＊2：`Ax` は Ant Design に対応した画面コンポーネントです。
@@ -60,7 +64,7 @@ LoadEvent で使用する型と初期化フックは次の表の通りです。�
 |-----------------------------|--------------------|--------------------|----------|
 | `CsQueryLoadEvent` | なし | 必須 | 任意 |
 | `CsMutateLoadEvent` | なし | 必須 | 任意 |
-| `CsQueryButtonClickEvent` | なし | 必須 | 任意 |
+| `CsQueryButtonClickEvent` | なし | 任意 | 任意 |
 | `CsMutateButtonClickEvent` | 必須 | 任意 | 任意 |
 :::
 
