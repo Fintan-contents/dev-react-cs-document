@@ -37,10 +37,10 @@ export type TodoEditView = CsView & {
 
 ## イベントを初期化する
 
-更新用の View（`TodoEditView`）の初期化にイベントの初期化処理を追加します。更新 API では Event のフックに`useCsRqMutateButtonClickEvent()`、引数には Orval で自動生成された API フック`usePostTodo()`を指定します。
+更新用の View（`TodoEditView`）の初期化にイベントの初期化処理を追加します。更新 API では Event のフックに`useCsRqMutateButtonClickEvent()`、引数には Orval で自動生成された API フック`usePutTodo()`を指定します。
 
 ```ts title="src/app/todo/page.view.ts"
-// Orvalで自動生成されたAPIフック（usePostTodo）をimport
+// Orvalで自動生成されたAPIフック（usePutTodo）をimport
 
 /**
  * 更新用のViewの初期化
@@ -73,7 +73,7 @@ export const useTodoEditView = (): TodoEditView => {
     // 更新対象を識別するためのID（表示はしない）
     id: useCsInputTextItem("ID", useInit(""), stringRule(false)),
     // highlight-start
-    updateButton: useCsRqAdvancedMutateButtonClickEvent(usePostTodo()), // イベントの初期化処理の追加
+    updateButton: useCsRqAdvancedMutateButtonClickEvent(usePutTodo()), // イベントの初期化処理の追加
     // highlight-end
   });
 };
@@ -117,28 +117,24 @@ useEffect(() => {
 
 ```tsx title="src/app/todo/TodoEditModal.tsx"
 <Modal
-  open={isOpenEdit}
+  open={isOpenEditModal}
   title="更新"
-  onCancel={() => {
-    closeModal("edit");
-  }}
-  footer={null}
->
-  <>
-    <AxInputText item={todoEditView.title}></AxInputText>
-    <AxTextArea item={todoEditView.description}></AxTextArea>
-    // highlight-start
+  onCancel={onCancel}
+  footer={
     <AxMutateButton
       event={todoEditView.updateButton}
       validationViews={[todoEditView]}
       type="primary"
-      onAfterApiCallSuccess={() => {
-        closeModal("edit");
-      }}
+      onAfterApiCallSuccess={onAfterApiCallSuccess}
     >
       更新
     </AxMutateButton>
-    // highlight-end
+  }
+>
+  <>
+    <AxInputText item={todoEditView.title}></AxInputText>
+    <AxTextArea item={todoEditView.description}></AxTextArea>
+    <AxInputText item={todoEditView.assignee}></AxInputText>
   </>
 </Modal>
 ```
@@ -153,10 +149,11 @@ const todoEditView = useTodoEditView(); // 更新用のViewの呼び出し
 // highlight-start
 todoEditView.updateButton.setRequest({
   // リクエストデータに値をセット
-  todoId: todoEditView.id,
+  todoId: todoEditView.id.value ?? "",
   data: {
     title: todoEditView.title.value ?? "",
     description: todoEditView.description.value ?? "",
+    assignee: todoEditView.assignee.value ?? "",
   },
 });
 // highlight-end
