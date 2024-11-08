@@ -11,7 +11,7 @@ title: 取得機能
 
 取得機能のイベントの型定義には`CsQueryLoadEvent`を指定します。取得用の View（`TodoListView`）のプロパティにイベントの型を定義します。型パラメータには 取得 API のレスポンスの型を定義します。
 
-```tsx title="src/app/todo/page.view.ts"
+```ts title="src/app/todo/page.view.ts"
 // Orvalで自動生成されたListTodoResponseの型定義をimport
 
 /**
@@ -28,7 +28,7 @@ export type TodoListView = CsView & {
 
 取得用の View（`TodoListView`）の初期化にイベントの初期化処理を追加します。取得 API では Event のフックに`useCsRqAdvancedQueryLoadEvent`、引数には Orval で自動生成された API フック`useListTodo()`を指定します。
 
-```tsx title="src/app/todo/page.view.ts"
+```ts title="src/app/todo/page.view.ts"
 // Orvalで自動生成されたAPIフック（useListTodo）をimport
 
 /**
