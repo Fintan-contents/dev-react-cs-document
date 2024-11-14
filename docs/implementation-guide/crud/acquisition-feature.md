@@ -5,7 +5,7 @@ title: 取得機能
 
 本節では以下に示すような取得機能の実装方法について説明します。
 
-取得イメージを掲載予定
+![取得機能の画面](../../../static/img/crud-get.gif)
 
 ## イベントの型を定義する
 
@@ -26,7 +26,7 @@ export type TodoListView = CsView & {
 
 ## イベントを初期化する
 
-取得用の View（`TodoListView`）の初期化にイベントの初期化処理を追加します。取得 API では Event のフックに`useCsRqAdvancedQueryLoadEvent`、引数には Orval で自動生成された API フック`useListTodo()`を指定します。
+取得用の View（`TodoListView`）にイベントの初期化処理を追加します。取得 API では Event のフックに`useCsRqAdvancedQueryLoadEvent`、引数には Orval で自動生成された API フック`useListTodo()`を指定します。
 
 ```ts title="src/app/todo/page.view.ts"
 // Orvalで自動生成されたAPIフック（useListTodo）をimport

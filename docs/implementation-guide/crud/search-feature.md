@@ -18,6 +18,7 @@ title: 検索機能
  * 担当者検索用のViewの型定義
  */
 export type TodoSearchView = CsView & {
+  assignee: CsInputTextItem;
   searchTodo: CsQueryButtonClickEvent<ListTodoResponse>;
 };
 ```
@@ -36,20 +37,26 @@ export type TodoSearchView = CsView & {
  * @returns TodoSearchView 担当者検索用のView
  */
 export const useTodoSearchView = (assignee: string): TodoSearchView => {
-  const assignee = useCsInputTextItem("担当者", useInit(""), stringRule(true, 1, 20), RW.Editable, "検索する担当者を入力してください");
+  const assignee = useCsInputTextItem(
+    "担当者",
+    useInit(""),
+    stringRule(true, 1, 20),
+    RW.Editable,
+    "検索する担当者を入力してください",
+  );
   return useCsView({
     assignee: assignee,
     // highlight-start
     searchTodo: useCsRqAdvancedQueryButtonClickEvent(
       useListTodo(
-        { assignee_eq: assignee },
+        { assignee_eq: assignee }, // クエリパラメータを指定
         {
           query: {
             enabled: false, // ボタンがクリックされるまでクエリを実行しない
             refetchOnWindowFocus: false, // ページにフォーカスがあたってもクエリを実行しない
           },
-        }
-      )
+        },
+      ),
     ),
     // highlight-end
   });
