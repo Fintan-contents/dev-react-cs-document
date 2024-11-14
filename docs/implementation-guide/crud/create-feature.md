@@ -76,9 +76,11 @@ const todoPostView = useTodoCreateView(); // 登録用のViewの呼び出し
   title="追加"
   onCancel={onCancel}
   footer={
+    // highlight-start
     <AxMutateButton event={todoPostView.createButton} validationViews={[todoPostView]} type="primary" onAfterApiCallSuccess={onAfterApiCallSuccess}>
       作成
     </AxMutateButton>
+    // highlight-end
   }
 >
   <>
