@@ -49,9 +49,27 @@ export type TodoEditView = CsView & {
  */
 export const useTodoEditView = (): TodoEditView => {
   return useCsView({
-    title: useCsInputTextItem("タイトル", useInit(""), stringRule(true, 1, 20), RW.Editable, "タイトルを入力してください"),
-    description: useCsTextAreaItem("説明", useInit(""), stringRule(true, 1, 100), RW.Editable, "タスクの説明を入力してください"),
-    assignee: useCsInputTextItem("担当者", useInit(""), stringRule(true, 1, 20), RW.Editable, "担当者を入力してください"),
+    title: useCsInputTextItem(
+      "タイトル",
+      useInit(""),
+      stringRule(true, 1, 20),
+      RW.Editable,
+      "タイトルを入力してください",
+    ),
+    description: useCsTextAreaItem(
+      "説明",
+      useInit(""),
+      stringRule(true, 1, 100),
+      RW.Editable,
+      "タスクの説明を入力してください",
+    ),
+    assignee: useCsInputTextItem(
+      "担当者",
+      useInit(""),
+      stringRule(true, 1, 20),
+      RW.Editable,
+      "担当者を入力してください",
+    ),
     // 更新対象を識別するためのID（表示はしない）
     id: useCsInputTextItem("ID", useInit(""), stringRule(false)),
     // highlight-start
@@ -103,7 +121,12 @@ useEffect(() => {
   title="更新"
   onCancel={onCancel}
   footer={
-    <AxMutateButton event={todoEditView.updateButton} validationViews={[todoEditView]} type="primary" onAfterApiCallSuccess={onAfterApiCallSuccess}>
+    <AxMutateButton
+      event={todoEditView.updateButton}
+      validationViews={[todoEditView]}
+      type="primary"
+      onAfterApiCallSuccess={onAfterApiCallSuccess}
+    >
       更新
     </AxMutateButton>
   }
