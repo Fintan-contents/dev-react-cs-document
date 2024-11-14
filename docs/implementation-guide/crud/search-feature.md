@@ -97,3 +97,5 @@ const [searchResult, setSearchResult] = useState<ListTodoResponse>();
   検索
 </AxQueryButton>;
 ```
+
+以上で、検索機能の実装が完了します。ボタン押下時に適切に検索 API が呼び出されているかを確認してください。
