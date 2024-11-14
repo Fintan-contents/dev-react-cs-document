@@ -67,12 +67,10 @@ const todoPostView = useTodoCreateView(); // 登録用のViewの呼び出し
 
 ## ボタンを配置する
 
-登録 API に対応する`AxMutateButton`を配置します。`event`引数にはボタン押下時に実施したいイベント（`createButton`）を指定します。`validationViews`にはバリデーションを実施したい画面単位（`todoCreateView`）を配列型で指定します。
+登録ボタンを配置する際は、画面コンポーネントとして `AxMutateButton` を使用します。（型定義で用いた `CsMutateButtonClickEvent` に対応した画面コンポーネントを使用します。）
+`event` という Props に、対応するイベントの変数を指定します。また、`validationViews`に View の変数を指定することで、バリデーションが実行できます。
 
 ```tsx title="src/app/todo/TodoCreateModal.tsx"
-/**
- * 登録用のModal定義
- */
 <Modal
   open={isOpenCreateModal}
   title="追加"
@@ -93,7 +91,7 @@ const todoPostView = useTodoCreateView(); // 登録用のViewの呼び出し
 
 ## 登録 API に必要なリクエストを設定する
 
-登録 API 呼び出し時に指定する API リクエストを指定します。`data`には登録するデータを指定します。
+登録 API 呼び出し時に指定する API リクエストを指定します。`data`に登録するデータを指定します。
 
 ```tsx title="src/app/todo/TodoCreateModal.tsx"
 const todoPostView = useTodoCreateView(); // 登録用のViewの呼び出し
