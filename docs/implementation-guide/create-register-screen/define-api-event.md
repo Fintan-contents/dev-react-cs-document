@@ -68,7 +68,7 @@ LoadEvent で使用する型と初期化フックは次の表の通りです。�
 | `CsMutateButtonClickEvent` | 必須 | 任意 | 任意 |
 :::
 
-以下に示すコードでは、 [1. 画面を定義する](./define-screen.md#view-の型を定義する) で定義した View の型に、登録ボタン用のイベントの型定義を追加しています。  
+以下に示すコードでは、 [1. 画面を定義する](./define-screen.md#view の型を定義する) で定義した View の型に、登録ボタン用のイベントの型定義を追加しています。  
 更新系の API をボタン押下時に呼び出す場合は、 `CsMutateButtonClickEvent` を使用します。型引数には、リクエストデータ型として `{data: PostUserRequest}` を指定します。
 
 ```tsx title="Viewの型定義に登録ボタン用のイベントを追加する"
@@ -125,5 +125,5 @@ const useRegisterUserView = (): RegisterUserView => {
 ```
 
 :::info
-本節で解説していない `CsQueryLoadEvent` や `CsQueryButtonClickEvent` を用いた実装方法については、[CRUD 機能を作る](../crud-function-implementation.md) で解説しています。`CsMutateLoadEvent`については本ドキュメントでは解説していません。
+本節で解説していない `CsQueryLoadEvent` や `CsQueryButtonClickEvent` を用いた実装方法については、[CRUD 機能を作る](../crud/goal.md) で解説しています。`CsMutateLoadEvent`については本ドキュメントでは解説していません。
 :::

@@ -186,4 +186,4 @@ input: {
 
 <hr/>
 以上で、Orval の設定は完了です。  
-自動生成されたコードを用いて実際に API を呼び出す方法については、[CRUD 機能の実装](../../implementation-guide/crud-function-implementation.md)を参照してください。
+自動生成されたコードを用いて実際に API を呼び出す方法については、[CRUD 機能の実装](../../implementation-guide/crud/goal.md)を参照してください。
