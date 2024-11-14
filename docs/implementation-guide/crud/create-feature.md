@@ -5,7 +5,7 @@ title: 登録機能
 
 本節ではいかに示すような登録機能の実装方法について説明します。
 
-![登録機能の画像](../../../static/img/crud-create.gif)
+![登録機能の画面](../../../static/img/crud-create.gif)
 
 ## イベントの型を定義する
 
