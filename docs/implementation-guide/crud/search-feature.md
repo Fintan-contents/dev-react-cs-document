@@ -26,6 +26,11 @@ export type TodoSearchView = CsView & {
 
 検索用の View（`TodoSearchView`）にイベントの初期化処理を追加します。検索 API で Event のフックに`useCsRqAdvancedQueryButtonClickEvent`、引数には Orval で自動生成された API フック`useListTodo()`を指定します。
 
+:::info
+enabled オプションに false を指定した場合、ページがロードされたときにクエリを実行せず、ボタンがクリックされた際にクエリが実行されます。
+refechOnWindowFocus に false を指定した場合、ページにフォーカスがあたったときにクエリが実行されません。
+:::
+
 ```ts title="src/app/todo/page.view.ts"
 // Orvalで自動生成されたAPIフック（useListTodo）をimport
 
@@ -36,34 +41,32 @@ export type TodoSearchView = CsView & {
  * @returns TodoSearchView 担当者検索用のView
  */
 export const useTodoSearchView = (assignee: string): TodoSearchView => {
+  const assignee = useCsInputTextItem("担当者", useInit(""), stringRule(true, 1, 20), RW.Editable, "検索する担当者を入力してください");
   return useCsView({
+    assignee: assignee,
     // highlight-start
     searchTodo: useCsRqAdvancedQueryButtonClickEvent(
       useListTodo(
         { assignee_eq: assignee },
         {
           query: {
-            enabled: true,
+            enabled: false,
             refetchOnWindowFocus: false,
           },
         }
       )
     ),
+    // highlight-end
   });
 };
 ```
 
 ## View 定義を呼び出す
 
-[イベントを初期化する](./search-feature.md#イベントを初期化する)で定義した 検索用の View 定義を呼び出します。
+[イベントの初期化](./search-feature.md#イベントを初期化する)で定義した 検索用の View 定義を呼び出します。
 
 ```tsx title="src/app/todo/page.tsx"
-// 検索条件入力用のView
-const todoSearchInputView = useTodoSearchInputView();
-
-// highlight-start
-const todoSearchView = useTodoSearchView(todoSearchInputView.assignee.value ?? ""); // 検索用のViewの呼び出し
-// highlight-end
+const todoSearchView = useTodoSearchView(); // 検索用のViewの呼び出し
 ```
 
 ## ボタンを配置する
@@ -71,21 +74,25 @@ const todoSearchView = useTodoSearchView(todoSearchInputView.assignee.value ?? "
 検索ボタンを配置する際は、画面コンポーネントとして `AxQueryButton` を使用します。（型定義で用いた `CsQueryButtonClickEvent` に対応した画面コンポーネントを使用します。）`event`という Props に、対応するイベントの変数を指定します。また、`validationViews` に View の変数を指定することで、バリデーションが実行できます。
 
 ```tsx title="src/app/todo/page.tsx"
+// 検索結果取得
+const [searchResult, setSearchResult] = useState<ListTodoResponse>();
+
 <AxQueryButton
   type="primary"
   event={todoSearchView.searchTodo}
   validationViews={[todoSearchView]}
   onBeforeApiCall={() => {
     todoSearchView.validationEvent?.resetError();
-    setAssignee(todoSearchView.assignee.value ?? "");
   }}
   onAfterApiCallSuccess={() => {
     setIsFilter(true);
+    // レスポンスの値を状態変数に格納
+    setSearchResult(todoSearchView.searchTodo.response);
   }}
   addClassNames={["vertical-center"]}
 >
   検索
-</AxQueryButton>
+</AxQueryButton>;
 ```
 
 ## 値を取得する
