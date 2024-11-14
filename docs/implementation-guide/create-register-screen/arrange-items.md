@@ -1,6 +1,6 @@
 ---
-sidebar_position: 2
-title: 入力項目を配置する
+sidebar_position: 4
+title: 3. 入力項目を配置する
 ---
 
 画面の定義が完了したら、画面コンポーネントを使用して入力項目を配置していきます。  

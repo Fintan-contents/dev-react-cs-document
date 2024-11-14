@@ -5,23 +5,24 @@ title: 更新機能
 
 本節では以下に示すような更新機能の実装方法について説明します。
 
-![更新機能の画面](../../../static/img/crud-update.png)
+![更新機能の画面](../../../static/img/crud-update.gif)
 
 ## イベントの型を定義する
 
 更新機能のイベントの型定義には`CsMutateButtonClickEvent`を指定します。更新用の View（`TodoEditView`）のプロパティにイベントの型を定義します。型パラメータには 更新 API のリクエスト、レスポンスの型を指定します。
 
-```tsx title="app/todo/page.view.ts"
+```ts title="src/app/todo/page.view.ts"
 // Orvalで自動生成されたTodoRegistrationの型定義をimport
 
 /**
- * 更新用のViewの型定義
+ * 更新用のView
  */
-type TodoEditView = CsView & {
+export type TodoEditView = CsView & {
   title: CsInputTextItem;
   description: CsTextAreaItem;
   id: CsInputTextItem; // 更新対象を識別するためのID
   // highlight-start
+  assignee: CsInputTextItem;
   updateButton: CsMutateButtonClickEvent<
     // 更新対象のId、APIのリクエストデータ型を定義
     {
@@ -36,32 +37,25 @@ type TodoEditView = CsView & {
 
 ## イベントを初期化する
 
-更新用の View（`TodoEditView`）の初期化にイベントの初期化処理を追加します。更新 API では Event のフックに`useCsRqMutateButtonClickEvent()`、引数には Orval で自動生成された API フック`usePostTodo()`を指定します。
+更新用の View（`TodoEditView`）にイベントの初期化処理を追加します。更新 API では Event のフックに`useCsRqAdvancedMutateButtonClickEvent()`、引数には Orval で自動生成された API フック`usePutTodo()`を指定します。
 
-```tsx title="app/todo/page.view.ts"
-// Orvalで自動生成されたAPIフック（usePostTodo）をimport
+```ts title="src/app/todo/page.view.ts"
+// Orvalで自動生成されたAPIフック（usePutTodo）をimport
 
 /**
  * 更新用のViewの初期化
+ *
+ * @returns TodoEditView 更新用のView
  */
 export const useTodoEditView = (): TodoEditView => {
   return useCsView({
-    title: useCsInputTextItem(
-      "タイトル",
-      useInit(""),
-      stringRule(true, 1, 20),
-      RW.Editable
-    ),
-    description: useCsTextAreaItem(
-      "説明",
-      useInit(""),
-      stringRule(true, 1, 100),
-      RW.Editable
-    ),
+    title: useCsInputTextItem("タイトル", useInit(""), stringRule(true, 1, 20), RW.Editable, "タイトルを入力してください"),
+    description: useCsTextAreaItem("説明", useInit(""), stringRule(true, 1, 100), RW.Editable, "タスクの説明を入力してください"),
+    assignee: useCsInputTextItem("担当者", useInit(""), stringRule(true, 1, 20), RW.Editable, "担当者を入力してください"),
     // 更新対象を識別するためのID（表示はしない）
-    id: useCsInputTextItem("ID", useInit(""), stringRule(false), RW.Editable),
+    id: useCsInputTextItem("ID", useInit(""), stringRule(false)),
     // highlight-start
-    updateButton: useCsRqAdvancedMutateButtonClickEvent(usePostTodo()), // イベントの初期化処理の追加
+    updateButton: useCsRqAdvancedMutateButtonClickEvent(usePutTodo()), // イベントの初期化処理の追加
     // highlight-end
   });
 };
@@ -69,72 +63,55 @@ export const useTodoEditView = (): TodoEditView => {
 
 ## View 定義を呼び出す
 
-[イベントの初期化](./crud-update.md#イベントの初期化)で定義した 更新用の View 定義を呼び出します。
+[イベントの初期化](./update-feature.md#イベントを初期化する)で定義した 更新用の View 定義を呼び出します。
 
-```tsx title="todo/page.ts"
+```tsx title="src/app/todo/TodoEditModal.tsx"
 const todoEditView = useTodoEditView(); // 更新用のViewの呼び出し
 ```
 
-## 取得 API で取得した値を更新画面の初期値に渡す
+## API で取得した値を更新画面の初期値に渡す
 
-固定の文字列などを用いて 入力項目 に初期値を渡すには`useInit`を指定します。ただし、取得 API のような非同期で取得される値を渡す場合には`setValue`を使用します。
+固定の文字列などを入力項目の初期値に渡すには`useInit`を指定します。ただし、取得 API のような非同期で取得される値を渡す場合には`setValue`を使用します。
 
-```tsx title="todo/page.ts"
-const openModal = (mode: "create" | "edit" | "delete", record?: Todo) => {
-  switch (mode) {
-    case "create":
-      setIsOpenCreate(true);
-      break;
-    case "edit":
-      // highlight-start
-      todoPutView.id.setValue(record?.id);
-      todoPutView.title.setValue(record?.title);
-      todoPutView.description.setValue(record?.description);
-      todoPutView.assignee.setValue(record?.assignee);
-      // highlight-end
-      setIsOpenEdit(true);
-      break;
-    case "delete":
-      todoDeleteView.id.setValue(record?.id);
-      setIsOpenDelete(true);
-      break;
-    default:
-      break;
-  }
+```tsx title="src/app/todo/TodoEditModal.tsx"
+// 入力項目に更新対象のデータ（record）の初期値をセット
+const setRecord = () => {
+  // highlight-start
+  todoEditView.id.setValue(record?.id);
+  todoEditView.title.setValue(record?.title);
+  todoEditView.description.setValue(record?.description);
+  todoEditView.assignee.setValue(record?.assignee);
+  // highlight-end
 };
+
+// モーダルを開いたときにsetRecordを呼ぶ
+useEffect(() => {
+  setRecord();
+  // recordが変更されたら再設定
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [record]);
 ```
 
 ## ボタンを配置する
 
-更新 API に対応する`AxMutateButton`を配置します。`event`引数にはボタン押下時に実施したいイベント（`updateButton`）を指定します。`validationViews`にはバリデーションを実施したい画面単位（`todoEditView`）を配列型で指定します。
+更新ボタンを配置する際は、画面コンポーネントとして `AxMutateButton` を使用します。（型定義で用いた `CsMutateButtonClickEvent` に対応した画面コンポーネントを使用します。）
+`event` という Props に、対応するイベントの変数を指定します。また、`validationViews` に View の変数を指定することで、バリデーションが実行できます。
 
-```tsx title="todo/page.ts"
-/**
- * 更新用のModal定義
- */
+```tsx title="src/app/todo/TodoEditModal.tsx"
 <Modal
-  open={isOpenEdit}
+  open={isOpenEditModal}
   title="更新"
-  onCancel={() => {
-    closeModal("edit");
-  }}
-  footer={null}
+  onCancel={onCancel}
+  footer={
+    <AxMutateButton event={todoEditView.updateButton} validationViews={[todoEditView]} type="primary" onAfterApiCallSuccess={onAfterApiCallSuccess}>
+      更新
+    </AxMutateButton>
+  }
 >
   <>
     <AxInputText item={todoEditView.title}></AxInputText>
     <AxTextArea item={todoEditView.description}></AxTextArea>
-    // highlight-start
-    <AxMutateButton
-      event={todoEditView.updateButton}
-      validationViews={[todoEditView]}
-      type="primary"
-      onAfterApiCallSuccess={() => {
-        closeModal("edit");
-      }}
-    >
-      更新
-    </AxMutateButton>
-    // highlight-end
+    <AxInputText item={todoEditView.assignee}></AxInputText>
   </>
 </Modal>
 ```
@@ -143,15 +120,20 @@ const openModal = (mode: "create" | "edit" | "delete", record?: Todo) => {
 
 更新 API 呼び出し時に指定する API リクエストを指定します。`todoId`には更新対象の Id、`data`には更新するデータを指定します。
 
-```tsx title="todo/page.ts"
+```tsx title="src/app/todo/TodoEditModal.tsx"
+const todoEditView = useTodoEditView(); // 更新用のViewの呼び出し
+
+// highlight-start
 todoEditView.updateButton.setRequest({
   // リクエストデータに値をセット
-  todoId: todoEditView.id,
+  todoId: todoEditView.id.value ?? "",
   data: {
     title: todoEditView.title.value ?? "",
     description: todoEditView.description.value ?? "",
+    assignee: todoEditView.assignee.value ?? "",
   },
 });
+// highlight-end
 ```
 
-以上で、更新機能の実装が完了します。ボタン押下時に適切に更新 API が呼び出されているか確認してください。
+以上で、更新機能の実装が完了します。ボタン押下時に適切に更新 API が呼び出されているかを確認してください。

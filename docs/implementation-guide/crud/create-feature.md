@@ -5,7 +5,7 @@ title: 登録機能
 
 本節ではいかに示すような登録機能の実装方法について説明します。
 
-あとでとるわ
+![登録機能の画像](../../../static/img/crud-create.gif)
 
 ## イベントの型を定義する
 
@@ -35,7 +35,7 @@ export type TodoCreateView = CsView & {
 
 ## イベントを初期化する
 
-登録用の View（`TodoCreateView`）の初期化にイベントの初期化処理を追加します。登録 API では Event のフックに`useCsRqMutateButtonClickEvent()`、引数には Orval で自動生成された API フック`usePutTodo()`を指定します。
+登録用の View（`TodoCreateView`）にイベントの初期化処理を追加します。登録 API では Event のフックに`useCsRqMutateButtonClickEvent()`、引数には Orval で自動生成された API フック`usePutTodo()`を指定します。
 
 ```ts title="src/app/todo/page.view.ts"
 // Orvalで自動生成されたAPIフック（usePutTodo）をimport
@@ -51,8 +51,7 @@ export const useTodoCreateView = (): TodoCreateView => {
     description: useCsTextAreaItem("説明", useInit(""), stringRule(true, 1, 100), RW.Editable, "タスクの説明を入力してください"),
     assignee: useCsInputTextItem("担当者", useInit(""), stringRule(true, 1, 20), RW.Editable, "担当者を入力してください"),
     // highlight-start
-    // イベントの初期化処理の追加
-    createButton: useCsRqAdvancedMutateButtonClickEvent(usePostTodo()),
+    createButton: useCsRqAdvancedMutateButtonClickEvent(usePostTodo()), // イベントの初期化処理の追加
     // highlight-end
   });
 };
@@ -60,7 +59,7 @@ export const useTodoCreateView = (): TodoCreateView => {
 
 ### View の定義を呼び出す
 
-[イベントを初期化をする](./create-feature.md#イベントを初期化する)で定義した 登録用の View 定義を呼び出します。
+[イベントの初期化](./create-feature.md#イベントを初期化する)で定義した 登録用の View 定義を呼び出します。
 
 ```tsx title="src/app/todo/TodoCreateModal.tsx"
 const todoPostView = useTodoCreateView(); // 登録用のViewの呼び出し
