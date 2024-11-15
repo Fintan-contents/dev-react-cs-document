@@ -24,13 +24,9 @@ jobs:
           #cache: yarn
           cache: npm
 
-      - name: Clear cache directory
-        run: rm -rf .docusaurus
       - name: Install dependencies
         #run: yarn install --frozen-lockfile
         run: npm ci
-      - name: Docusaurus Clear
-        run: npm run clear
       - name: Build website
         #run: yarn build
         run: npm run build
