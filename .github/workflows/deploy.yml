@@ -24,7 +24,7 @@ jobs:
           #cache: yarn
           cache: npm
 
-      -name: Clear cache directory
+      - name: Clear cache directory
         run: rm -rf .docusaurus
       - name: Install dependencies
         #run: yarn install --frozen-lockfile
