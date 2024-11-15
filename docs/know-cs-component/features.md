@@ -164,7 +164,7 @@ export const RegisterUserComponent: React.FC = () => {
     },
     {
       customRules: globalCustomValidationRules, // バリデーションルールの定義
-    },
+    }
   );
   return (
     <>
