@@ -35,7 +35,7 @@ export type TodoCreateView = CsView & {
 
 ## イベントを初期化する
 
-登録用の View（`TodoCreateView`）にイベントの初期化処理を追加します。登録 API では Event のフックに`useCsRqMutateButtonClickEvent()`、引数には Orval で自動生成された API フック`usePostTodo()`を指定します。
+登録用の View（`TodoCreateView`）にイベントの初期化処理を追加します。登録 API では Event のフックに`useCsRqAdvancedMutateButtonClickEvent()`、引数には Orval で自動生成された API フック`usePostTodo()`を指定します。
 
 ```ts title="src/app/todo/page.view.ts"
 // Orvalで自動生成されたAPIフック（usePutTodo）をimport
