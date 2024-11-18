@@ -3,8 +3,6 @@ sidebar_position: 2
 title: Item間やEventとItemの間に依存関係があるとき
 ---
 
-## どのようなときに推奨されるか
-
 View で定義した Item 間で値を参照する場合や`XxxMutateButton`のイベントでリクエストに View で定義した Item の値を渡すような Event と Item の間に依存関係があるときには注意する点があります。
 
 ## 実装方法
