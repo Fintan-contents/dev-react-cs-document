@@ -19,7 +19,7 @@ title: 検索機能
  */
 export type TodoSearchView = CsView & {
   assignee: CsInputTextItem;
-  searchTodo: CsQueryButtonClickEvent<ListTodoResponse>;
+  searchButton: CsQueryButtonClickEvent<ListTodoResponse>;
 };
 ```
 
@@ -41,7 +41,7 @@ export const useTodoSearchView = (assignee: string): TodoSearchView => {
   return useCsView({
     assignee: assignee,
     // highlight-start
-    searchTodo: useCsRqAdvancedQueryButtonClickEvent(
+    searchButton: useCsRqAdvancedQueryButtonClickEvent(
       useListTodo(
         { assignee_eq: assignee.value ?? "" }, // クエリパラメータを指定
         {
@@ -76,7 +76,7 @@ const [searchResult, setSearchResult] = useState<ListTodoResponse>();
 
 <AxQueryButton
   type="primary"
-  event={todoSearchView.searchTodo}
+  event={todoSearchView.searchButton}
   validationViews={[todoSearchView]}
   onBeforeApiCall={() => {
     todoSearchView.validationEvent?.resetError();
@@ -84,7 +84,7 @@ const [searchResult, setSearchResult] = useState<ListTodoResponse>();
   onAfterApiCallSuccess={() => {
     setIsFilter(true);
     // レスポンスの値を状態変数に格納
-    setSearchResult(todoSearchView.searchTodo.response);
+    setSearchResult(todoSearchView.searchButton.response);
   }}
   addClassNames={["vertical-center"]}
 >
