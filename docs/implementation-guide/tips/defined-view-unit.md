@@ -8,11 +8,12 @@ title: View を定義する単位
 バリデーション、`AxTableLayout`の自動レイアウトや isLoading などの処理は View の単位で処理されます。そのため対応するフィールドごとに View を定義する必要があります。
 また、View という名前空間があるため Item や Event の自動補完が効くというメリットもあります。
 
-以下に良い実装例、悪い実装例を示します。<br />
+以下に悪い実装例、良い実装例を示します。<br />
 
 ### ❌ 対応する Event と Item を別々の View で定義しない
 
 ```tsx
+// 入力項目のItemだけのViewを定義
 export type InputTodoView = CsView & {
   title: CsInputTextItem;
   description: CsTextAreaItem;
@@ -45,10 +46,11 @@ export const useInputTodoView = (): InputTodoView => {
   });
 };
 
+// イベントのみのViewを定義
 export type TodoCreateView = CsView & {
   createButton: CsMutateButtonClickEvent<
     {
-      data: TodoRegistration;
+      data: TodoRegistration; // titleやdescription,assigneeのプロパティをもつ型
     },
     Todo
   >;
@@ -68,7 +70,7 @@ export type TodoCreateView = CsView & {
   assignee: CsInputTextItem;
   createButton: CsMutateButtonClickEvent<
     {
-      data: TodoRegistration;
+      data: TodoRegistration; // titleやdescription,assigneeのプロパティをもつ型
     },
     Todo
   >;
