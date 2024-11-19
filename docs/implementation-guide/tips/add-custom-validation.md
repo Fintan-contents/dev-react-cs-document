@@ -5,59 +5,106 @@ title: カスタムバリデーションの追加方法
 
 ○○ のような固有のバリデーションルールを追加したい場合は本節が役立ちます。
 
+## カスタムバリデーションルールの生成
+
+`stringCustomValidationRule`関数を使用することで、テキスト入力項目に対するカスタムバリデーションルールを生成することができます。
+引数にはバリデート関数とメッセージ関数を指定します。
+
 ## 正規表現（シンプル）
 
-```tsx
-nameRule: stringCustomValidationRule(
-  createRegExpValidator(/^[A-Za-z ]*$/),
-  (label) => `${label}は、アルファベットと空白のみ使用可能です。`,
-);
+バリデーションルールを正規表現を用いて簡潔に記述できる場合は、バリデート関数に`createRegExpValidator`関数を使用することで実現できます。
+
+```tsx title="アルファベットと空白のみを許容するバリデーションルール"
+const customValidationRules: CustomValidationRules = {
+  // highlight-start
+  nameRule: stringCustomValidationRule(
+    createRegExpValidator(/^[A-Za-z ]*$/), // バリデート関数
+    (label) => `${label}は、アルファベットと空白のみ使用可能です。`, // メッセージ関数
+  ),
+  // highlight-end
+};
 ```
 
 ## 正規表現（複雑）
 
-```tsx
-passwordRule: stringCustomValidationRule(
+[正規表現（シンプル）](./add-custom-validation.md#正規表現シンプル)とは相反して正規表現を用いて複雑な記述になる場合は独自にバリデート関数を作成して実装することができます。
+
+```tsx title="パスワードの複雑な作成ルールを定義したバリデーションルール"
+const customValidationRules: CustomValidationRules = {
+  // highlight-start
+  passwordRule: stringCustomValidationRule(
+    // バリデート関数
     (newValue, item) => {
-        if (!newValue) {
+      if (!newValue) {
         return true;
-        }
-        let count = 0;
-        if (/[A-Z]/.test(newValue)) {
+      }
+      let count = 0;
+      if (/[A-Z]/.test(newValue)) {
         count++;
-        }
-        if (/[a-z]/.test(newValue)) {
+      }
+      if (/[a-z]/.test(newValue)) {
         count++;
-        }
-        if (/[0-9]/.test(newValue)) {
+      }
+      if (/[0-9]/.test(newValue)) {
         count++;
-        }
-        if (/[!-)+-/:-@[-`{-~]/.test(newValue)) {
+      }
+      if (/[!-)+-/:-@[-`{-~]/.test(newValue)) {
         count++;
-        }
-        return count >= 4;
+      }
+      return count >= 4;
     },
+    // メッセージ関数
     (label, newValue, item) => {
-        let requireds = ["大文字", "小文字", "数字", "記号"];
-        if (/[A-Z]/.test(newValue)) {
+      let requireds = ["大文字", "小文字", "数字", "記号"];
+      if (/[A-Z]/.test(newValue)) {
         requireds = requireds.filter((e) => "大文字" !== e);
-        }
-        if (/[a-z]/.test(newValue)) {
+      }
+      if (/[a-z]/.test(newValue)) {
         requireds = requireds.filter((e) => "小文字" !== e);
-        }
-        if (/[0-9]/.test(newValue)) {
+      }
+      if (/[0-9]/.test(newValue)) {
         requireds = requireds.filter((e) => "数字" !== e);
-        }
-        if (/[!-)+-/:-@[-`{-~]/.test(newValue)) {
+      }
+      if (/[!-)+-/:-@[-`{-~]/.test(newValue)) {
         requireds = requireds.filter((e) => "記号" !== e);
-        }
-        return `${label}は、${requireds.join("、")}を含めてください`;
+      }
+      return `${label}は、${requireds.join("、")}を含めてください`;
     },
-),
+  ),
+  //highlight-end
+};
 ```
 
 ## 項目間精査
 
-```tsx
+バリデート関数内である Item の値に応じて別の Item の値をバリデーションを実施するような項目間精査の実装方法について紹介します。
+Item から親の View を取得し対象の Item の値を取得することができます。親の View を取得した際、型としては`CsView`となっているためキャストする必要がある点に注意してください。
 
+```tsx
+// バリデート関数
+(newValue, item) => {
+  // item: 金額の入力項目を定義したItem
+  const parentView = item.parentView as RegisterUserView; // itemが定義されているViewを取得しキャスト
+  const ageItem = parentView.age; // 年齢を取得
+  //------
+  // 年齢に応じた金額の範囲でバリデーション
+  // -----
+};
+```
+
+## カスタムバリデーションルールの適応
+
+`useCsView`関数の引数 `options` に `stringCustomValidationRule`関数で定義したカスタムバリデーションルールを指定することで適応することができます。
+
+```tsx
+useCsView(
+  {
+    //  definitionsを指定
+  },
+  {
+    customValidationRules: {
+      ...customValidationRules, // 定義したカスタムバリデーションルール
+    },
+  },
+);
 ```
