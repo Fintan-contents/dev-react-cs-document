@@ -5,15 +5,14 @@ title: View を定義する単位
 
 ## 対応するイベントやバリデーションは一つの View に定義しましょう
 
-バリデーション、`AxTableLayout`の自動レイアウトや isLoading などの処理は View の単位で処理されます。そのため対応するフィールドごとに View を定義する必要があります。
-また、View という名前空間があるため Item や Event の自動補完が効くというメリットもあります。
+バリデーション、 `AxTableLayout` の自動レイアウトや `isLoading` などの処理は View の単位で処理されます。そのため対応するフィールドごとに View を定義する必要があります。
 
 以下に悪い実装例、良い実装例を示します。<br />
 
 ### ❌ 対応する Event と Item を別々の View で定義しない
 
 ```tsx
-// 入力項目のItemだけのViewを定義
+// ItemのみのViewを定義
 export type InputTodoView = CsView & {
   title: CsInputTextItem;
   description: CsTextAreaItem;
@@ -46,7 +45,7 @@ export const useInputTodoView = (): InputTodoView => {
   });
 };
 
-// イベントのみのViewを定義
+// EventのみのViewを定義
 export type TodoCreateView = CsView & {
   createButton: CsMutateButtonClickEvent<
     {
@@ -103,5 +102,7 @@ export const useTodoCreateView = (): TodoCreateView => {
   });
 };
 ```
+
+また、対応する Item のコードを自動補完によって直感的に記述することができるメリットがあります。
 
 ![コード補完](../../../static/img/code-complement.gif)
