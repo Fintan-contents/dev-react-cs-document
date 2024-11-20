@@ -27,7 +27,7 @@ const myCustomValidationRules: CustomValidationRules = {
 
 ## 独自なバリデーションルールの生成
 
-独自のバリデート関数を実装して適応することができます。
+独自のバリデート関数を実装して適用することができます。
 
 ```tsx title="パスワードの複雑な作成ルールを定義したバリデーションルール"
 const myCustomValidationRules: CustomValidationRules = {
@@ -102,7 +102,7 @@ export type RegisertUserView = {
 
 ## カスタムバリデーションルールの適用
 
-`useCsView`関数の引数 `options` に `stringCustomValidationRule`関数で定義したカスタムバリデーションルールを指定することで適応することができます。
+`useCsView`関数の引数 `options` に `stringCustomValidationRule`関数で定義したカスタムバリデーションルールを指定することで適用することができます。
 
 ```tsx
 useCsView(
