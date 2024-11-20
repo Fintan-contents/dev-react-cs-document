@@ -77,7 +77,7 @@ const todoDeleteView = useTodoDeleteView(); // 削除用のViewの呼び出し
     </Space>
   }
   onCancel={() => {
-    setIsOpenDeleteModal(); // isOpenDeleteModalをfalseにする
+    setIsOpenDeleteModal(false);
   }}
   footer={null}
 >
@@ -85,7 +85,7 @@ const todoDeleteView = useTodoDeleteView(); // 削除用のViewの呼び出し
   <Space>
     <AxButton
       onClick={() => {
-        setIsOpenDeleteModal(); // isOpenDeleteModalをfalseにする
+        setIsOpenDeleteModal(false);
       }}
     >
       キャンセル
