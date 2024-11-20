@@ -5,7 +5,7 @@ title: Item デザインをカスタムする方法
 
 画面全体のデザインをカスタムしたい場合や独自にデザインを追加したい場合、一部分だけ固有のデザインを適応したい場合に本節が役立ちます。
 
-## 画面全体のデザインをカスタムしたい場合
+## 全コンポーネントの共通デザインをカスタムしたい場合
 
 対応する CSS ファイルをカスタムすることで実現可能です。
 Ant Design の省力化コンポーネントであれば `AxCtrl.css` を、バリデーションエラーメッセージであれば `ValidationError.css` を編集してください。
@@ -33,20 +33,20 @@ Ant Design の省力化コンポーネントであれば `AxCtrl.css` を、バ�
 }
 ```
 
-## 独自にデザインを追加したい場合
+## 特定のコンポーネントのデザインをカスタムしたい場合
 
-[画面全体のデザインをカスタムしたい場合](./custom-item-design.md#画面全体のデザインをカスタムしたい場合)では既に適応されているデザインに対しての修正でした。独自にデザインを追加したい場合は対応する CSS ファイルに追加してください。
+CSS ファイルを新たに作成し特定のコンポーネントのデザインをカスタムすることも可能です。
 
-```css title="AxCtrl.css"
-+ .background-color {
+```css title="MyDesign.module.css"
++ .backgroundColor {
 +   background-color: "red";
 + }
 ```
 
-## 特定のコンポーネントだけデザインを適応したい場合
-
-省力化コンポーネントの Props として`addClassName`が用意されています。`addClassName`に適応したい CSS 名を指定することでデザインをカスタムすることができます。
+省力化コンポーネントの Props として`addClassName`が用意されています。`addClassName`に適用したい CSS 名を指定することでデザインをカスタムすることができます。
 
 ```tsx title="page.tsx"
-<AxInputText item={item} addClassName={["background-color"]} />
+// import styles from "MyDesign.module.css"
+
+<AxInputText item={item} addClassName={[styles.backgroundColor]} />
 ```

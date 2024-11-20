@@ -3,19 +3,19 @@ sidebar_position: 5
 title: カスタムバリデーションの追加方法
 ---
 
-○○ のような固有のバリデーションルールを追加したい場合は本節が役立ちます。
+パスワードに大文字・小文字・記号を最低一つ含めるなどの固有のバリデーションルールを追加したい場合は本節が役立ちます。
 
 ## カスタムバリデーションルールの生成
 
-`stringCustomValidationRule`関数を使用することで、テキスト入力項目に対するカスタムバリデーションルールを生成することができます。
+`stringCustomValidationRule` 関数を使用することで、テキスト入力項目に対するカスタムバリデーションルールを生成することができます。
 引数にはバリデート関数とメッセージ関数を指定します。
 
-## 正規表現（シンプル）
+## 正規表現を用いたカスタムバリデーションルールの生成
 
-バリデーションルールを正規表現を用いて簡潔に記述できる場合は、バリデート関数に`createRegExpValidator`関数を使用することで実現できます。
+バリデーションルールを正規表現を用いて簡潔に記述できる場合は、バリデート関数に `createRegExpValidator` 関数を使用することで実現できます。
 
 ```tsx title="アルファベットと空白のみを許容するバリデーションルール"
-const customValidationRules: CustomValidationRules = {
+const myCustomValidationRules: CustomValidationRules = {
   // highlight-start
   nameRule: stringCustomValidationRule(
     createRegExpValidator(/^[A-Za-z ]*$/), // バリデート関数
@@ -25,12 +25,12 @@ const customValidationRules: CustomValidationRules = {
 };
 ```
 
-## 正規表現（複雑）
+## 独自なバリデーションルールの生成
 
-[正規表現（シンプル）](./add-custom-validation.md#正規表現シンプル)とは相反して正規表現を用いて複雑な記述になる場合は独自にバリデート関数を作成して実装することができます。
+独自のバリデート関数を実装して適応することができます。
 
 ```tsx title="パスワードの複雑な作成ルールを定義したバリデーションルール"
-const customValidationRules: CustomValidationRules = {
+const myCustomValidationRules: CustomValidationRules = {
   // highlight-start
   passwordRule: stringCustomValidationRule(
     // バリデート関数
@@ -75,12 +75,20 @@ const customValidationRules: CustomValidationRules = {
 };
 ```
 
-## 項目間精査
+## 項目間バリデーション
 
-バリデート関数内である Item の値に応じて別の Item の値をバリデーションを実施するような項目間精査の実装方法について紹介します。
+バリデート関数内である Item の値に応じて別の Item の値をバリデーションを実施するような項目間バリデーションの実装方法について紹介します。
 Item から親の View を取得し対象の Item の値を取得することができます。親の View を取得した際、型としては`CsView`となっているためキャストする必要がある点に注意してください。
 
 ```tsx
+export type RegisertUserView = {
+  name: CsInputeTextItem;
+  age: CsInputTextItem;
+  mailAddress: CsInputTextItem;
+  gender: CsRadioBoxItem;
+  budget: CsInputNumberItem;
+  // 中略
+};
 // バリデート関数
 (newValue, item) => {
   // item: 金額の入力項目を定義したItem
@@ -92,7 +100,7 @@ Item から親の View を取得し対象の Item の値を取得することが
 };
 ```
 
-## カスタムバリデーションルールの適応
+## カスタムバリデーションルールの適用
 
 `useCsView`関数の引数 `options` に `stringCustomValidationRule`関数で定義したカスタムバリデーションルールを指定することで適応することができます。
 
@@ -103,7 +111,7 @@ useCsView(
   },
   {
     customValidationRules: {
-      ...customValidationRules, // 定義したカスタムバリデーションルール
+      ...myCustomValidationRules, // 定義したカスタムバリデーションルール
     },
   },
 );
