@@ -27,7 +27,8 @@ const myCustomValidationRules: CustomValidationRules = {
 
 ## 独自なバリデーションルールの生成
 
-独自のバリデート関数を実装して適用することができます。
+独自のバリデート関数を実装して適用することができます。<br />
+以下の例では、パスワードのルールとして、大文字・小文字・記号・数字が使われているかをチェックしています。
 
 ```tsx title="パスワードの複雑な作成ルールを定義したバリデーションルール"
 const myCustomValidationRules: CustomValidationRules = {
