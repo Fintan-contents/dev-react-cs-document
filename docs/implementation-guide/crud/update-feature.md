@@ -54,21 +54,21 @@ export const useTodoEditView = (): TodoEditView => {
       useInit(""),
       stringRule(true, 1, 20),
       RW.Editable,
-      "タイトルを入力してください"
+      "タイトルを入力してください",
     ),
     description: useCsTextAreaItem(
       "説明",
       useInit(""),
       stringRule(true, 1, 100),
       RW.Editable,
-      "タスクの説明を入力してください"
+      "タスクの説明を入力してください",
     ),
     assignee: useCsInputTextItem(
       "担当者",
       useInit(""),
       stringRule(true, 1, 20),
       RW.Editable,
-      "担当者を入力してください"
+      "担当者を入力してください",
     ),
     // 更新対象を識別するためのID（表示はしない）
     id: useCsInputTextItem("ID", useInit(""), stringRule(false)),
