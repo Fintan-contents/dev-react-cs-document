@@ -43,7 +43,7 @@ CSS ファイルを新たに作成し特定のコンポーネントのデザイ�
 + }
 ```
 
-省力化コンポーネントの Props として`addClassName`が用意されています。`addClassName`に適用したい CSS 名を指定することでデザインをカスタムすることができます。
+省力化コンポーネントの Props として`addClassName`が用意されています。`addClassName`に適用したい CSS 名を配列で指定することでデザインをカスタムすることができます。
 
 ```tsx title="page.tsx"
 import styles from "MyDesign.module.css";
