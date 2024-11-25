@@ -163,7 +163,7 @@ export const RegisterUserComponent: React.FC = () => {
       age: useCsInputNumberItem("年齢", useInit(), numberRule(true, 0)),
     },
     {
-      customRules: globalCustomValidationRules, // バリデーションルールの定義
+      customValidationRules: globalCustomValidationRules, // バリデーションルールの定義
     },
   );
   return (

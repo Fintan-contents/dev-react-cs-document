@@ -38,17 +38,18 @@ title: useCsView
     <tr>
       <td>validationEventHook</td>
       <td></td>
-      <td><code>(instance: CsView & D, customRules?: CustomValidationRules\*²) => CsValidationEvent\*³</code></td>
-      <td>使用するバリデーションイベントを指定します。デフォルトは <code>getCsDefaultValidationEvent()</code>が指定されており、初期設定でインストールしたバリデーションライブラリに対応したフックが使用されます。</td>
+      <td><code>(instance: CsView & D, customValidationRules?: CustomValidationRules\*²) => CsValidationEvent\*³</code></td>
+      <td>利用者は直接指定することは通常ありません。<p/>
+      導入ツールでインストールした際にYupかZodのイベントが指定されるようになっています。</td>
     </tr>
   </tbody>
 </table>
 
-\*1: `CsViewDefinition`は、キー値に`string`、値に`CsItemBase`または`CsEvent`のみを許容する`Record`型です。
+\*1: `CsViewDefinition`は、キーが`string`、値が`CsItemBase`または`CsEvent`のみを許容する`Record`型です。
 
-\*2: `CustomValidationRules`はバリデーションの実行条件やメッセージの表示などの情報を保持する型定義です。
+\*2: `CustomValidationRules`は、キーがルール名で、値が[CustomValidationRule](../../../category/カスタムバリデーション定義の関数)のオブジェクトです。
 
-\*3: `CsValidationEvent`はバリデーションエラーが発生したかどうか、エラー時の表示するメッセージなどバリデーションに関する情報を保持する型定義です。
+\*3: `CsValidationEvent`はバリデーション処理を行うイベントです。Yup の実装クラスと Zod の実装クラスがあります。
 
 ## 返り値
 

@@ -13,9 +13,9 @@ title: useCsRqAdvancedMutateButtonClickEvent
 
 ## 引数
 
-| 引数名         | 必須 | 型                                                                           | 説明                                                                                              |
-| -------------- | ---- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| mutationResult | 〇   | `RqAdvancedMutationResult<TApiResponse, TApiError, TApiRequest, TContext>*¹` | 更新系 API を呼び出す API フックを指定します。OpenAPI で自動生成された API フックを指定できます。 |
+| 引数名         | 必須 | 型                                                                           | 説明                                                               |
+| -------------- | ---- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| mutationResult | 〇   | `RqAdvancedMutationResult<TApiResponse, TApiError, TApiRequest, TContext>*¹` | TanStack Query の `useMutate` を使ったカスタムフックを指定します。 |
 
 \*1：`RqAdvancedMutationResult`は API のリクエスト、レスポンス、エラー、コンテキストに関する情報を保持する型定義です。
 
@@ -36,7 +36,7 @@ export const useTodoPostView = (): TodoPostView => {
       ),
       description: useCsTextAreaItem("説明", useInit(""), stringRule(false)),
       // highlight-start
-      createButton: useCsRqMutateButtonClickEvent(usePostTodo()), // Orvalで自動生成されたusePostTodoを定義済み
+      createButton: useCsRqMutateButtonClickEvent(usePostTodo()), // Orvalで自動生成されたusePostTodoを指定
       // highlight-end
     },
     {

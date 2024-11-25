@@ -3,7 +3,7 @@ sidebar_position: 2
 title: useInit
 ---
 
-`useInit` は、入力項目の初期値を設定するためのフックです。[入力項目定義のフック](../../../category/入力項目定義のフック)にある`useCsXxxItem`で使用します。内部実装は以下のようになっており、型引数 T および undefined を状態として返します。
+`useInit` は、入力項目の初期値を設定するためのフックです。このフックは[入力項目定義のフック](../../../category/入力項目定義のフック)にある`useCsXxxItem`で使用されます。内部実装は以下のようになっており、型引数 `T` および `undefined` を状態として返します。
 
 ```ts
 export function useInit<T>(value?: T) {
@@ -12,7 +12,7 @@ export function useInit<T>(value?: T) {
 }
 ```
 
-undefined を含めて状態を定義している理由は数値のクリアなどに対応するためです。
+状態に`undefined` を含める理由は数値のクリアなどに対応するためです。
 
 ## シグネチャ
 
@@ -30,7 +30,7 @@ undefined を含めて状態を定義している理由は数値のクリアな�
 
 ## 使用例
 
-```tsx
+```ts
 useCsView({
   inputTextItem: useCsInputTextItem(
     "名前",
