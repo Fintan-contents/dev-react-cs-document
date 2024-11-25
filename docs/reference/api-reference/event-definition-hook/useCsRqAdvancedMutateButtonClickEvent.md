@@ -3,7 +3,7 @@ sidebar_position: 2
 title: useCsRqAdvancedMutateButtonClickEvent
 ---
 
-`useCsRqAdvancedMutateButtonClickEvent` は、Axios（シンプル版）もしくは React Query に対応する更新系 API ボタンイベントを初期化するためのフックです。
+`useCsRqAdvancedMutateButtonClickEvent` は、Orval（拡張版）に対応する更新系 API ボタンイベントを初期化するためのフックです。
 
 ## シグネチャ
 
@@ -40,7 +40,7 @@ export const useTodoPostView = (): TodoPostView => {
       // highlight-end
     },
     {
-      validationTrigger: "onSubmit",
+      validationTrigger: "onBlur", // カーソルが離れたタイミングでバリデーションを実行
     }
   );
 };

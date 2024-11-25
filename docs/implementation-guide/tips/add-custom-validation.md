@@ -19,13 +19,13 @@ const myCustomValidationRules: CustomValidationRules = {
   // highlight-start
   nameRule: stringCustomValidationRule(
     createRegExpValidator(/^[A-Za-z ]*$/), // バリデート関数
-    (label) => `${label}は、アルファベットと空白のみ使用可能です。`, // メッセージ関数
+    (label) => `${label}は、アルファベットと空白のみ使用可能です。` // メッセージ関数
   ),
   // highlight-end
 };
 ```
 
-## 独自なバリデーションルールの生成
+## 独自のバリデーションルールの生成
 
 独自のバリデート関数を実装して適用することができます。<br />
 以下の例では、パスワードのルールとして、大文字・小文字・記号・数字が使われているかをチェックしています。
@@ -70,7 +70,7 @@ const myCustomValidationRules: CustomValidationRules = {
         requireds = requireds.filter((e) => "記号" !== e);
       }
       return `${label}は、${requireds.join("、")}を含めてください`;
-    },
+    }
   ),
   //highlight-end
 };
@@ -105,6 +105,8 @@ export type RegisertUserView = {
 
 `useCsView`関数の引数 `options` に `stringCustomValidationRule`関数で定義したカスタムバリデーションルールを指定することで適用することができます。
 
+また、下の例では `buildInCustomValidationRules` という事前に組み込みのカスタムバリデーションルールを定義したオブジェクトも合わせて展開しています。
+
 ```tsx
 useCsView(
   {
@@ -112,8 +114,9 @@ useCsView(
   },
   {
     customValidationRules: {
+      ...buildInCustomValidationRules, // ビルドインカスタムバリデーションルール
       ...myCustomValidationRules, // 定義したカスタムバリデーションルール
     },
-  },
+  }
 );
 ```

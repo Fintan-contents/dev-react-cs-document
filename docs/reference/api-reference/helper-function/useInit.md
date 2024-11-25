@@ -3,7 +3,16 @@ sidebar_position: 2
 title: useInit
 ---
 
-`useInit` は、入力項目の初期値を設定するためのフックです。[入力項目定義のフック](../../../category/入力項目定義のフック)にある`useCsXxxItem`で使用できます。
+`useInit` は、入力項目の初期値を設定するためのフックです。[入力項目定義のフック](../../../category/入力項目定義のフック)にある`useCsXxxItem`で使用します。内部実装は以下のようになっており、型引数 T および undefined を状態として返します。
+
+```ts
+export function useInit<T>(value?: T) {
+  const state = useState<T | undefined>(value);
+  return state;
+}
+```
+
+undefined を含めて状態を定義している理由は数値のクリアなどに対応するためです。
 
 ## シグネチャ
 
@@ -17,7 +26,7 @@ title: useInit
 
 ## 返り値
 
-入力項目の初期値と更新関数を持った`StateResult<T>`を返します。
+`useState<T | undefined>(value)`の戻り値を返します。
 
 ## 使用例
 

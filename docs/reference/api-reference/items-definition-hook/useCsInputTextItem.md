@@ -3,7 +3,7 @@ sidebar_position: 2
 title: useCsInputTextItem
 ---
 
-`useCsInputTextItem` は、`AxInputText`に対応する Item を初期化するためのフックです。
+`useCsInputTextItem` は、テキスト入力ボックスに対応する Item を初期化するためのフックです。
 
 ## シグネチャ
 
@@ -19,9 +19,9 @@ title: useCsInputTextItem
 | readonly    |      | `RW.Editable \| RW.Readonly` | 入力項目が読み取り専用かどうかを指定します。`RW.Editable` は読み取り・書き込み可能、`RW.Readonly`は読み取り専用を表す値です。デフォルトは `RW.Editable` です。 　 |
 | placeholder |      | `string`                     | 入力フィールドが未入力の場合に表示されるテキストを指定できます。                                                                                                  |
 
-\*1：`StateResult`は 状態変数の情報を保持するための型定義です。
+\*1：`StateResult`は useState の戻り値を管理する型定義です。詳しくは[useInit](../helper-function/useInit.md)を参照してください。
 
-\*2：`StringValidationRule`は`string`型のバリデーション定義情報（必須、最小・最大文字数、カスタムルールなど）を保持する型定義です。
+\*2：`StringValidationRule`は`string`型のバリデーション定義情報（必須項目かどうか、最小・最大文字数、カスタムルール名など）を保持する型定義です。
 
 ## 返り値
 

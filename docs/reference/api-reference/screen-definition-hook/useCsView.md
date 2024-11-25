@@ -3,7 +3,7 @@ sidebar_position: 2
 title: useCsView
 ---
 
-`useCsView` は、画面項目を 1 つの View（画面）として初期化するためのフックです。カスタムバリデーションの設定やバリデーションのタイミングなど、追加のオプションを設定することもできます。
+`useCsView` は、画面項目を 1 つの View（画面）として初期化するためのフックです。カスタムバリデーションルールの定義オブジェクトやバリデーションの実行タイミングなど、追加のオプションを指定できます。
 
 ## シグネチャ
 
@@ -31,9 +31,9 @@ title: useCsView
       <td>options</td>
       <td></td>
       <td><code> readonly?: boolean, customValidationRules?: AppValidationRules extends CustomValidationRules,*² validationTrigger?: "onSubmit" | "onBlur"</code></td>
-      <td><p><code>readonly</code>には読み取り専用にするかどうかを指定します。 デフォルトは<code>false</code>が指定されます。</p>
-        <p><code>customValidationRules</code>には適用したいカスタムバリデーションルールを指定します。バリデーションルールには<a href="../../../category/カスタムバリデーション定義の関数">カスタムバリデーション定義の関数</a>で初期化したルールを指定します。</p>
-        <code>validationTrigger</code>にはバリデーションの実行タイミングを指定します。<code>onSubmit</code>はボタン押下時、<code>onBlur</code>は入力項目からフォーカスが外れたタイミングでバリデーションを実施します。デフォルトは<code>onSubmit</code>です。</td>
+      <td><p><code>readonly</code>には読み取り専用にするかどうかを指定します。 デフォルトは<code>false</code>です。</p>
+        <p><code>customValidationRules</code>には適用したいカスタムバリデーションルールの定義オブジェクトを指定します。詳細は<a href="../../../implementation-guide/tips/add-custom-validation">TIPS</a>を参照してください。</p>
+        <code>validationTrigger</code>にはバリデーションの実行タイミングを指定します。<code>onSubmit</code>はボタン押下時、<code>onBlur</code>は入力項目からフォーカスが外れたタイミングでバリデーションを実行します。デフォルトは<code>onSubmit</code>です。</td>
     </tr>
     <tr>
       <td>validationEventHook</td>
@@ -53,6 +53,7 @@ title: useCsView
 ## 返り値
 
 画面項目が 1 つに集約された`CsView`の拡張クラスのインスタンスを返します。
+返り値の正確な型は `CsView & D` で、`D` は、定義した画面項目とイベントのオブジェクトの型になります。
 
 ## 使用例
 
@@ -69,7 +70,10 @@ const view = useCsView(
   },
   {
     readonly: true,
-    customRules: customRules, // customRuleにはxxCustomValidationRuleで初期化したルールを定義
+    customValidationRules: {
+      ...buildInCustomValidationRules, // 組み込みのルールオブジェクトを指定
+      ...myCustomValidationRules, // 独自のルールオブジェクトを指定
+    }
     validationTrigger: "onBlur",
   }
 );
