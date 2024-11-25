@@ -78,8 +78,7 @@ const myCustomValidationRules: CustomValidationRules = {
 
 ## 項目間バリデーション
 
-バリデート関数内である Item の値に応じて別の Item の値をバリデーションを実施するような項目間バリデーションの実装方法について紹介します。
-Item から親の View を取得し対象の Item の値を取得することができます。親の View を取得した際、型としては`CsView`となっているためキャストする必要がある点に注意してください。
+バリデート関数内で、ある Item の値に応じて別の Item の値をバリデーションする項目間バリデーションの実装方法を紹介します。Item から親の View を取得し、その対象となる Item の値を取得できます。親の View を取得した際、型は `CsView` であるため、キャストする必要がある点に注意してください。
 
 ```tsx
 export type RegisertUserView = {
