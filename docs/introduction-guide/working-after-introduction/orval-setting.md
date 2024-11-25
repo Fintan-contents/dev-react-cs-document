@@ -94,6 +94,96 @@ Orval に設定するための Axios のカスタムインスタンスを作成�
 npm run code-gen
 ```
 
+:::note
+
+### 実装ガイドのハンズオンで使用する API クライアントコードの生成手順
+
+[実装ガイド > 登録画面を作る](../../category/登録画面を作る) では、ハンズオン形式で API 呼び出し処理の実装方法について解説しています。  
+その中で使用する API クライアントコードの作成手順を以下に示します。
+
+<h4>1. OpenAPI の定義ファイルを配置する</h4>
+ハンズオンでは、以下のOpenAPI仕様書を用いています。
+
+<details>
+  <summary>ハンズオンで使用するOpenAPI</summary>
+
+```yml title="openapi.yml"
+openapi: 3.0.0
+info:
+  title: User API
+  version: "1.0.0"
+  description: User registration API for submitting user information
+paths:
+  /user:
+    post:
+      summary: Register a new user
+      description: Creates a new user with specified information.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userName:
+                  type: string
+                  description: User's username
+                password:
+                  type: string
+                  description: User's password
+                gender:
+                  type: string
+                  description: User's gender
+                birthDay:
+                  type: string
+                  description: User's birth date
+                terminalNum:
+                  type: number
+                  description: Optional terminal number for the user
+              required:
+                - userName
+                - password
+                - gender
+                - birthDay
+      responses:
+        "201":
+          description: User created successfully
+        "400":
+          description: Invalid input
+```
+
+</details>
+
+<h4>2. orval.config.ts を作成する</h4>
+[省力化コンポーネントのサンプルアプリで使用している設定ファイル](https://github.com/Fintan-contents/dev-react-cs-example/tree/develop)と同様の内容で作成します。  
+※ `target` には、1で作成したymlファイルを指定します。
+
+```yaml
+input: {
+  // highlight-next-line
+  target: "./openapi/openapi.yaml",
+},
+```
+
+<h4>3. Axios のカスタムインスタンスを作成する</h4>
+[Orval の公式サイト](https://orval.dev/guides/custom-axios#custom-instance)と同様の内容で、シンプル版のカスタムインスタンスを作成します。
+
+<h4>4. コードを自動生成する</h4>
+[手順4](#4-コードを自動生成する)を実行し、以下のような構成でAPIクライアントコードが自動生成されます。  
+※ 生成場所は、`orval.config.ts` の設定内容によって変わります。
+```terminal
+//root//
+　　└── src
+　　　　├── framework
+　　　　└── libs 
+// highlight-start
+　　　　　　└── generated
+　　　　　　　　├── default - APIクライアントコード
+　　　　　　　　└── model - 型定義
+// highlight-end
+```
+:::
+
 <hr/>
 以上で、Orval の設定は完了です。  
-自動生成されたコードを用いて実際に API を呼び出す方法については、[CRUD 機能の実装](../../implementation-guide/crud-function-implementation.md)を参照してください。
+自動生成されたコードを用いて実際に API を呼び出す方法については、[CRUD 機能の実装](../../implementation-guide/crud/goal.md)を参照してください。

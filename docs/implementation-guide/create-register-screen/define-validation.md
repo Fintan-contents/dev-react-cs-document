@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: バリデーションを定義する
+title: 2. バリデーションを定義する
 ---
 
 Item を初期化するために使用する `useCsXxxItem` の第三引数に、バリデーションルールを設定できます。
