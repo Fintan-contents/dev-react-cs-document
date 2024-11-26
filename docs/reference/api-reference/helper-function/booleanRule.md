@@ -25,16 +25,16 @@ title: booleanRule
 ```tsx
 const view = useCsView(
   {
-    isActive: useCsInputCheckboxItem(
-      "アクティブ",
+    isConfirmed: useCsInputCheckboxItem(
+      "確認済み",
       useInit(false),
       // highlight-start
-      booleanRule(true, "アクティブのカスタムルール")
+      booleanRule(true, "確認済み")
       // highlight-end
     ),
   },
   {
-    customValidationRules: myCustomValidationRules, // アクティブのカスタムバリデーションルールを定義済み
+    customValidationRules: myCustomValidationRules, // 確認済みのカスタムバリデーションルールを定義済み
   }
 );
 ```

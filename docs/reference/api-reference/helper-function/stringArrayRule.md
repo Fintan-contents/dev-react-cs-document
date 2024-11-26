@@ -28,7 +28,7 @@ const view = useCsView(
     interests: useCsMultiCheckBoxItem(
       "興味のある分野",
       useInit<string[]>([]),
-      stringArrayRule(false, "タグのカスタムルール"),
+      stringArrayRule(false, "最大要素数"),
       selectOptions(
         [
           { key: "technology", name: "テクノロジー" },
@@ -50,7 +50,7 @@ const view = useCsView(
     ),
   },
   {
-    customValidationRules: myCustomValidationRules, // タグのカスタムバリデーションルールを定義済み
+    customValidationRules: myCustomValidationRules, // 最大要素数のカスタムバリデーションルールを定義済み
   }
 );
 ```
