@@ -36,7 +36,7 @@ export const useTodoPostView = (): TodoPostView => {
       ),
       description: useCsTextAreaItem("説明", useInit(""), stringRule(false)),
       // highlight-start
-      createButton: useCsRqAdvancedMutateButtonClickEvent(usePostTodo()), // Orvalで自動生成されたusePostTodoを指定
+      createButton: useCsRqAdvancedMutateButtonClickEvent(usePostTodo()),
       // highlight-end
     },
     {

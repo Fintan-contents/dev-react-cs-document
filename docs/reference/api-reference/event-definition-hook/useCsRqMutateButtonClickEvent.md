@@ -17,7 +17,7 @@ title: useCsRqMutateButtonClickEvent
 | -------------- | ---- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------ |
 | mutationResult | 〇   | `UseMutationResult<TApiResponse, TApiError, TApiRequest, TContext>*¹` | TanStack Query の `useMutate` を使ったカスタムフックを指定します。 |
 
-\*1：`UseMutationResult`は API のリクエスト、レスポンス、エラー、コンテキストに関する情報を保持する型定義です。
+\*1：`UseMutationResult`は API のリクエスト、レスポンス、エラー、コンテキストに関する情報を保持するTanStack Queryの組み込みの型定義です。
 
 ## 返り値
 
@@ -36,7 +36,7 @@ export const useTodoPostView = (): TodoPostView => {
       ),
       description: useCsTextAreaItem("説明", useInit(""), stringRule(false)),
       // highlight-start
-      createButton: useCsRqMutateButtonClickEvent(usePostTodo()), // Orvalで自動生成されたusePostTodoを指定
+      createButton: useCsRqMutateButtonClickEvent(usePostTodo()),
       // highlight-end
     },
     {

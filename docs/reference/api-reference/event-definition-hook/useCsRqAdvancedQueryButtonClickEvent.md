@@ -1,9 +1,11 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 title: useCsRqAdvancedQueryButtonClickEvent
 ---
 
 `useCsRqAdvancedQueryButtonClickEvent` は、API 呼び出し方式 Orval（拡張版）に対応する参照系 API ボタンイベントを初期化するためのフックです。
+このイベントはボタンクリック時に検索を行うことを想定したクリックイベントです。
+クリック時のみ検索をさせたい場合は、TanStack Queryの`useQuery`の第2引数で`enabled`を`false`にして実行してください。
 
 ## シグネチャ
 
@@ -33,7 +35,11 @@ export const useTodoSearchView = (): TodoSearchView => {
     {
       keyword: keyword,
       // highlight-start
-      searchButton: useCsRqAdvancedQueryButtonClickEvent(useSearchTodo({keyword: keyword.value ?? ""})), // Orvalで自動生成されたuseSearchTodoを指定
+      searchButton: useCsRqAdvancedQueryButtonClickEvent(useSearchTodo({keyword: keyword.value ?? ""}, 
+        query: {
+          enabled: false, // ボタンをクリックしたときのみ検索させるためenabledをfalseにする
+          refetchOnWindowFocus: false,
+        },)),
       // highlight-end
     },
   );
