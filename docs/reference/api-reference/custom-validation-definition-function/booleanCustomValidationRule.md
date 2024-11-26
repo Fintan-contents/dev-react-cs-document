@@ -42,12 +42,6 @@ type CustomValidateMessage<T> =
 
 ```tsx
 const myCustomValidationRules: CustomValidationRules = {
-  isActiveRule: booleanCustomValidationRule(
-    // バリデート関数
-    (newValue, item) => newValue !== undefined,
-    // メッセージ関数
-    (label, newValue, item) => `${label}は必須項目です。`
-  ),
   isConfirmedRule: booleanCustomValidationRule(
     // バリデート関数
     (newValue, item) => newValue === true,
