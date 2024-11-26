@@ -51,8 +51,7 @@ const myCustomValidationRules: CustomValidationRules = {
       return newValue.length <= 5;
     },
     // メッセージ関数
-    (label, newValue, item) =>
-      `${label}は最大5個しか選ぶことはできません。`
+    (label, newValue, item) => `${label}は最大5個までです。`
   ),
 };
 ```
