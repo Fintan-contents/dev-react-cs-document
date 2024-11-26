@@ -1,23 +1,23 @@
 ---
 sidebar_position: 1
-title: useCsRqAdvancedMutateButtonClickEvent
+title: useCsRqMutateButtonClickEvent
 ---
 
-`useCsRqAdvancedMutateButtonClickEvent` は、API 呼び出し方式が Orval（拡張版）に対応する更新系 API ボタンイベントを初期化するためのフックです。
+`useCsRqMutateButtonClickEvent` は、API 呼び出し方式が TanStack Query および Orval（シンプル版）に対応する更新系 API ボタンイベントを初期化するためのフックです。
 
 ## シグネチャ
 
 <h3>
-  <code>useCsRqAdvancedMutateButtonClickEvent<br/>&nbsp;&lt;TApiRequest, TApiResponse, TApiError, TContext = unknown><br/>(mutationResult: RqAdvancedMutationResult<br/>&nbsp;&lt;TApiResponse, TApiError, TApiRequest, TContext>):<br/>CsMutateButtonClickEvent<br/>&nbsp;&lt;TApiRequest, TApiResponse, TApiError, TContext></code>
+  <code>useCsRqMutateButtonClickEvent<br/>&nbsp;&lt;TApiRequest, TApiResponse, TApiError, TContext = unknown><br/>(mutationResult: UseMutationResult<br/>&nbsp;&lt;TApiResponse, TApiError, TApiRequest, TContext>):<br/>CsMutateButtonClickEvent<br/>&nbsp;&lt;TApiRequest, TApiResponse, TApiError, TContext></code>
 </h3>
 
 ## 引数
 
 | 引数名         | 必須 | 型                                                                           | 説明                                                               |
 | -------------- | ---- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| mutationResult | 〇   | `RqAdvancedMutationResult<TApiResponse, TApiError, TApiRequest, TContext>*¹` | TanStack Query の `useMutate` を使ったカスタムフックを指定します。 |
+| mutationResult | 〇   | `UseMutationResult<TApiResponse, TApiError, TApiRequest, TContext>*¹` | TanStack Query の `useMutate` を使ったカスタムフックを指定します。 |
 
-\*1：`RqAdvancedMutationResult`は API のリクエスト、レスポンス、エラー、コンテキストに関する情報を保持する型定義です。
+\*1：`UseMutationResult`は API のリクエスト、レスポンス、エラー、コンテキストに関する情報を保持する型定義です。
 
 ## 返り値
 
@@ -36,7 +36,7 @@ export const useTodoPostView = (): TodoPostView => {
       ),
       description: useCsTextAreaItem("説明", useInit(""), stringRule(false)),
       // highlight-start
-      createButton: useCsRqAdvancedMutateButtonClickEvent(usePostTodo()), // Orvalで自動生成されたusePostTodoを指定
+      createButton: useCsRqMutateButtonClickEvent(usePostTodo()), // Orvalで自動生成されたusePostTodoを指定
       // highlight-end
     },
     {
