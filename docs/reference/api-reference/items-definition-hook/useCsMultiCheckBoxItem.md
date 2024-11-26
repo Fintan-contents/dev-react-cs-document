@@ -11,13 +11,13 @@ title: useCsMultiCheckBoxItem
 
 ## 引数
 
-| 引数名      | 必須 | 型                           | 説明                                                                                                                                                              |
-| ----------- | ---- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| label       | 〇   | `string`                     | 入力項目のラベルを指定します。                                                                                                                                     |
-| state       | 〇   | `StateResult<string[]>*¹`    | 入力項目の状態変数を指定します。[useInit](../helper-function/useInit.md) を使用して初期化した状態変数を指定します。                                               |
-| rule        | 〇   | `StringArrayValidationRule*²`| 入力項目のバリデーションルールを指定します。    [stringArrayRule](../helper-function/stringArrayRule.md)を使用して初期化したルールを指定します。                                                                                                                    |
-| selOpt      |      | `SelectOptions`              | チェックボックスの選択肢を指定します。                                                                                                                            |
-| readonly    |      | `RW.Editable \| RW.Readonly` | 入力項目が読み取り専用かどうかを指定します。`RW.Editable` は読み取り・書き込み可能、`RW.Readonly`は読み取り専用を表す値です。デフォルトは `RW.Editable` です。 　 |
+| 引数名   | 必須 | 型                            | 説明                                                                                                                                                              |
+| -------- | ---- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| label    | 〇   | `string`                      | 入力項目のラベルを指定します。                                                                                                                                    |
+| state    | 〇   | `StateResult<string[]>*¹`     | 入力項目の状態変数を指定します。[useInit](../helper-function/useInit.md) を使用して初期化した状態変数を指定します。                                               |
+| rule     | 〇   | `StringArrayValidationRule*²` | 入力項目のバリデーションルールを指定します。 [stringArrayRule](../helper-function/stringArrayRule.md)を使用して初期化したルールを指定します。                     |
+| selOpt   |      | `SelectOptions`               | チェックボックスの選択肢を指定します。                                                                                                                            |
+| readonly |      | `RW.Editable \| RW.Readonly`  | 入力項目が読み取り専用かどうかを指定します。`RW.Editable` は読み取り・書き込み可能、`RW.Readonly`は読み取り専用を表す値です。デフォルトは `RW.Editable` です。 　 |
 
 \*1：`StateResult`は `useState` の戻り値を管理する型定義です。詳しくは[useInit](../helper-function/useInit.md)を参照してください。
 
@@ -52,8 +52,8 @@ useCsView({
         { key: "education", name: "教育" },
       ],
       "key",
-      "name",
-    ),
+      "name"
+    )
   ),
   // highlight-end
 });

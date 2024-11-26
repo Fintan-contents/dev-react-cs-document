@@ -1,13 +1,13 @@
 ---
 sidebar_position: 1
-title: useCsInputPasswordItem
+title: useCsInputDateItem
 ---
 
-`useCsInputPasswordItem` は、パスワード入力ボックスに対応する Item を初期化するためのフックです。
+`useCsInputDateItem` は、日付入力ボックスに対応する Item を初期化するためのフックです。
 
 ## シグネチャ
 
-<h3>`useCsInputPasswordItem(label, state, rule, readonly?, placeholder?): CsInputPasswordItem`</h3>
+<h3>`useCsInputDateItem(label, state, rule, readonly?, placeholder?): CsInputDateItem`</h3>
 
 ## 引数
 
@@ -25,19 +25,19 @@ title: useCsInputPasswordItem
 
 ## 返り値
 
-引数で定義した初期値やバリデーションルールなど、パスワード入力項目に関する情報が集約された `CsInputPasswordItem` クラスのインスタンスを返します。
+引数で定義した初期値やバリデーションルールなど、日付入力項目に関する情報が集約された `CsInputDateItem` クラスのインスタンスを返します。
 
 ## 使用例
 
 ```tsx
 useCsView({
   // highlight-start
-  password: useCsInputPasswordItem(
-    "パスワード",
+  birthDay: useCsInputDateItem(
+    "生年月日",
     useInit(""),
-    stringRule(true, 8, 16, "passwordRule"),
+    stringRule(true),
     RW.Editable,
-    "パスワードを入力してください"
+    "日付を選択"
   ),
   // highlight-end
 });
