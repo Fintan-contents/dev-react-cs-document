@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 title: stringRule
 ---
 
@@ -25,6 +25,15 @@ title: stringRule
 ## 使用例
 
 ```tsx
+const myCustomValidationRules = {
+  全角文字: stringCustomValidationRule(
+    createRegExpValidator(/^[^ -~｡-ﾟ]*$/),
+    (label: string) => `${label}は全角文字で入力してください`,
+  ),
+}
+
+// 省略
+
 const view = useCsView(
   {
     title: useCsInputTextItem(
@@ -36,7 +45,7 @@ const view = useCsView(
     ),
   },
   {
-    customValidationRules: myCustomValidationRules, // 全角文字のバリデーションルールを定義済み
+    customValidationRules: myCustomValidationRules,
   }
 );
 ```
