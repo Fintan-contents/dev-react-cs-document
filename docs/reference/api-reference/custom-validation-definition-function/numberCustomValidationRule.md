@@ -42,17 +42,6 @@ type CustomValidateMessage<T> =
 
 ```tsx
 const myCustomValidationRules: CustomValidationRules = {
-  ageRule: numberCustomValidationRule(
-    // バリデート関数
-    (newValue, item) => {
-      if (newValue === undefined) {
-        return true;
-      }
-      return newValue >= 0 && newValue <= 120;
-    },
-    // メッセージ関数
-    (label, newValue, item) => `${label}は0から120の間でなければなりません。`
-  ),
   positiveNumberRule: numberCustomValidationRule(
     // バリデート関数
     (newValue, item) => newValue !== undefined && newValue > 0,

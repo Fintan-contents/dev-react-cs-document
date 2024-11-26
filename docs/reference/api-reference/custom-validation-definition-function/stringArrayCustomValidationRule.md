@@ -42,28 +42,17 @@ type CustomValidateMessage<T> =
 
 ```tsx
 const myCustomValidationRules: CustomValidationRules = {
-  tagsRule: stringArrayCustomValidationRule(
+  maxItemsRule: stringArrayCustomValidationRule(
     // バリデート関数
     (newValue, item) => {
       if (!newValue) {
         return true;
       }
-      return newValue.length > 0 && newValue.length <= 5;
+      return newValue.length <= 5;
     },
     // メッセージ関数
     (label, newValue, item) =>
-      `${label}は1から5個のタグを含める必要があります。`
-  ),
-  nonEmptyStringsRule: stringArrayCustomValidationRule(
-    // バリデート関数
-    (newValue, item) => {
-      if (!newValue) {
-        return true;
-      }
-      return newValue.every((str) => str.trim().length > 0);
-    },
-    // メッセージ関数
-    (label, newValue, item) => `${label}には空でない文字列を含めてください。`
+      `${label}は最大5個しか選ぶことはできません。`
   ),
 };
 ```
