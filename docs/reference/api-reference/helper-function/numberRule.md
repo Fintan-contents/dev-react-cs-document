@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 title: numberRule
 ---
 
@@ -30,8 +30,7 @@ const view = useCsView(
     terminalNum: useCsInputNumberItem(
       "利用端末数",
       useInit(),
-      numberRule(true, 1, 10, 整数のみ),
-      "整数のみ"
+      numberRule(true, 1, 10, "整数のみ"),
     ),
   },
   {

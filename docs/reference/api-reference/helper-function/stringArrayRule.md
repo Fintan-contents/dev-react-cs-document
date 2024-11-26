@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 title: stringArrayRule
 ---
 
@@ -28,7 +28,7 @@ const view = useCsView(
     interests: useCsMultiCheckBoxItem(
       "興味のある分野",
       useInit<string[]>([]),
-      stringArrayRule(false, "最大要素数"),
+      stringArrayRule(false, "興味ある分野の最大要素数"),
       selectOptions(
         [
           { key: "technology", name: "テクノロジー" },
@@ -50,7 +50,7 @@ const view = useCsView(
     ),
   },
   {
-    customValidationRules: myCustomValidationRules, // 最大要素数のカスタムバリデーションルールを定義済み
+    customValidationRules: myCustomValidationRules, // 興味ある分野の最大要素数のカスタムバリデーションルールを定義済み
   }
 );
 ```
