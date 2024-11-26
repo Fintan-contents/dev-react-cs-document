@@ -34,7 +34,7 @@ const view = useCsView(
     ),
   },
   {
-    customValidationRules: myCustomValidationRules, // スコアのカスタムバリデーションルールを定義済み
+    customValidationRules: myCustomValidationRules, // 「スコア」のカスタムバリデーションルールを定義済み
   }
 );
 ```

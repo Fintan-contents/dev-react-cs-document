@@ -34,7 +34,7 @@ const view = useCsView(
     ),
   },
   {
-    customValidationRules: myCustomValidationRules, // 確認済みのカスタムバリデーションルールを定義済み
+    customValidationRules: myCustomValidationRules, // 「確認済み」のカスタムバリデーションルールを定義済み
   }
 );
 ```

@@ -30,11 +30,11 @@ const view = useCsView(
     terminalNum: useCsInputNumberItem(
       "利用端末数",
       useInit(),
-      numberRule(true, 1, 10, "整数のみ"),
+      numberRule(true, 1, 10, "正の整数")
     ),
   },
   {
-    customValidationRules: myCustomValidationRules, // 整数のみのバリデーションルールを定義済み
+    customValidationRules: myCustomValidationRules, // 「正の整数」のバリデーションルールを定義済み
   }
 );
 ```
