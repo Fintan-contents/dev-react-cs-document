@@ -32,7 +32,7 @@ title: useCsView
       <td></td>
       <td><code> readonly?: boolean, customValidationRules?: AppValidationRules extends CustomValidationRules,*² validationTrigger?: "onSubmit" | "onBlur"</code></td>
       <td><p><code>readonly</code>には読み取り専用にするかどうかを指定します。 デフォルトは<code>false</code>です。</p>
-        <p><code>customValidationRules</code>には適用したいカスタムバリデーションルールの定義オブジェクトを指定します。詳細は<a href="../../../implementation-guide/tips/add-custom-validation">TIPS</a>を参照してください。</p>
+        <p><code>customValidationRules</code>には適用したいカスタムバリデーションルールの定義オブジェクトを指定します。詳細は<a href="../../../implementation-guide/tips/add-custom-validation">カスタムバリデーションの追加方法</a>を参照してください。</p>
         <code>validationTrigger</code>にはバリデーションの実行タイミングを指定します。<code>onSubmit</code>はボタン押下時、<code>onBlur</code>は入力項目からフォーカスが外れたタイミングでバリデーションを実行します。デフォルトは<code>onSubmit</code>です。</td>
     </tr>
     <tr>
