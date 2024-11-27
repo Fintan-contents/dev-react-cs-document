@@ -4,6 +4,7 @@ title: selectOptions
 ---
 
 `selectOptions` は、セレクトボックスやマルチチェックボックスなどの選択肢に変換するための関数です。
+類似のヘルパ関数に[selectOptionStrings](../helper-function/selectOptionStrings.md) と[selectOptionNumbers](../helper-function/selectOptionNumbers.md) があります。そちらも参照してください。
 
 ## シグネチャ
 
@@ -11,11 +12,11 @@ title: selectOptions
 
 ## 引数
 
-| 引数名         | 必須 | 型      | 説明                                                                                   |
-| -------------- | ---- | ------- | -------------------------------------------------------------------------------------- |
-| options        | 〇   | `any[]` | セレクトボックスの選択肢の配列を指定します。                                            |
-| optionValueKey |      | `string`| 各選択肢の値を示すキーを指定します。デフォルトは `"value"` です。                       |
-| optionLabelKey |      | `string`| 各選択肢のラベルを示すキーを指定します。デフォルトは `"label"` です。                   |
+| 引数名         | 必須 | 型       | 説明                                                                  |
+| -------------- | ---- | -------- | --------------------------------------------------------------------- |
+| options        | 〇   | `any[]`  | セレクトボックスの選択肢の配列を指定します。                          |
+| optionValueKey |      | `string` | 各選択肢の値を示すキーを指定します。デフォルトは `"value"` です。     |
+| optionLabelKey |      | `string` | 各選択肢のラベルを示すキーを指定します。デフォルトは `"label"` です。 |
 
 ## 返り値
 
@@ -25,16 +26,16 @@ title: selectOptions
 
 ```tsx
 const countries = [
-    { value: "jp", label: "日本" },
-    { value: "us", label: "アメリカ" },
-    { value: "uk", label: "イギリス" },
-  ]
+  { value: "jp", label: "日本" },
+  { value: "us", label: "アメリカ" },
+  { value: "uk", label: "イギリス" },
+];
 
 const users = [
-    { id: "jp", name: "Alice", isAdmin: true },
-    { id: "jp", name: "Bob", isAdmin: false},
-    { id: "jp", name: "Charlie", isAdmin: false},
-  ]
+  { id: "jp", name: "Alice", isAdmin: true },
+  { id: "jp", name: "Bob", isAdmin: false },
+  { id: "jp", name: "Charlie", isAdmin: false },
+];
 
 useCsView({
   country: useCsSelectBoxItem(
@@ -54,3 +55,4 @@ useCsView({
     "担当者を選択してください"
   ),
 });
+```
