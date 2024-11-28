@@ -58,4 +58,4 @@ $ git clone https://github.com/Fintan-contents/dev-react-cs-component.git
 
 Git をインストールしていない、もしくは使わない場合は、以下のリンクから zip ファイルをダウンロードし、任意の場所に解凍してください。
 
-[GitHub から zip ファイルをダウンロード](https://github.com/Fintan-contents/dev-react-cs-component)
+[GitHub から zip ファイルをダウンロード](https://github.com/Fintan-contents/dev-react-cs-component/archive/refs/heads/main.zip)

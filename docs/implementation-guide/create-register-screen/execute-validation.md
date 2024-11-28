@@ -23,8 +23,12 @@ return (
   <>
     <AxTableLayout view={view} colSize={2} />
     {/* highlight-start */}
-    <AxButton type="primary" validationViews={[view]}>
-      バリデーション実行
+    <AxButton
+      type="primary"
+      validationViews={[view]}
+      onClick={() => {}} // onClickは必須プロパティのため指定
+    >
+      バリデーション
     </AxButton>
     {/* highlight-end */}
   </>

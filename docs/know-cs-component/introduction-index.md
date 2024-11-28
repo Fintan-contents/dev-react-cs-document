@@ -24,7 +24,7 @@
 一方で、<strong>効果の出にくい画面の特徴</strong>の項目が多く当てはまる場合、省力化コンポーネントの導入効果は得られにくいかもしれません。省力化コンポーネントの持つ特徴を活かせない、もしくは適用させるためにライブラリの拡張が必要になるケースがあります。
 
 :::warning
-UI コンポーネントライブラリとして、<strong>Ant Design</strong>、<strong>Material UI</strong>、<strong>React Bootstrap</strong>のいずれかを使う場合、省力化コンポーネントが標準で部品を提供しているためすぐに導入できます。それ以外の UI コンポーネントライブラリを使用する場合は、独自のカスタムコンポーネントを作成する必要があります。
+UI コンポーネントライブラリとして、<strong>Ant Design</strong>、<strong>Material UI</strong>、<strong>React Bootstrap</strong>のいずれかを使う場合、省力化コンポーネントが標準で部品を提供しているためすぐに導入できます。
 :::
 
 ## 導入効果が高い画面の特徴
@@ -54,7 +54,7 @@ UI コンポーネントライブラリとして、<strong>Ant Design</strong>�
 :::
 
 :::info
-省力化コンポーネントを導入する場合は[こちら](../introduction-guide/prior-preparation.md)。
+省力化コンポーネントの導入ガイドは[こちら](../introduction-guide/prior-preparation.md)。
 :::
 
 ## 導入効果が得られにくい画面の特徴
