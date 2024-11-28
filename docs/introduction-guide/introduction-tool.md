@@ -38,7 +38,7 @@ installer-cli\installer-for-next.bat ＜プロジェクトのルートディレ�
 
 以下の 2 つのパッケージマネージャから選択してください。
 
-- npm（デフォルト）
+- npm ※デフォルト
 - yarn
 
 ## UI コンポーネントライブラリの選択

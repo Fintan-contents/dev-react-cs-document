@@ -38,7 +38,7 @@ export type TodoCreateView = CsView & {
 登録用の View（`TodoCreateView`）にイベントの初期化処理を追加します。登録 API では Event のフックに`useCsRqAdvancedMutateButtonClickEvent()`、引数には Orval で自動生成された API フック`usePostTodo()`を指定します。
 
 ```ts title="src/app/todo/page.view.ts"
-// Orvalで自動生成されたAPIフック（usePutTodo）をimport
+// Orvalで自動生成されたAPIフック（usePostTodo）をimport
 
 /**
  * 登録用のViewの初期化
@@ -62,7 +62,7 @@ export const useTodoCreateView = (): TodoCreateView => {
 [イベントの初期化](./create-feature.md#イベントを初期化する)で定義した 登録用の View 定義を呼び出します。
 
 ```tsx title="src/app/todo/TodoCreateModal.tsx"
-const todoPostView = useTodoCreateView(); // 登録用のViewの呼び出し
+const todoCreateView = useTodoCreateView(); // 登録用のViewの呼び出し
 ```
 
 ## ボタンを配置する
@@ -77,16 +77,16 @@ const todoPostView = useTodoCreateView(); // 登録用のViewの呼び出し
   onCancel={onCancel}
   footer={
     // highlight-start
-    <AxMutateButton event={todoPostView.createButton} validationViews={[todoPostView]} type="primary" onAfterApiCallSuccess={onAfterApiCallSuccess}>
+    <AxMutateButton event={todoCreateView.createButton} validationViews={[todoCreateView]} type="primary" onAfterApiCallSuccess={onAfterApiCallSuccess}>
       作成
     </AxMutateButton>
     // highlight-end
   }
 >
   <>
-    <AxInputText item={todoPostView.title}></AxInputText>
-    <AxTextArea item={todoPostView.description}></AxTextArea>
-    <AxInputText item={todoPostView.assignee}></AxInputText>
+    <AxInputText item={todoCreateView.title}></AxInputText>
+    <AxTextArea item={todoCreateView.description}></AxTextArea>
+    <AxInputText item={todoCreateView.assignee}></AxInputText>
   </>
 </Modal>
 ```
@@ -96,15 +96,15 @@ const todoPostView = useTodoCreateView(); // 登録用のViewの呼び出し
 登録 API 呼び出し時に指定する API リクエストを指定します。`data`に登録するデータを指定します。
 
 ```tsx title="src/app/todo/TodoCreateModal.tsx"
-const todoPostView = useTodoCreateView(); // 登録用のViewの呼び出し
+const todoCreateView = useTodoCreateView(); // 登録用のViewの呼び出し
 
 // highlight-start
-todoPostView.createButton.setRequest({
+todoCreateView.createButton.setRequest({
   // リクエストデータに値をセット
   data: {
-    title: todoPostView.title.value ?? "",
-    description: todoPostView.description.value ?? "",
-    assignee: todoPostView.assignee.value ?? "",
+    title: todoCreateView.title.value ?? "",
+    description: todoCreateView.description.value ?? "",
+    assignee: todoCreateView.assignee.value ?? "",
   },
 });
 // highlight-end

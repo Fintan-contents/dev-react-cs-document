@@ -12,7 +12,7 @@ title: 検索機能
 検索機能のイベントの型定義には`CsQueryButtonClickEvent`を指定します。検索用の View（`TodoSearchView`）のプロパティにイベントの型を定義します。型パラメータには検索 API のレスポンスの型を指定します。
 
 ```ts title="src/app/todo/page.view.ts"
-// Orvalで自動生成されたListTodoResponseの型定義をimnport
+// Orvalで自動生成されたListTodoResponseの型定義をimport
 
 /**
  * 担当者検索用のViewの型定義

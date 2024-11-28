@@ -82,8 +82,8 @@ const myCustomValidationRules: CustomValidationRules = {
 Item から親の View を取得し対象の Item の値を取得することができます。親の View を取得した際、型としては`CsView`となっているためキャストする必要がある点に注意してください。
 
 ```tsx
-export type RegisertUserView = {
-  name: CsInputeTextItem;
+export type RegisterUserView = {
+  name: CsInputTextItem;
   age: CsInputTextItem;
   mailAddress: CsInputTextItem;
   gender: CsRadioBoxItem;

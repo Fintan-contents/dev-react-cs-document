@@ -37,7 +37,7 @@ export type TodoDeleteView = CsView & {
 削除用の View（`TodoDeleteView`）にイベントの初期化処理を追加します。削除 API では Event のフックに`useCsRqAdvancedMutateButtonClickEvent()`、引数には Orval で自動生成された API フック`useDeleteTodo()`を指定します。
 
 ```ts title="src/app/todo/page.view.ts"
-// Orvalで自動生成されたAPIフック（usePutTodo）をimport
+// Orvalで自動生成されたAPIフック（useDeleteTodo）をimport
 
 /**
  * 削除用のViewの初期化

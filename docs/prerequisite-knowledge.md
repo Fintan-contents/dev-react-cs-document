@@ -112,7 +112,7 @@ Zod の学習は[公式サイト](https://zod.dev/#:~:text=zod-to-ts:%20Generate
 ### TanStack Query 公式サイト (TanStack Query)
 
 TanStack Query の学習は[公式サイト](https://tanstack.com/query/latest)を参考にしてください。  
-特に [useQuery](https://tanstack.com/query/v4/docs/framework/react/reference/useQuery)、[useMutation](https://tanstack.com/query/v4/docs/framework/react/reference/useMutation) は頻繁に使用するため、目を通しておくことをお勧めします。
+特に [useQuery](https://tanstack.com/query/latest/docs/framework/react/reference/useQuery#usequery)、[useMutation](https://tanstack.com/query/latest/docs/framework/react/reference/useMutation#usemutation) は頻繁に使用するため、目を通しておくことをお勧めします。
 
 ### OpenAPI 公式サイト (OpenAPI Specification)
 
