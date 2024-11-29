@@ -78,7 +78,7 @@ JavaScript Primer は、JavaScript の文法や機能を一から学べるサイ
 
 ### サバイバル TypeScript (TypeScript)
 
-TypeScript の学習は[サバイバル TypeScript](https://book.yyts.org/)を参考にしてください。
+TypeScript の学習は[サバイバル TypeScript](https://typescriptbook.jp/)を参考にしてください。
 
 サバイバル TypeScript は、TypeScript を最短ルートで実務利用できることを目指したサイトです。[読んで学ぶ TypeScript](https://book.yyts.org/reference)の知識があれば、最低限の TypeScript の知識は身に付いています。目次を見てわからない箇所があれば学習してください。
 
@@ -107,7 +107,7 @@ Yup の学習は[公式サイト](https://yup-docs.vercel.app/)を参考にし�
 
 ### Zod 公式サイト (Zod)
 
-Zod の学習は[公式サイト](https://zod.dev/#:~:text=zod-to-ts:%20Generate%20TypeScript)を参考にしてください。
+Zod の学習は[公式サイト](https://zod.dev/)を参考にしてください。
 
 ### TanStack Query 公式サイト (TanStack Query)
 

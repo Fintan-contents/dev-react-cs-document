@@ -54,7 +54,7 @@ UI コンポーネントライブラリとして、<strong>Ant Design</strong>�
 :::
 
 :::info
-省力化コンポーネントの導入ガイドは[こちら](../introduction-guide/prior-preparation.md)。
+プロジェクトへの導入方法については[導入ガイド](../introduction-guide/prior-preparation.md)を参照してください。
 :::
 
 ## 導入効果が得られにくい画面の特徴

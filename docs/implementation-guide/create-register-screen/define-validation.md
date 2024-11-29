@@ -31,9 +31,9 @@ xxxRule(必須指定, 最小値*¹, 最大値*¹, カスタムバリデーショ
 ※2 カスタムバリデーションルールについては次項で解説します
 ```
 
-前節で定義した入力項目に対して設定されているバリデーションルールは以下の表の通りです。
+[1.画面を定義する](./define-screen.md)で定義した入力項目に対して設定されているバリデーションルールは以下の表の通りです。
 
-```tsx title="前節で定義した画面項目"
+```tsx title="画面項目定義"
 const useRegisterUserView = (): RegisterUserView => {
   return useCsView({
     userName: useCsInputTextItem(

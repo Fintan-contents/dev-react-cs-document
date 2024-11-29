@@ -42,7 +42,7 @@ LoadEvent で使用する型と初期化フックは次の表の通りです。�
 
 :::warning
 
-ハンズオン形式で進めたい方は、まず [こちらの手順](../../introduction-guide/working-after-introduction/orval-setting.md#実装ガイドのハンズオンで使用する-api-クライアントコードの生成手順) に従って API クライアントコードを作成してください。
+ハンズオン形式で進めたい方は、 [実装ガイドのハンズオンで使用する API クライアントコードの生成手順](../../introduction-guide/working-after-introduction/orval-setting.md#実装ガイドのハンズオンで使用する-api-クライアントコードの生成手順) に従って API クライアントコードを作成してください。
 
 <h4>以降の解説で登場するAPIクライアント関数 / 型</h4>
 | 名前                  |  説明                                                                 |
