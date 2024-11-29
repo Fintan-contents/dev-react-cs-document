@@ -117,6 +117,11 @@ todoDeleteView.deleteButton.setRequest({
   // リクエストデータに値をセット
   todoId: todoDeleteView.id.value ?? "",
 });
+
+useEffect(() => {
+  todoDeleteView.id.setValue(record?.id);
+  // recordが変更されたら再設定
+}, [record]);
 // highlight-end
 ```
 
