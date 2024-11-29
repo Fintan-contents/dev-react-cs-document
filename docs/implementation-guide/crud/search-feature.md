@@ -59,7 +59,7 @@ export const useTodoSearchView = (assignee: string): TodoSearchView => {
 
 ## View 定義を呼び出す
 
-[イベントの初期化](./search-feature.md#イベントを初期化する)で定義した 検索用の View 定義を呼び出します。
+[イベントを初期化する](./search-feature.md#イベントを初期化する)で定義した 検索用の View 定義を呼び出します。
 
 ```tsx title="src/app/todo/page.tsx"
 const todoSearchView = useTodoSearchView(); // 検索用のViewの呼び出し

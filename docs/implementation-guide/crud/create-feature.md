@@ -59,7 +59,7 @@ export const useTodoCreateView = (): TodoCreateView => {
 
 ### View の定義を呼び出す
 
-[イベントの初期化](./create-feature.md#イベントを初期化する)で定義した 登録用の View 定義を呼び出します。
+[イベントを初期化する](./create-feature.md#イベントを初期化する)で定義した 登録用の View 定義を呼び出します。
 
 ```tsx title="src/app/todo/TodoCreateModal.tsx"
 const todoCreateView = useTodoCreateView(); // 登録用のViewの呼び出し

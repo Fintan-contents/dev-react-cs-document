@@ -81,7 +81,7 @@ export const useTodoEditView = (): TodoEditView => {
 
 ## View 定義を呼び出す
 
-[イベントの初期化](./update-feature.md#イベントを初期化する)で定義した 更新用の View 定義を呼び出します。
+[イベントを初期化する](./update-feature.md#イベントを初期化する)で定義した 更新用の View 定義を呼び出します。
 
 ```tsx title="src/app/todo/TodoEditModal.tsx"
 const todoEditView = useTodoEditView(); // 更新用のViewの呼び出し

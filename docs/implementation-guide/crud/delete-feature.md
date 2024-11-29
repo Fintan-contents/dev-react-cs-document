@@ -56,7 +56,7 @@ export const useTodoDeleteView = (): TodoDeleteView => {
 
 ## View 定義を呼び出す
 
-[イベントの初期化](./delete-feature.md#イベントを初期化する)で定義した、削除用の View 定義を呼び出します。
+[イベントを初期化する](./delete-feature.md#イベントを初期化する)で定義した、削除用の View 定義を呼び出します。
 
 ```tsx title="src/app/todo/TodoDeleteModal.tsx"
 const todoDeleteView = useTodoDeleteView(); // 削除用のViewの呼び出し
