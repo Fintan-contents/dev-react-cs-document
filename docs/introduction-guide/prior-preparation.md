@@ -32,8 +32,6 @@ title: 事前準備
 既に Next.js プロジェクトを作成済みの方は、[導入ツールのダウンロード](#導入ツールのダウンロード)に進んでください。
 :::
 
-省力化コンポーネントを使用するアプリケーション基盤として [Next.js](https://nextjs.org/) を採用しています。Next.js は、React をベースにしたフレームワークであり、サーバーサイドレンダリングや静的サイト生成を簡単に実現するための強力なツールを提供します。
-
 以下に示すリンク先 (Next.js 公式サイト) を参照し、Next.js プロジェクトの作成を行ってください。
 
 - [Next.js プロジェクトの作成](https://nextjs.org/docs/getting-started/installation#automatic-installation)

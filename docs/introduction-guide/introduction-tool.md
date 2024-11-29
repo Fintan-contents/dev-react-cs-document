@@ -118,12 +118,12 @@ Storybook を含める場合は「はい」、含めない場合は「いいえ�
 
 ```bash title="ディレクトリの選択方法"
 frameworkフォルダをコピーするディレクトリを選択してください。
-  ↓ C:\Users\next-project\
-    → C:\Users\next-project\public
-    ↓ C:\Users\next-project\src
-      → C:\Users\next-project\src\app
-      → C:\Users\next-project\src\components
-      → C:\Users\next-project\src\[copy-destination] ※指定したいディレクトリを選択する
+  ↓ C:\Users\xxx\next-project\
+    → C:\Users\xxx\next-project\public
+    ↓ C:\Users\xxx\next-project\src
+      → C:\Users\xxx\next-project\src\app
+      → C:\Users\xxx\next-project\src\components
+      → C:\Users\xxx\next-project\src\[copy-destination] ※指定したいディレクトリを選択する
 
 -----------------------------------------------------
 
