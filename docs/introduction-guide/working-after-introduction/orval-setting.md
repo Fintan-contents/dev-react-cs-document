@@ -28,7 +28,7 @@ OpenAPI 仕様が定義された `openapi.yml` を配置します。
 ```
 
 :::info
-省力化コンポーネントのサンプルアプリでは[`openapi_todo.yaml`](https://github.com/Fintan-contents/dev-react-cs-example/blob/develop/openapi/openapi_todo.yaml)を使用しています。  
+省力化コンポーネントのサンプルアプリでは[openapi_todo.yaml](https://github.com/Fintan-contents/dev-react-cs-example/blob/develop/openapi/openapi_todo.yaml)を使用しています。  
 :::
 
 ## 2. orval.config.ts を作成する
@@ -49,7 +49,7 @@ OpenAPI 仕様が定義された `openapi.yml` を配置します。
   ※ `mutator` には、手順 3 で作成するカスタムインスタンスを設定してください。
 
 :::info
-省力化コンポーネントのサンプルアプリでは[`orval.config.ts`](https://github.com/Fintan-contents/dev-react-cs-example/blob/develop/orval.config.ts)を使用しています。
+省力化コンポーネントのサンプルアプリでは[orval.config.ts](https://github.com/Fintan-contents/dev-react-cs-example/blob/develop/orval.config.ts)を使用しています。
 :::
 
 ## 3. Axios のカスタムインスタンスを作成する

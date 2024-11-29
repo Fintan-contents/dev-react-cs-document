@@ -88,7 +88,7 @@ const useRegisterUserView = (): RegisterUserView => {
 ここでは、既に作成済みのカスタムバリデーションルールを使用する方法についてのみ解説します。
 :::
 
-省力化コンポーネントでは、使用頻度の高いカスタムバリデーションルールを `buildInCustomValidationRules` として提供しています。`buildInCustomValidationRules` に含まれるカスタムバリデーションルールの一覧は[リファレンス](../../category/リファレンス)を参照してください。
+省力化コンポーネントでは、使用頻度の高いカスタムバリデーションルールを `buildInCustomValidationRules` として提供しています。カスタムバリデーションルールの一覧は[buildInCustomValidationRules](https://github.com/Fintan-contents/dev-react-cs-example/blob/develop/src/framework/validation-rules/buildInCustomValidationRules.ts)ファイルを参照してください。
 
 カスタムバリデーションルールを使用するためには、`useCsView` の第二引数にカスタムバリデーションルールオブジェクトを指定する必要があります。
 
