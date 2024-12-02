@@ -81,7 +81,7 @@ JavaScript Primer は、JavaScript の文法や機能を一から学べるサイ
 
 TypeScript の学習は[サバイバル TypeScript](https://typescriptbook.jp/)を参考にしてください。
 
-サバイバル TypeScript は、TypeScript を最短ルートで実務利用できることを目指したサイトです。[読んで学ぶ TypeScript](https://book.yyts.org/reference)の知識があれば、最低限の TypeScript の知識は身に付いています。目次を見てわからない箇所があれば学習してください。
+サバイバル TypeScript は、TypeScript を最短ルートで実務利用できることを目指したサイトです。[読んで学ぶ TypeScript](https://typescriptbook.jp/reference)の知識があれば、最低限の TypeScript の知識は身に付いています。目次を見てわからない箇所があれば学習してください。
 
 ### React 公式サイト (React)
 
