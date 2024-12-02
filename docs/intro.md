@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # はじめに
 
-本ドキュメントでは、React で画面開発を行う際の生産性とメンテナンス性を向上させる<strong> spa-view-item </strong>について解説します。なお、本ドキュメント内では spa-view-item を<strong>省力化コンポーネント</strong>と記述します。
+本ドキュメントでは、React で画面開発を行う際の生産性とメンテナンス性を向上させる<strong> spa-view-item </strong>について解説します。なお、本ドキュメント内では spa-view-item を<strong>省力化コンポーネント</strong>と表記します。
 
 ## 省力化コンポーネントとは？
 
