@@ -29,7 +29,7 @@ title: 特徴
 // View 定義
 export type RegisterUserView = CsView & {
   userName: CsInputTextItem;
-  passowrd: CsInputPasswordItem;
+  password: CsInputPasswordItem;
 };
 
 export const RegisterUserComponent: React.FC = () => {
@@ -59,7 +59,7 @@ export const RegisterUserComponent: React.FC = () => {
 // View 定義
 export type RegisterUserView = CsView & {
   userName: CsInputTextItem;
-  passowrd: CsInputPasswordItem;
+  password: CsInputPasswordItem;
   mailAddress: CsInputTextItem;
   age: CsInputNumberItem;
   gender: CsRadioBoxItem;

@@ -38,7 +38,7 @@ installer-cli\installer-for-next.bat ＜プロジェクトのルートディレ�
 
 以下の 2 つのパッケージマネージャから選択してください。
 
-- npm（デフォルト）
+- npm ※デフォルト
 - yarn
 
 ## UI コンポーネントライブラリの選択
@@ -82,7 +82,10 @@ Orval（シンプル版）と Orval（拡張版）の違いは、mutator に設�
 
 ## デモ画面を含めるかの選択
 
-デモ画面を含めるかどうかを選択してください。
+デモ画面を含める場合は「はい」、含めない場合は「いいえ」を選択してください。
+
+- はい ※デフォルト
+- いいえ
 
 :::info
 デモ画面自身も省力化コンポーネントを使用して作成されているため、実装方法や動作イメージなどを確認できます。
@@ -95,7 +98,10 @@ Orval（シンプル版）と Orval（拡張版）の違いは、mutator に設�
 
 ## Storybook を含めるかの選択
 
-Storybook を含めるかどうかを選択してください。
+Storybook を含める場合は「はい」、含めない場合は「いいえ」を選択してください。
+
+- はい ※デフォルト
+- いいえ
 
 :::info
 [Storybook](https://storybook.js.org/) とは、 UI コンポーネント用のカタログです。Storybook を利用することで、UI コンポーネントの見た目や動作、使い方をブラウザ上で簡単に確認できます。
@@ -112,12 +118,12 @@ Storybook を含めるかどうかを選択してください。
 
 ```bash title="ディレクトリの選択方法"
 frameworkフォルダをコピーするディレクトリを選択してください。
-  ↓ C:\Users\next-project\
-    → C:\Users\next-project\public
-    ↓ C:\Users\next-project\src
-      → C:\Users\next-project\src\app
-      → C:\Users\next-project\src\components
-      → C:\Users\next-project\src\[copy-destination] ※指定したいディレクトリを選択する
+  ↓ C:\Users\xxx\next-project\
+    → C:\Users\xxx\next-project\public
+    ↓ C:\Users\xxx\next-project\src
+      → C:\Users\xxx\next-project\src\app
+      → C:\Users\xxx\next-project\src\components
+      → C:\Users\xxx\next-project\src\[copy-destination] ※指定したいディレクトリを選択する
 
 -----------------------------------------------------
 
@@ -135,4 +141,4 @@ frameworkフォルダをコピーするディレクトリを選択してくだ�
 
 コピー先ディレクトリの選択までが完了すると資材のコピーおよびライブラリのインストールが開始されます。インストールが成功すると省力化コンポーネントが使用できる状態になります。
 
-次節で紹介する<strong>インストール資材</strong>では、コピーされるディレクトリの構成やインストールされるライブラリについて説明します。
+次節<strong>インストール資材</strong>では、コピーされるディレクトリの構成やインストールされるライブラリについて説明します。

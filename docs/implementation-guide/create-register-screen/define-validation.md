@@ -31,9 +31,9 @@ xxxRule(必須指定, 最小値*¹, 最大値*¹, カスタムバリデーショ
 ※2 カスタムバリデーションルールについては次項で解説します
 ```
 
-前節で定義した入力項目に対して設定されているバリデーションルールは以下の表の通りです。
+[1.画面を定義する](./define-screen.md)で定義した入力項目に対して設定されているバリデーションルールは以下の表の通りです。
 
-```tsx title="前節で定義した画面項目"
+```tsx title="画面項目定義"
 const useRegisterUserView = (): RegisterUserView => {
   return useCsView({
     userName: useCsInputTextItem(
@@ -84,11 +84,11 @@ const useRegisterUserView = (): RegisterUserView => {
 標準のバリデーションルールに加えて、独自のカスタムバリデーションルールを定義もしくは使用できます。これにより、特定のビジネスロジックや要件に応じた柔軟なバリデーションを実現できます。
 
 :::info
-新しくカスタムバリデーションルールを作る方法については、拡張ガイドを参照してください。  
+新しくカスタムバリデーションルールを作る方法については、[カスタムバリデーションの追加方法](../tips//add-custom-validation.md)を参照してください。  
 ここでは、既に作成済みのカスタムバリデーションルールを使用する方法についてのみ解説します。
 :::
 
-省力化コンポーネントでは、使用頻度の高いカスタムバリデーションルールを `buildInCustomValidationRules` として提供しています。`buildInCustomValidationRules` に含まれるカスタムバリデーションルールの一覧は[リファレンス](../../category/リファレンス)を参照してください。
+省力化コンポーネントでは、使用頻度の高いカスタムバリデーションルールを `buildInCustomValidationRules` として提供しています。カスタムバリデーションルールの一覧は[buildInCustomValidationRules](https://github.com/Fintan-contents/dev-react-cs-example/blob/develop/src/framework/validation-rules/buildInCustomValidationRules.ts)ファイルを参照してください。
 
 カスタムバリデーションルールを使用するためには、`useCsView` の第二引数にカスタムバリデーションルールオブジェクトを指定する必要があります。
 

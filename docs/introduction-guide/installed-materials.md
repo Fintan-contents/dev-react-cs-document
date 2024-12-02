@@ -9,7 +9,7 @@ title: インストール資材
 
 ## 基盤部品
 
-省力化コンポーネントの基盤部品は、[導入ツール](./introduction-tool.md)の実行時にコピー先に指定したパス直下の `framework` に配置されます。
+省力化コンポーネントの基盤部品は、[導入ツールの実行](./introduction-tool.md)時にコピー先に指定したパス直下の `framework` に配置されます。
 
 ```
 //copy-destination//
@@ -27,7 +27,7 @@ title: インストール資材
 　　　　　　　　　├── CsXxx.ts
 　　　　　　　　　├── ...
 　　　　　　　　　├── index.ts
-　　　　　　　　　└── getCsDefautValidationEvent.ts
+　　　　　　　　　└── getCsDefaultValidationEvent.ts
 　　　　　　├── validation-rules - ビルドインのカスタムバリデーションルール定義
 　　　　　　└── stories (*4) - Storybook用の資材
 　　　　　　　　　├── antd (*1)

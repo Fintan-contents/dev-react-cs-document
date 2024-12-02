@@ -22,11 +22,12 @@ title: "前提知識"
 | JavaScript | ウェブアプリ開発に用いられるスクリプト言語です。                                                                                                                                                         |
 | TypeScript | JavaScript に静的型付けを追加したプログラミング言語です。JavaScript と上位互換性があり、静的型付けによりコード実行前にエラーを検出できます。その性質から、開発規模が大きくなるほどその効果を発揮します。 |
 
-### フロントエンドライブラリ
+### フロントエンド技術スタック
 
-| 技術  | 説明                                                                                         |
-| ----- | -------------------------------------------------------------------------------------------- |
-| React | コンポーネントベースのアプローチで、ウェブアプリ開発に用いられる JavaScript ライブラリです。 |
+| 技術    | 説明                                                                                                                               |
+| ------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| React   | コンポーネントベースのアプローチで、ウェブアプリ開発に用いられる JavaScript ライブラリです。                                       |
+| Next.js | React をベースにしたフレームワークです。サーバーサイドレンダリングや静的サイト生成を簡単に実現するための強力なツールを提供します。 |
 
 ### UI コンポーネントライブラリ
 
@@ -78,9 +79,9 @@ JavaScript Primer は、JavaScript の文法や機能を一から学べるサイ
 
 ### サバイバル TypeScript (TypeScript)
 
-TypeScript の学習は[サバイバル TypeScript](https://book.yyts.org/)を参考にしてください。
+TypeScript の学習は[サバイバル TypeScript](https://typescriptbook.jp/)を参考にしてください。
 
-サバイバル TypeScript は、TypeScript を最短ルートで実務利用できることを目指したサイトです。[読んで学ぶ TypeScript](https://book.yyts.org/reference)の知識があれば、最低限の TypeScript の知識は身に付いています。目次を見てわからない箇所があれば学習してください。
+サバイバル TypeScript は、TypeScript を最短ルートで実務利用できることを目指したサイトです。[読んで学ぶ TypeScript](https://typescriptbook.jp/reference)の知識があれば、最低限の TypeScript の知識は身に付いています。目次を見てわからない箇所があれば学習してください。
 
 ### React 公式サイト (React)
 
@@ -88,6 +89,12 @@ React の学習は[公式サイト](https://ja.react.dev/)を参考にしてく�
 
 React を利用したことがない人は[クイックスタート](https://ja.react.dev/learn)から始めることをお勧めします。  
 「React を学ぶ」の内容が理解できていれば、最低限の React の知識は身に付いています。分からない箇所があれば学習してください。
+
+### Next.js 公式サイト (Next.js)
+
+Next.js の学習は[公式サイト](https://nextjs.org/)を参考にしてください。
+
+省力化コンポーネントを使用するアプリケーション基盤として Next.js を採用しています。
 
 ### Ant Design 公式サイト (Ant Design)
 
@@ -107,12 +114,12 @@ Yup の学習は[公式サイト](https://yup-docs.vercel.app/)を参考にし�
 
 ### Zod 公式サイト (Zod)
 
-Zod の学習は[公式サイト](https://zod.dev/#:~:text=zod-to-ts:%20Generate%20TypeScript)を参考にしてください。
+Zod の学習は[公式サイト](https://zod.dev/)を参考にしてください。
 
 ### TanStack Query 公式サイト (TanStack Query)
 
 TanStack Query の学習は[公式サイト](https://tanstack.com/query/latest)を参考にしてください。  
-特に [useQuery](https://tanstack.com/query/v4/docs/framework/react/reference/useQuery)、[useMutation](https://tanstack.com/query/v4/docs/framework/react/reference/useMutation) は頻繁に使用するため、目を通しておくことをお勧めします。
+特に [useQuery](https://tanstack.com/query/latest/docs/framework/react/reference/useQuery#usequery)、[useMutation](https://tanstack.com/query/latest/docs/framework/react/reference/useMutation#usemutation) は頻繁に使用するため、目を通しておくことをお勧めします。
 
 ### OpenAPI 公式サイト (OpenAPI Specification)
 
