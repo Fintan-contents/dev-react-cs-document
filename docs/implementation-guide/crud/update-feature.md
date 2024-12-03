@@ -9,7 +9,9 @@ title: 更新機能
 
 ## イベントの型を定義する
 
-更新機能のイベントの型定義には`CsMutateButtonClickEvent`を指定します。更新用の View（`TodoEditView`）のプロパティにイベントの型を定義します。型パラメータには 更新 API のリクエスト、レスポンスの型を指定します。
+更新機能のイベントの型定義には`CsMutateButtonClickEvent`を指定します。
+
+更新用の View（`TodoEditView`）のプロパティにイベントの型を定義します。型パラメータには 更新 API のリクエスト、レスポンスの型を指定します。
 
 ```ts title="src/app/todo/page.view.ts"
 // Orvalで自動生成されたTodoRegistrationの型定義をimport
@@ -37,7 +39,9 @@ export type TodoEditView = CsView & {
 
 ## イベントを初期化する
 
-更新用の View（`TodoEditView`）にイベントの初期化処理を追加します。更新 API では Event のフックに`useCsRqAdvancedMutateButtonClickEvent()`、引数には Orval で自動生成された API フック`usePutTodo()`を指定します。
+更新用の View（`TodoEditView`）にイベントの初期化処理を追加します。
+
+更新 API では Event のフックに`useCsRqAdvancedMutateButtonClickEvent()`、引数には Orval で自動生成された API フック`usePutTodo()`を指定します。
 
 ```ts title="src/app/todo/page.view.ts"
 // Orvalで自動生成されたAPIフック（usePutTodo）をimport
@@ -113,6 +117,7 @@ useEffect(() => {
 ## ボタンを配置する
 
 更新ボタンを配置する際は、画面コンポーネントとして `AxMutateButton` を使用します。（型定義で用いた `CsMutateButtonClickEvent` に対応した画面コンポーネントを使用します。）
+
 `event` という Props に、対応するイベントの変数を指定します。また、`validationViews` に View の変数を指定することで、バリデーションが実行できます。
 
 ```tsx title="src/app/todo/TodoEditModal.tsx"

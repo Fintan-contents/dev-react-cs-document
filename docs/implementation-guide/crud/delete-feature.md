@@ -9,7 +9,9 @@ title: 削除機能
 
 ## イベントの型を定義する
 
-削除機能のイベントの型定義には`CsMutateButtonClickEvent`を指定します。削除用の View（`TodoDeleteView`）のプロパティにイベントの型を定義します。型パラメータには削除 API のリクエスト、レスポンスの型を指定します。
+削除機能のイベントの型定義には`CsMutateButtonClickEvent`を指定します。
+
+削除用の View（`TodoDeleteView`）のプロパティにイベントの型を定義します。型パラメータには削除 API のリクエスト、レスポンスの型を指定します。
 
 ```ts title="src/app/todo/page.view.ts"
 // Orvalで自動生成されたTodoの型定義をimport
@@ -34,7 +36,9 @@ export type TodoDeleteView = CsView & {
 
 ## イベントを初期化する
 
-削除用の View（`TodoDeleteView`）にイベントの初期化処理を追加します。削除 API では Event のフックに`useCsRqAdvancedMutateButtonClickEvent()`、引数には Orval で自動生成された API フック`useDeleteTodo()`を指定します。
+削除用の View（`TodoDeleteView`）にイベントの初期化処理を追加します。
+
+削除 API では Event のフックに`useCsRqAdvancedMutateButtonClickEvent()`、引数には Orval で自動生成された API フック`useDeleteTodo()`を指定します。
 
 ```ts title="src/app/todo/page.view.ts"
 // Orvalで自動生成されたAPIフック（useDeleteTodo）をimport
@@ -65,6 +69,7 @@ const todoDeleteView = useTodoDeleteView(); // 削除用のViewの呼び出し
 ## ボタンを配置する
 
 削除ボタンを配置する際は、画面コンポーネントとして `AxMutateButton` を使用します。（型定義で用いた `CsMutateButtonClickEvent` に対応した画面コンポーネントを使用します。）
+
 `event`という Props に対応するイベントの変数を指定します。また、 `validationViews` に View の変数を指定することで、バリデーションが実行できます。
 
 ```tsx title="src/app/todo/TodoDeleteModal.tsx"

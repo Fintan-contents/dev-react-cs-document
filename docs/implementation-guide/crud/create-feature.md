@@ -47,9 +47,27 @@ export type TodoCreateView = CsView & {
  */
 export const useTodoCreateView = (): TodoCreateView => {
   return useCsView({
-    title: useCsInputTextItem("タイトル", useInit(""), stringRule(true, 1, 20), RW.Editable, "タイトルを入力してください"),
-    description: useCsTextAreaItem("説明", useInit(""), stringRule(true, 1, 100), RW.Editable, "タスクの説明を入力してください"),
-    assignee: useCsInputTextItem("担当者", useInit(""), stringRule(true, 1, 20), RW.Editable, "担当者を入力してください"),
+    title: useCsInputTextItem(
+      "タイトル",
+      useInit(""),
+      stringRule(true, 1, 20),
+      RW.Editable,
+      "タイトルを入力してください",
+    ),
+    description: useCsTextAreaItem(
+      "説明",
+      useInit(""),
+      stringRule(true, 1, 100),
+      RW.Editable,
+      "タスクの説明を入力してください",
+    ),
+    assignee: useCsInputTextItem(
+      "担当者",
+      useInit(""),
+      stringRule(true, 1, 20),
+      RW.Editable,
+      "担当者を入力してください",
+    ),
     // highlight-start
     createButton: useCsRqAdvancedMutateButtonClickEvent(usePostTodo()), // イベントの初期化処理の追加
     // highlight-end
@@ -68,6 +86,7 @@ const todoCreateView = useTodoCreateView(); // 登録用のViewの呼び出し
 ## ボタンを配置する
 
 登録ボタンを配置する際は、画面コンポーネントとして `AxMutateButton` を使用します。（型定義で用いた `CsMutateButtonClickEvent` に対応した画面コンポーネントを使用します。）
+
 `event` という Props に、対応するイベントの変数を指定します。また、`validationViews`に View の変数を指定することで、バリデーションが実行できます。
 
 ```tsx title="src/app/todo/TodoCreateModal.tsx"
@@ -77,7 +96,12 @@ const todoCreateView = useTodoCreateView(); // 登録用のViewの呼び出し
   onCancel={onCancel}
   footer={
     // highlight-start
-    <AxMutateButton event={todoCreateView.createButton} validationViews={[todoCreateView]} type="primary" onAfterApiCallSuccess={onAfterApiCallSuccess}>
+    <AxMutateButton
+      event={todoCreateView.createButton}
+      validationViews={[todoCreateView]}
+      type="primary"
+      onAfterApiCallSuccess={onAfterApiCallSuccess}
+    >
       作成
     </AxMutateButton>
     // highlight-end

@@ -9,7 +9,9 @@ title: 検索機能
 
 ## イベントの型を定義する
 
-検索機能のイベントの型定義には`CsQueryButtonClickEvent`を指定します。検索用の View（`TodoSearchView`）のプロパティにイベントの型を定義します。型パラメータには検索 API のレスポンスの型を指定します。
+検索機能のイベントの型定義には`CsQueryButtonClickEvent`を指定します。
+
+検索用の View（`TodoSearchView`）のプロパティにイベントの型を定義します。型パラメータには検索 API のレスポンスの型を指定します。
 
 ```ts title="src/app/todo/page.view.ts"
 // Orvalで自動生成されたListTodoResponseの型定義をimport
@@ -25,7 +27,9 @@ export type TodoSearchView = CsView & {
 
 ## イベントを初期化する
 
-検索用の View（`TodoSearchView`）にイベントの初期化処理を追加します。検索 API で Event のフックに`useCsRqAdvancedQueryButtonClickEvent`、引数には Orval で自動生成された API フック`useListTodo()`を指定します。
+検索用の View（`TodoSearchView`）にイベントの初期化処理を追加します。
+
+検索 API で Event のフックに`useCsRqAdvancedQueryButtonClickEvent`、引数には Orval で自動生成された API フック`useListTodo()`を指定します。
 
 ```ts title="src/app/todo/page.view.ts"
 // Orvalで自動生成されたAPIフック（useListTodo）をimport
@@ -37,7 +41,13 @@ export type TodoSearchView = CsView & {
  * @returns TodoSearchView 担当者検索用のView
  */
 export const useTodoSearchView = (assignee: string): TodoSearchView => {
-  const assignee = useCsInputTextItem("担当者", useInit(""), stringRule(true, 1, 20), RW.Editable, "検索する担当者を入力してください");
+  const assignee = useCsInputTextItem(
+    "担当者",
+    useInit(""),
+    stringRule(true, 1, 20),
+    RW.Editable,
+    "検索する担当者を入力してください",
+  );
   return useCsView({
     assignee: assignee,
     // highlight-start
@@ -49,8 +59,8 @@ export const useTodoSearchView = (assignee: string): TodoSearchView => {
             enabled: false, // ボタンがクリックされるまでクエリを実行しない
             refetchOnWindowFocus: false, // ページにフォーカスがあたってもクエリを実行しない
           },
-        }
-      )
+        },
+      ),
     ),
     // highlight-end
   });
@@ -67,7 +77,9 @@ const todoSearchView = useTodoSearchView(); // 検索用のViewの呼び出し
 
 ## ボタンを配置する
 
-検索ボタンを配置する際は、画面コンポーネントとして `AxQueryButton` を使用します。（型定義で用いた `CsQueryButtonClickEvent` に対応した画面コンポーネントを使用します。）`event`という Props に、対応するイベントの変数を指定します。また、`validationViews` に View の変数を指定することで、バリデーションが実行できます。
+検索ボタンを配置する際は、画面コンポーネントとして `AxQueryButton` を使用します。（型定義で用いた `CsQueryButtonClickEvent` に対応した画面コンポーネントを使用します。）
+
+`event`という Props に、対応するイベントの変数を指定します。また、`validationViews` に View の変数を指定することで、バリデーションが実行できます。
 レスポンスの値取得には、イベントの `response` メソッドを使用します。
 
 ```tsx title="src/app/todo/page.tsx"
