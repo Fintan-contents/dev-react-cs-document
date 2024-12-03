@@ -10,7 +10,7 @@ title: "前提知識"
 | カテゴリ                    | 技術                                         |
 | --------------------------- | -------------------------------------------- |
 | プログラミング言語          | JavaScript, TypeScript                       |
-| フロントエンドライブラリ    | React                                        |
+| フロントエンド技術スタック  | React, Next.js                               |
 | UI コンポーネントライブラリ | Ant Design, Material UI, React Bootstrap     |
 | バリデーションライブラリ    | Yup, Zod                                     |
 | API 関連知識                | TanStack Query, OpenAPI Specification, Orval |
