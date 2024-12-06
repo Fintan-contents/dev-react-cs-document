@@ -68,6 +68,7 @@ const todoCreateView = useTodoCreateView(); // 登録用のViewの呼び出し
 ## ボタンを配置する
 
 登録ボタンを配置する際は、画面コンポーネントとして `AxMutateButton` を使用します。（型定義で用いた `CsMutateButtonClickEvent` に対応した画面コンポーネントを使用します。）
+
 `event` という Props に、対応するイベントの変数を指定します。また、`validationViews`に View の変数を指定することで、バリデーションが実行できます。
 
 ```tsx title="src/app/todo/TodoCreateModal.tsx"

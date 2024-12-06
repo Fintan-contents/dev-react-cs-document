@@ -19,7 +19,7 @@ const myCustomValidationRules: CustomValidationRules = {
   // highlight-start
   nameRule: stringCustomValidationRule(
     createRegExpValidator(/^[A-Za-z ]*$/), // バリデート関数
-    (label) => `${label}は、アルファベットと空白のみ使用可能です。` // メッセージ関数
+    (label) => `${label}は、アルファベットと空白のみ使用可能です。`, // メッセージ関数
   ),
   // highlight-end
 };
@@ -27,7 +27,8 @@ const myCustomValidationRules: CustomValidationRules = {
 
 ## 独自のバリデーションルールの生成
 
-独自のバリデート関数を実装して適用することができます。<br />
+独自のバリデート関数を実装して適用することができます。
+
 以下の例では、パスワードのルールとして、大文字・小文字・記号・数字が使われているかをチェックしています。
 
 ```tsx title="パスワードの複雑な作成ルールを定義したバリデーションルール"
@@ -70,7 +71,7 @@ const myCustomValidationRules: CustomValidationRules = {
         requireds = requireds.filter((e) => "記号" !== e);
       }
       return `${label}は、${requireds.join("、")}を含めてください`;
-    }
+    },
   ),
   //highlight-end
 };
@@ -79,6 +80,7 @@ const myCustomValidationRules: CustomValidationRules = {
 ## 項目間バリデーション
 
 バリデート関数内である Item の値に応じて別の Item の値をバリデーションを実施するような項目間バリデーションの実装方法について紹介します。
+
 Item から親の View を取得し対象の Item の値を取得することができます。親の View を取得した際、型としては`CsView`となっているためキャストする必要がある点に注意してください。
 
 ```tsx
@@ -117,6 +119,6 @@ useCsView(
       ...buildInCustomValidationRules, // ビルドインカスタムバリデーションルール
       ...myCustomValidationRules, // 定義したカスタムバリデーションルール
     },
-  }
+  },
 );
 ```

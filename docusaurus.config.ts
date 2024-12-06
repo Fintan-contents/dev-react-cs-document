@@ -3,7 +3,7 @@ import type { Config } from "@docusaurus/types";
 import { themes as prismThemes } from "prism-react-renderer";
 
 const config: Config = {
-  title: "react-cs-document",
+  title: "spa-view-item",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
